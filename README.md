@@ -2,7 +2,7 @@
 
 ### Aspiring Cloud & DevOps Engineer | Network Engineer | Full-Stack Developer
 
-Currently pursuing a Diploma in Computer Technology (Cloud Computing) at **TVETMARA BESUT TERENGGANU**. I am building a strong foundation in infrastructure management, automation, and full-stack development, driven by a passion for bridging the gap between development and operations.
+I am building a strong foundation in infrastructure management, automation, networking and full-stack development, driven by a passion for bridging the gap between development and operations.
 
 ### 🛠 Tech Stack
 
