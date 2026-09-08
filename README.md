@@ -1,6 +1,6 @@
 # Hi there, I'm Syahmi 👋
 
-### Aspiring Cloud & DevOps Engineer | Full-Stack Developer | Network Engineer
+### Aspiring Cloud & DevOps Engineer | Exploring Full-Stack Development & Networking
 
 I am building a strong foundation in infrastructure management, automation, full-stack development and networking driven by a passion for bridging the gap between development and operations.
 
@@ -57,19 +57,12 @@ I am building a strong foundation in infrastructure management, automation, full
 *   🥇 **Cisco Certified Network Associate (CCNA)**
 *   🥇 **CompTIA Security+**
 
-### 📚 Currently Learning
-
-*   **Kubernetes** & **Terraform** 
-*   **CI/CD Pipelines Optimization**
-*   **Modern Front-end Frameworks**
-
 ### 📌 Featured Projects
 
 | Project | Description | Tech Used | Link |
 |---------|-------------|-----------|------|
 | **greetly** | Smart Cloud-Integrated AI Facial Recognition Attendance System | Python, Cloud | [View Repo](https://github.com/syahmiaof/greetly) |
 | **sistem-aduan-asrama-ikm** | Hostel Facility & Lost Item Complaint System for students | HTML, CSS, JS, PHP | [View Repo](https://github.com/syahmiaof/sistem-aduan-asrama-ikm) |
-| **devops-bootcamp** | Sandbox and practice materials for DevOps workflows | Docker, Git | [View Repo](https://github.com/syahmiaof/devops-bootcamp) |
 | **daengkuning** | Portal Rasmi Akademi Persilatan Daeng Kuning | Web Tech | [View Repo](https://github.com/syahmiaof/daengkuning) |
 
 ### 📫 Connect
