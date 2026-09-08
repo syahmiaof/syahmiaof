@@ -1,5 +1,5 @@
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com/?lines=Hi+there,+I%27m+Syahmi;Aspiring+Cloud+%26+DevOps+Engineer;Exploring+Full-Stack+%26+Networking&font=Fira+Code&weight=600&size=30&duration=3000&pause=1000&color=FFFFFF&center=false&vCenter=true&width=800&height=50" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=Hi+there,+I+am+Syahmi;Aspiring+Cloud+and+DevOps+Engineer;Exploring+Full-Stack+and+Networking&font=Fira+Code&size=30&duration=3000&pause=1000&color=FFFFFF&center=false&vCenter=true&width=800&height=50" alt="Typing SVG" />
 </a>
 
 ### Aspiring Cloud & DevOps Engineer | Exploring Full-Stack Development & Networking
