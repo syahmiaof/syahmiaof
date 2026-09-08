@@ -30,20 +30,18 @@ I am building a strong foundation in infrastructure management, automation, full
 <h3 align="center">🏇 Professional Certifications</h3>
 
 <div align="center">
-  <img src="https://img.shields.io/badge/AWS%20Certified-Solutions%20Architect%20Associate-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
-  <img src="https://img.shields.io/badge/AWS%20Certified-Developer%20Associate-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
-  <img src="https://img.shields.io/badge/AWS%20Certified-Cloud%20Practitioner-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
-  <br>
-  <img src="https://img.shields.io/badge/Microsoft%20Certified-Azure%20Fundamentals%20(AZ--900)-0089D6?style=for-the-badge&logo=microsoftazure&logoColor=white" />
-  <img src="https://img.shields.io/badge/HashiCorp%20Certified-Terraform%20Associate-844FBA?style=for-the-badge&logo=terraform&logoColor=white" />
-  <img src="https://img.shields.io/badge/CNCF%20Certified-Kubernetes%20Administrator%20(CKA)-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
-  <br>
-  <img src="https://img.shields.io/badge/LPI%20Certified-Linux%20Administrator%20(LPIC--1)-F5C518?style=for-the-badge&logo=linux&logoColor=black" />
-  <img src="https://img.shields.io/badge/Cisco%20Certified-Network%20Associate%20(CCNA)-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" />
-  <img src="https://img.shields.io/badge/CompTIA-Security%2B-FF0000?style=for-the-badge&logoColor=white" />
+  🥇 <b>AWS Certified Solutions Architect – Associate</b><br><br>
+  🥇 <b>AWS Certified Developer – Associate</b><br><br>
+  🥇 <b>AWS Certified Cloud Practitioner</b><br><br>
+  🥇 <b>Microsoft Certified: Azure Fundamentals (AZ-900)</b><br><br>
+  🥇 <b>HashiCorp Certified: Terraform Associate</b><br><br>
+  🥇 <b>Certified Kubernetes Administrator (CKA)</b><br><br>
+  🥇 <b>Linux Professional Institute Certification (LPIC-1)</b><br><br>
+  🥇 <b>Cisco Certified Network Associate (CCNA)</b><br><br>
+  🥇 <b>CompTIA Security+</b>
 </div>
 
-<h3 align="center">📬 Connect</h3>
+<h3 align="center">📫 Connect</h3>
 
 <div align="center">
   <a
