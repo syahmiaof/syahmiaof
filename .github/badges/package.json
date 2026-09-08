@@ -1,0 +1,6 @@
+﻿{
+  "name": "badges",
+  "dependencies": {
+    "mustache": "^4.2.0"
+  }
+}
