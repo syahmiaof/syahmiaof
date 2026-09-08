@@ -7,7 +7,6 @@ on:
     paths-ignore:
       - 'dist/**'
       - 'profile-3d-contrib/**'
-      - 'profile-summary-card-output/**'
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
@@ -26,7 +25,6 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
 
       - name: Generate 3D Contribution Calendar
@@ -35,18 +33,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
 
-      - name: Generate Profile Summary Cards
-        uses: vn7n24fzkq/github-profile-summary-cards@release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          USERNAME: ${{ github.repository_owner }}
-          THEME: "hack"
-
       - name: Commit & Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A .
+          git add dist/ profile-3d-contrib/
           git commit -m "chore: auto-generate profile graphics" || echo "No changes to commit"
           git push
