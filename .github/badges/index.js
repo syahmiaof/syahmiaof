@@ -27,7 +27,7 @@ function measureText(text, fontSize) {
 }
 
 function loadIconSvgContent(item) {
-  const path = `./icons/${iconSlug(item)}.svg`
+  const path = `./.github/badges/icons/${iconSlug(item)}.svg`
   if (!fs.existsSync(path)) return ""
   const svg = fs.readFileSync(path, "utf8")
   const vbMatch = svg.match(/viewBox="([^"]*)"/)
@@ -164,7 +164,7 @@ function buildLinkHtml(links) {
   return links.map(function (l) {
     let logo = l.logo || ""
     if (l.logoSvg) {
-      const svgPath = `./icons/${iconSlug(l)}.svg`
+      const svgPath = `./.github/badges/icons/${iconSlug(l)}.svg`
       if (fs.existsSync(svgPath)) {
         const svg = fs.readFileSync(svgPath, "utf8")
         logo = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`
