@@ -152,6 +152,12 @@
     },
     {
       "label": "API Keys"
+    },
+    {
+      "label": "Claude"
+    },
+    {
+      "label": "Hermes"
     }
   ]
 }
