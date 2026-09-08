@@ -1,8 +1,8 @@
 # Hi there, I'm Syahmi 👋
 
-### Diploma Student | Aspiring Cloud & DevOps Engineer
+### Aspiring Cloud & DevOps Engineer | Full-Stack Developer | Network Engineer
 
-Currently pursuing a Diploma in Computer Technology (Cloud Computing) at **TVETMARA BESUT TERENGGANU**. I am building a strong foundation in infrastructure management, automation, and full-stack development, driven by a passion for bridging the gap between development and operations.
+I am building a strong foundation in infrastructure management, automation, full-stack development and networking, driven by a passion for bridging the gap between development and operations.
 
 ### 🛠 Tech Stack
 
@@ -32,7 +32,6 @@ Currently pursuing a Diploma in Computer Technology (Cloud Computing) at **TVETM
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
@@ -54,9 +53,9 @@ Currently pursuing a Diploma in Computer Technology (Cloud Computing) at **TVETM
 
 ### 🏆 Professional Certifications
 
-*   🥇 **[Insert Certification Name e.g., AWS Certified Cloud Practitioner]** - *(Year)*
-*   🥇 **[Insert Certification Name e.g., Cisco Certified Network Associate (CCNA)]** - *(Year)*
-*   🥇 **[Insert Certification Name e.g., CompTIA Security+]** - *(Year)*
+*   🥇 **AWS Certified Cloud Practitioner**
+*   🥇 **Cisco Certified Network Associate (CCNA)**
+*   🥇 **CompTIA Security+**
 
 ### 📚 Currently Learning
 
