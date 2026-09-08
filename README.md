@@ -6,11 +6,9 @@
 
 <h3 align="center">Aspiring Cloud & DevOps Engineer</h3>
 
-<div align="center">
-I am building a strong foundation in infrastructure management, automation, full-stack development and networking driven by a passion for bridging the gap between development and operations.
-</div>
+<p>I am building a strong foundation in infrastructure management, automation, full-stack development, and networking. I am also deeply exploring <b>Agentic AI</b>, <b>AI Automation</b>, <b>Model Context Protocol (MCP)</b>, and secure <b>API</b> integrations to drive next-generation DevOps workflows.</p>
 
-<h3 align="center">🔐 Tech Stack</h3>
+<h3 align="center">🤐 Tech Stack</h3>
 
 <div align="center">
   <img src="badges.svg" alt="Tech Stack" style="max-width: 100%;" />
