@@ -2,7 +2,7 @@
   <img src="https://readme-typing-svg.herokuapp.com/?lines=Hi+there,+I+am+Syahmi;Aspiring+Cloud+and+DevOps+Engineer;Exploring+Full-Stack+and+Networking&font=Fira+Code&size=30&duration=3000&pause=1000&color=FFFFFF&center=false&vCenter=true&width=800&height=50" alt="Typing SVG" />
 </a>
 
-### Aspiring Cloud & DevOps Engineer | Exploring Full-Stack Development & Networking
+### Aspiring Cloud & DevOps Engineer
 
 I am building a strong foundation in infrastructure management, automation, full-stack development and networking driven by a passion for bridging the gap between development and operations.
 
