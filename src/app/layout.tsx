@@ -25,5 +25,5 @@ import { LiveBackground } from '@/components/motion/LiveBackground';
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const jsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: profile.name, alternateName: profile.displayName, ...(canonical() ? { url: canonical() } : {}), email: profile.email, telephone: profile.phoneInternational, sameAs: socials.flatMap(social => social.href ? [social.href] : []), description: profile.description, jobTitle: profile.role };
-  return <html lang="en" className={`${display.variable} ${mono.variable}`}><body><LiveBackground /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} /><Navigation />{children}<ExperienceControls /><Symi /></body></html>;
+  return <html lang="en" className={`${display.variable} ${mono.variable}`}><body><LiveBackground /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} /><Navigation />{children}<ExperienceControls><Symi /></ExperienceControls></body></html>;
 }

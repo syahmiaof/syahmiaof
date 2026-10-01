@@ -111,6 +111,10 @@ test('Journey heading stays readable throughout its pinned stages', async ({ pag
   await page.locator('.journey-node').last().click();
   await expect(heading).toHaveCSS('opacity', '1');
   await expect(heading).toBeInViewport();
+  await page.evaluate(() => window.scrollBy({ top: 120, behavior: 'instant' }));
+  await expect(heading).toHaveCSS('opacity', '0');
+  await page.evaluate(() => window.scrollBy({ top: -120, behavior: 'instant' }));
+  await expect(heading).toHaveCSS('opacity', '1');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(heading).toHaveCSS('opacity', '1');
   await expect(heading).toContainText('From a face');

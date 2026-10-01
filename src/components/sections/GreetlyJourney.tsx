@@ -22,20 +22,6 @@ export function GreetlyJourney() {
   const trigger = useRef<ScrollTrigger | null>(null);
   const manual = useRef<gsap.core.Tween | null>(null);
   useEffect(() => {
-    if (reduced || !root.current || !title.current) return;
-    // Track the whole pinned journey so its title stays readable through all six stages.
-    const context = gsap.context(() => {
-      gsap.fromTo(title.current, { autoAlpha: 0, y: 18 }, {
-        autoAlpha: 1, y: 0, duration: .85, ease: 'power3.out',
-        scrollTrigger: {
-          trigger: root.current, start: 'top 88%', end: 'bottom top+=100',
-          toggleActions: 'play reverse play reverse', refreshPriority: -1,
-        },
-      });
-    }, root);
-    return () => context.revert();
-  }, [reduced, tier]);
-  useEffect(() => {
     const element = root.current;
     if (!element || reduced || tier === 'LITE') return;
     const update = () => {
@@ -58,6 +44,38 @@ export function GreetlyJourney() {
     }, element);
     return () => { manual.current?.kill(); media.revert(); element.style.removeProperty('--event-progress'); };
   }, [reduced, tier, progress]);
+  useEffect(() => {
+    const element = root.current;
+    const heading = title.current;
+    if (reduced || !element || !heading) return;
+    let controller: gsap.core.Tween | undefined;
+    const context = gsap.context(() => {
+      const reveal = gsap.timeline({ paused: true })
+        .fromTo(heading, { autoAlpha: 0, x: -20, y: 10, clipPath: 'inset(0% 100% 0% 0%)' }, {
+          autoAlpha: 1, x: 0, y: 0, clipPath: 'inset(-15% -2% -15% -2%)', duration: 1.15, ease: 'power3.out',
+        })
+        .addLabel('read')
+        .to(heading, { autoAlpha: 0, y: -16, duration: .55, ease: 'power2.inOut' })
+        .addLabel('out');
+      const move = (position: 'read' | 'out' | 0) => {
+        controller?.kill();
+        controller = reveal.tweenTo(position, { ease: 'none' });
+      };
+      ScrollTrigger.create({
+        id: 'journey-title-motion', trigger: element, start: 'top 80%',
+        // Hold through the exact pin range, then allow an exit beyond stage six.
+        end: () => trigger.current ? trigger.current.end + 80 : 'bottom top+=100',
+        refreshPriority: -1,
+        onEnter: () => move('read'), onLeave: () => move('out'),
+        onEnterBack: () => move('read'), onLeaveBack: () => move(0),
+        onRefresh: self => {
+          controller?.kill();
+          reveal.pause(self.scroll() >= self.end ? 'out' : self.scroll() >= self.start ? 'read' : 0);
+        },
+      });
+    }, element);
+    return () => { controller?.kill(); context.revert(); };
+  }, [reduced, tier]);
   const select = (index: number) => {
     manual.current?.kill();
     setActive(index);

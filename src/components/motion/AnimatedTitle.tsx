@@ -18,7 +18,7 @@ function refreshTitles() {
   });
 }
 
-export type TitleAnimation = 'editorial' | 'opposing' | 'wave' | 'terminal' | 'hinge' | 'depth' | 'continuation' | 'recognition' | 'converge';
+export type TitleAnimation = 'editorial' | 'opposing' | 'wave' | 'terminal' | 'hinge' | 'depth' | 'continuation' | 'recognition' | 'converge' | 'stack';
 interface AnimatedTitleProps extends HTMLAttributes<HTMLHeadingElement> {
   animation: TitleAnimation;
   as?: 'h1' | 'h2' | 'h3';
@@ -31,6 +31,7 @@ function poses(variant: TitleAnimation, small: boolean) {
   let stagger = .09;
   let duration = small ? .6 : .85;
   switch (variant) {
+    case 'stack': Object.assign(from, { yPercent: 105, x: (i: number) => (i % 2 ? 30 : -30) * distance }); Object.assign(exit, { yPercent: -105, x: (i: number) => (i % 2 ? -18 : 18) * distance, y: 0 }); duration = small ? .85 : 1.1; stagger = .18; break;
     case 'editorial': Object.assign(from, { yPercent: 105 }); Object.assign(exit, { yPercent: -105, y: 0 }); break;
     case 'opposing': Object.assign(from, { x: (i: number) => (i % 2 ? 28 : -28) * distance }); Object.assign(exit, { x: (i: number) => (i % 2 ? 12 : -12) * distance, y: 0 }); break;
     case 'wave': Object.assign(from, { x: -10 * distance, y: 24 * distance }); Object.assign(exit, { x: 8 * distance }); stagger = .045; break;
@@ -59,7 +60,7 @@ export function AnimatedTitle({ animation, as: Tag = 'h2', children, ...props }:
     const split = SplitText.create(heading, {
       type: animation === 'wave' ? 'lines,words' : 'lines',
       autoSplit: true,
-      mask: animation === 'editorial' ? 'lines' : undefined,
+      mask: animation === 'editorial' || animation === 'stack' ? 'lines' : undefined,
       linesClass: 'motion-title-line',
       wordsClass: 'motion-title-word',
       onRevert: () => { controller?.kill(); },

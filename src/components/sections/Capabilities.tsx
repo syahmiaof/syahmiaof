@@ -2,12 +2,13 @@
 import { useState } from 'react';
 import { capabilities, aiWorkflows } from '@/data/capabilities';
 import { InteractionHint, TextLink } from '@/components/ui/Primitives';
+import { CapabilitySignals } from '@/components/motion/CapabilitySignals';
 import { AnimatedTitle } from '@/components/motion/AnimatedTitle';
 
 export function Capabilities() {
   const [selected, setSelected] = useState(0);
   const capability = capabilities[selected];
-  return <section id="capabilities" className="section capabilities-section" aria-labelledby="capability-title"><div className="section-title-row"><AnimatedTitle animation="hinge" id="capability-title">The system<br /><span className="muted">behind the work.</span></AnimatedTitle><p>No percentages. Just tools,<br />context and room to grow.</p></div><InteractionHint>Try me — choose a node to explore</InteractionHint><div className="capability-layout"><div className="capability-map"><svg viewBox="0 0 640 410" aria-hidden="true"><path d="M320 200L115 70M320 200L320 45M320 200L535 75M320 200L555 255M320 200L410 355M320 200L195 355M320 200L65 250" fill="none" stroke="#345244" /><circle cx="320" cy="200" r="62" fill="none" stroke="#254236" /><circle cx="320" cy="200" r="8" fill="#44d8a5" /></svg><span className="map-center mono">SYAHMI<br />AOF</span><div className="capability-tabs" role="tablist" aria-label="Capability categories">{capabilities.map((item, i) => <button key={item.name} id={`capability-tab-${i}`} aria-selected={selected === i} aria-controls="capability-panel" role="tab" tabIndex={selected === i ? 0 : -1} className={`capability-node cap-${i} ${i === selected ? 'active' : ''}`} onClick={() => setSelected(i)} onKeyDown={event => {
+  return <section id="capabilities" className="section capabilities-section" aria-labelledby="capability-title"><div className="section-title-row"><AnimatedTitle animation="hinge" id="capability-title">The system<br /><span className="muted">behind the work.</span></AnimatedTitle><p>No percentages. Just tools,<br />context and room to grow.</p></div><InteractionHint>Try me — choose a node to explore</InteractionHint><div className="capability-layout"><div className="capability-map"><CapabilitySignals selected={selected} /><span className="map-center mono">SYAHMI<br />AOF</span><div className="capability-tabs" role="tablist" aria-label="Capability categories">{capabilities.map((item, i) => <button key={item.name} id={`capability-tab-${i}`} aria-selected={selected === i} aria-controls="capability-panel" role="tab" tabIndex={selected === i ? 0 : -1} className={`capability-node cap-${i} ${i === selected ? 'active' : ''}`} onClick={() => setSelected(i)} onKeyDown={event => {
     let next = i;
     if (['ArrowRight', 'ArrowDown'].includes(event.key)) next = (i + 1) % capabilities.length;
     else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) next = (i + capabilities.length - 1) % capabilities.length;

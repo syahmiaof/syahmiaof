@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { toggleMotion, useReducedMotion, useViewportTier } from '@/hooks/useExperience';
 
-export function ExperienceControls() {
+export function ExperienceControls({ children }: { children: ReactNode }) {
   const reduced = useReducedMotion();
   const tier = useViewportTier();
   const path = usePathname();
@@ -36,7 +36,7 @@ export function ExperienceControls() {
     return () => window.removeEventListener('pointermove', onPointer);
   }, [reduced, tier]);
   return <>
-    <div className="experience-controls"><span>{clock}</span><button onClick={toggleMotion} aria-pressed={reduced} title="System reduced-motion preferences take priority">Motion {reduced ? 'reduced' : 'on'}<span className={reduced ? 'motion-indicator' : 'motion-indicator enabled'} /></button></div>
+    <div className="experience-dock">{children}<div className="experience-controls"><span>{clock}</span><button onClick={toggleMotion} aria-pressed={reduced} title="System reduced-motion preferences take priority">Motion {reduced ? 'reduced' : 'on'}<span className={reduced ? 'motion-indicator' : 'motion-indicator enabled'} /></button></div></div>
     {!reduced && tier !== 'LITE' && <div ref={cursor} className="cursor-label" aria-hidden="true" />}
     {dev && <aside className="dev-overlay" aria-label="Experience diagnostics"><strong>EXPERIENCE / DEBUG</strong><span>ROUTE {path}</span><span>QUALITY {reduced ? 'LITE' : tier}</span><span>MOTION {reduced ? 'REDUCED' : 'FULL'}</span><span>RENDER ADAPTIVE / ON DEMAND</span><button onClick={() => setDev(false)}>Close diagnostics</button></aside>}
   </>;

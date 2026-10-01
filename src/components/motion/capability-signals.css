@@ -1,0 +1,14 @@
+.capability-signals { overflow: hidden; }
+.map-wire, .map-core-ring { fill: none; stroke: var(--border-strong); stroke-width: 1; }
+.map-wire { opacity: .6; transition: stroke .3s, opacity .3s; }
+.capability-signals g[data-selected="true"] .map-wire { stroke: var(--signal-primary); opacity: .65; }
+.map-packet { fill: none; stroke: var(--signal-primary); stroke-width: 2; stroke-linecap: round; stroke-dasharray: .05 .95; stroke-dashoffset: 1; opacity: 0; animation: map-signal-travel 4.8s linear var(--packet-delay) infinite; }
+.map-wave, .map-selection-wave { fill: none; stroke: var(--signal-primary); stroke-width: 1; transform-origin: 320px 200px; opacity: 0; animation: map-signal-wave 4.8s cubic-bezier(.2,.65,.3,1) infinite; }
+.map-wave-delayed { animation-delay: 2.4s; }
+.map-selection-wave { stroke-width: 2; animation: map-signal-wave 1.6s ease-out 1; }
+.capability-signals .map-packet, .capability-signals .map-waves circle { animation-play-state: paused; }
+.capability-signals[data-running="true"] .map-packet, .capability-signals[data-running="true"] .map-waves circle { animation-play-state: running; }
+.capability-signals[data-reduced="true"] .map-packet, .capability-signals[data-reduced="true"] .map-waves { display: none; }
+@keyframes map-signal-wave { 0% { transform: scale(1); opacity: .5; } 75%, 100% { transform: scale(2.65); opacity: 0; } }
+@keyframes map-signal-travel { 0% { stroke-dashoffset: 1; opacity: 0; } 12% { opacity: .85; } 65% { stroke-dashoffset: 0; opacity: .85; } 78%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .map-packet, .map-waves { display: none; }.map-wire { transition: none; } }
