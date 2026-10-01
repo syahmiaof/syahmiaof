@@ -29,7 +29,7 @@ export function GreetlyJourney() {
       element.style.setProperty('--event-progress', String(Math.max(0, Math.min(1, (progress.value - 2) / 3))));
     };
     const media = gsap.matchMedia();
-    media.add('(min-width: 1100px) and (min-height: 760px) and (pointer: fine)', () => {
+    media.add('(min-width: 768px) and (pointer: fine)', () => {
       element.dataset.cinematic = 'true';
       const timeline = gsap.timeline({
         scrollTrigger: { trigger: element.querySelector('.journey-stage'), start: 'top 100px', end: '+=1900', pin: true, scrub: .65, invalidateOnRefresh: true },
