@@ -35,7 +35,7 @@ export function AnimatedTitle({ animation, as: Tag = 'h2', children, style, ...p
         fromState = { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', opacity: 1 };
         break;
       case 'swing':
-        fromState = { rotationX: -60, y: 30, opacity: 0, transformOrigin: 'bottom' };
+        fromState = { rotationX: -60, y: 30, opacity: 0, transformOrigin: 'bottom', transformPerspective: 1000 };
         break;
       case 'focal':
         fromState = { scale: 1.05, filter: 'blur(8px)', opacity: 0 };
@@ -55,7 +55,7 @@ export function AnimatedTitle({ animation, as: Tag = 'h2', children, style, ...p
         trigger: el,
         start: 'top 85%',
         end: 'bottom 20%',
-        toggleActions: 'play reverse play reverse'
+        toggleActions: 'play none none reverse'
       }
     };
 
@@ -85,7 +85,7 @@ export function AnimatedTitle({ animation, as: Tag = 'h2', children, style, ...p
 
   // Combine perspective for 3D transforms if needed
   const combinedStyle = animation === 'swing' 
-    ? { perspective: '1000px', ...style } 
+    ? { ...style } 
     : style;
 
   return (
@@ -94,3 +94,5 @@ export function AnimatedTitle({ animation, as: Tag = 'h2', children, style, ...p
     </Tag>
   );
 }
+
+
