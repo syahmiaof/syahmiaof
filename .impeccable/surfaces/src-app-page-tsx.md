@@ -16,3 +16,11 @@ FORM: Local extension inside the established composition; no seed required. Awar
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 Quality bar: 390px mobile, 489px user panel, 1440px desktop; no overflow, no assistant obstruction of its own input, clear hover/focus on interactive controls, readable contact details, no fictional credentials, Gemini is not connected yet. No new raster assets.
 Pending: owner URLs for five social accounts and award names/years/evidence. Email, phone, domain and GitHub supplied.
+
+## Approved extension: section motion and collaboration, 1 October 2026
+
+User approved docs/SECTION_MOTION_PROPOSAL.md. Add distinct entrance/read/exit choreography to section headings while preserving font, size, spacing, colors, final layout. Hero and Philosophy motion remain untouched; Greetly receives performance changes only, preserving all original JPG frames and visual composition.
+
+Add an editorial In collaboration with section after Selected Work. Owner confirms Ghazwah Group collaboration as AI Marketer handling marketing, with DFK INC / Ghazwah Tech as the first pilot. Jebat coordinates specialist AI agents; research, content, design, Facebook publishing, ads, analytics and automation are the workflow. Canva MCP, n8n, Meta Ads MCP and DigitalOcean-hosted Hermes are configured according to owner. Describe it as a pilot; no invented metrics, business impact, certification or full autonomous production claim. Keep details expandable and high-risk paid ads/pricing/promotions/sensitive matters under human approval.
+
+Quality bar: title baseline geometry unchanged at desktop/mobile/489px; smooth bidirectional transitions and immediate motion-off cleanup; no duplicate canvas paints of unchanged frames; bounded decoded memory; retain mobile/static and failed-frame fallbacks. Test rapid scroll/reverse, pinning, route navigation, resize and reduced motion. Review/document ordinary extension without replacing incumbent DESIGN.md.

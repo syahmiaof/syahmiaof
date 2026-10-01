@@ -42,7 +42,31 @@
 .roadmap-details > summary { min-height: 48px; font-size: 20px; cursor: pointer; color: var(--fg-primary); }
 .roadmap-details > summary:hover { color: var(--signal-primary); }
 .roadmap-details .passport-note { margin-bottom: 20px; }
+.collaboration-section { border-top: 1px solid var(--border-subtle); }
+.collaboration-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+.collaboration-heading > p { color: var(--fg-muted); font-size: 18px; }
+.collaboration-body { display: grid; grid-template-columns: 1fr 1.15fr; gap: 10%; margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border-strong); }
+.collaboration-company { display: flex; align-items: center; gap: 16px; width: fit-content; }
+.collaboration-company svg { color: var(--signal-primary); flex-shrink: 0; transition: transform .2s; }
+.collaboration-company:hover { color: var(--signal-primary); }
+.collaboration-company:hover svg { transform: translate(3px, -3px); }
+.collaboration-role { margin-top: 20px; color: var(--signal-primary); font-size: 18px; }
+.collaboration-pilot { margin-top: 6px; color: var(--fg-muted); font-size: 14px; }
+.collaboration-story > p { color: var(--fg-muted); font-size: 18px; max-width: 55ch; }
+.collaboration-flow { list-style: none; display: flex; flex-wrap: wrap; gap: 12px 20px; padding: 0; margin: 26px 0; font-size: 14px; }
+.collaboration-flow li { padding-bottom: 8px; border-bottom: 1px solid var(--signal-deep); }
+.collaboration-details { border-top: 1px solid var(--border-subtle); }
+.collaboration-details summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 0; font-size: 16px; cursor: pointer; list-style: none; }
+.collaboration-details summary::-webkit-details-marker { display: none; }
+.collaboration-details summary:hover { color: var(--signal-primary); }
+.collaboration-details[open] summary svg { transform: rotate(45deg); }
+.collaboration-details article { margin: 4px 0 24px; }
+.collaboration-details h4 { font-size: 16px; font-weight: 500; }
+.collaboration-details article p { font-size: 14px; color: var(--fg-muted); margin-top: 8px; }
 @media (max-width: 760px) {
+  .collaboration-heading { display: block; }.collaboration-heading > p { margin-top: 24px; font-size: 16px; }
+  .collaboration-body { grid-template-columns: 1fr; gap: 28px; margin-top: 32px; }
+  .collaboration-story > p { font-size: 16px; }
   .contact-methods { grid-template-columns: 1fr; gap: 0; }
   .contact-method + .contact-method { border-top: 0; }
   .contact-method { min-height: 108px; gap: 12px; }

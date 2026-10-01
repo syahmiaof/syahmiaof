@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('original artwork advances throughout the full scroll and keeps loading bounded', async ({ page }) => {
+test('original artwork advances throughout the full scroll with a bounded decoded cache', async ({ page }) => {
   const frames = new Set<string>();
   const errors: string[] = [];
   page.on('request', request => {
@@ -12,7 +12,7 @@ test('original artwork advances throughout the full scroll and keeps loading bou
   const scene = page.locator('.greetly-sequence');
   const canvas = scene.locator('canvas');
   await expect(canvas).toHaveAttribute('data-frame', '1');
-  expect(frames.size).toBeLessThan(40);
+  expect(frames.size).toBeLessThanOrEqual(200);
   const start = await scene.evaluate(el => el.getBoundingClientRect().top + scrollY);
   await page.evaluate(y => window.scrollTo({ top: y + innerHeight * 2.5, behavior: 'instant' }), start);
   await expect.poll(async () => Number(await canvas.getAttribute('data-frame'))).toBeGreaterThan(95);
@@ -23,6 +23,8 @@ test('original artwork advances throughout the full scroll and keeps loading bou
   await expect.poll(async () => Number(await canvas.getAttribute('data-frame'))).toBeLessThan(175);
   await page.evaluate(y => window.scrollTo({ top: y + innerHeight * 5 - 1, behavior: 'instant' }), start);
   await expect(canvas).toHaveAttribute('data-frame', '200');
+  expect(Number(await canvas.getAttribute('data-decoded-frames'))).toBeLessThanOrEqual(16);
+  expect(Number(await canvas.getAttribute('data-decoded-bytes'))).toBeLessThanOrEqual(128 * 1024 * 1024);
   await page.getByRole('button', { name: 'Motion on', exact: true }).click();
   await expect(scene.locator('canvas')).toHaveCount(0);
   await expect(page.locator('.greetly-cover .pin-spacer')).toHaveCount(0);
@@ -80,4 +82,40 @@ test('a failed first frame uses the nearest available artwork without breaking t
   await expect(canvas).toHaveAttribute('data-frame', '2');
   await expect(canvas).toHaveCSS('opacity', '1');
   expect(errors).toEqual([]);
+});
+
+test('idle frames do not repaint and reverse scrolling reuses compressed originals', async ({ page }) => {
+  const requests = new Map<string, number>();
+  page.on('request', request => {
+    if (/ezgif-frame-\d+\.jpg$/.test(request.url())) requests.set(request.url(), (requests.get(request.url()) || 0) + 1);
+  });
+  await page.addInitScript(() => {
+    const original = CanvasRenderingContext2D.prototype.drawImage;
+    CanvasRenderingContext2D.prototype.drawImage = function (...args: unknown[]) {
+      if (this.canvas.closest('.greetly-sequence')) this.canvas.dataset.testDraws = String(Number(this.canvas.dataset.testDraws || 0) + 1);
+      Reflect.apply(original, this, args);
+    };
+  });
+  await page.goto('/#work');
+  const canvas = page.locator('.greetly-sequence canvas');
+  await expect(canvas).toHaveAttribute('data-frame', '1');
+  await expect.poll(() => requests.size).toBe(200);
+  const draws = await canvas.getAttribute('data-test-draws');
+  await page.waitForTimeout(700);
+  await expect(canvas).toHaveAttribute('data-test-draws', draws!);
+  const start = await page.locator('.greetly-sequence').evaluate(el => el.getBoundingClientRect().top + scrollY);
+  for (const [progress, frame] of [[4.99, 200], [2.5, 101], [0, 1]]) {
+    await page.evaluate(({ start, progress }) => scrollTo({ top: start + innerHeight * progress, behavior: 'instant' }), { start, progress });
+    await expect.poll(async () => Math.abs(Number(await canvas.getAttribute('data-frame')) - frame)).toBeLessThanOrEqual(2);
+    expect(Number(await canvas.getAttribute('data-decoded-frames'))).toBeLessThanOrEqual(16);
+    expect(Number(await canvas.getAttribute('data-decoded-bytes'))).toBeLessThanOrEqual(128 * 1024 * 1024);
+  }
+  expect([...requests.values()].every(count => count === 1)).toBe(true);
+});
+
+test('image-element decoder supports browsers without ImageBitmap', async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(window, 'createImageBitmap', { value: undefined, configurable: true }));
+  await page.goto('/#work');
+  await expect(page.locator('.greetly-sequence canvas')).toHaveAttribute('data-frame', '1');
+  await expect(page.locator('.greetly-sequence canvas')).toHaveCSS('opacity', '1');
 });

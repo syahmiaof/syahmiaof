@@ -1,10 +1,11 @@
+import { AnimatedTitle } from '@/components/motion/AnimatedTitle';
 import { ArrowUp, ArrowUpRight, Mail, MessageCircle } from 'lucide-react';
 import { profile, socials } from '@/data/profile';
 import { SocialIcon } from '@/components/ui/SocialIcon';
 
 export function Footer({ compact = false }: { compact?: boolean }) {
   return <footer id="contact" className={`section contact-section ${compact ? 'compact-contact' : ''}`}>
-    {!compact && <><h2>LET’S BUILD<br />SOMETHING <span>REAL.</span></h2><p className="contact-lead">Have a project, an opportunity, or a system worth figuring out?</p></>}
+    {!compact && <><AnimatedTitle animation="converge" id="contact-title">LET’S BUILD<br />SOMETHING <span className="contact-accent">REAL.</span></AnimatedTitle><p className="contact-lead">Have a project, an opportunity, or a system worth figuring out?</p></>}
     <div className="contact-methods">
       <a href={`mailto:${profile.email}`} className="contact-method"><Mail size={22} aria-hidden="true" /><span><span className="contact-method-label">Email me</span><strong>{profile.email}</strong></span><ArrowUpRight size={24} aria-hidden="true" /></a>
       <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-method"><MessageCircle size={22} aria-hidden="true" /><span><span className="contact-method-label">Let’s talk on WhatsApp</span><strong>{profile.phone}</strong></span><ArrowUpRight size={24} aria-hidden="true" /></a>

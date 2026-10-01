@@ -1,6 +1,7 @@
 import { profile } from '@/data/profile';
 import { projects } from '@/data/projects';
 import { awards } from '@/data/awards';
+import { ghazwahCollaboration } from '@/data/collaborations';
 
 export type SymiReply = { text: string; links?: { label: string; href: string }[] };
 export type SymiMessage = SymiReply & { id: number; role: 'user' | 'assistant' };
@@ -10,6 +11,7 @@ export const symiSuggestions = ['Who is Syahmi?', 'Show me his projects', 'What 
 /** A provider boundary for a future server-side Gemini integration. No remote model is called today. */
 export async function getSymiReply(question: string): Promise<SymiReply> {
   const text = question.toLowerCase();
+  if (/ghazwah|dfk|jebat|marketing|marketer/.test(text)) return { text: `Syahmi collaborates with ${ghazwahCollaboration.company} as an AI Marketer. ${ghazwahCollaboration.pilot} is the first pilot for his team of specialist marketing agents, coordinated by Jebat. Paid ads and other high-risk decisions still need human approval.`, links: [{ label: 'Explore the collaboration', href: '/#collaboration' }, { label: 'Ghazwah Group', href: ghazwahCollaboration.website }] };
   if (/contact|email|whatsapp|phone|telefon|hubungi|hire|kerja sama|collaborat/.test(text)) return {
     text: `Boleh! Email Syahmi at ${profile.email}, or WhatsApp ${profile.phone}. For a project or opportunity, share a little context and he can take it from there.`,
     links: [{ label: 'WhatsApp Syahmi', href: profile.whatsapp }, { label: 'Send an email', href: `mailto:${profile.email}` }],

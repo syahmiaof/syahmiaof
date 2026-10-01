@@ -1,0 +1,3 @@
+.motion-title-line { transform-style: preserve-3d; }
+.motion-title-line-mask { overflow-clip-margin: .16em; }
+.contact-section h2 .contact-accent { color: var(--signal-primary); }

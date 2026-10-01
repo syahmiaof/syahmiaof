@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useReducedMotion, useViewportTier } from '@/hooks/useExperience';
+import { createFrameSequence } from '@/lib/frame-sequence';
 import { SafeImage } from '@/components/ui/SafeImage';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,86 +25,24 @@ export function GreetlySequence() {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (staticView || !canvas || !container) return;
-    const context = canvas.getContext('2d');
-    if (!context) return;
-
-    const sequence = { frame: 1 };
-    const images = new Map<number, HTMLImageElement>();
-    const loading = new Map<number, HTMLImageElement>();
-    const failed = new Set<number>();
+    const renderer = createFrameSequence(canvas, FRAME_COUNT, index => `/images/greetly-sequence/ezgif-frame-${String(index).padStart(3, '0')}.jpg`);
+    if (!renderer) return;
     let disposed = false;
-    let near = false;
-    let width = 1;
-    let height = 1;
-    let displayed = 0;
-
-    const draw = () => {
-      if (disposed) return;
-      const target = Math.round(sequence.frame);
-      const index = images.has(target) ? target : [...images.keys()].sort((a, b) => Math.abs(a - target) - Math.abs(b - target))[0];
-      const img = images.get(index);
-      if (!img || !img.naturalWidth || !img.naturalHeight) return;
-      // Drawing uses CSS pixels; only the backing store is multiplied by DPR.
-      const scale = Math.min(width / img.naturalWidth, height / img.naturalHeight) * .9;
-      const drawWidth = img.naturalWidth * scale;
-      const drawHeight = img.naturalHeight * scale;
-      context.clearRect(0, 0, width, height);
-      context.drawImage(img, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
-      displayed = index;
-      canvas.dataset.frame = String(index);
-      canvas.style.opacity = '1';
-    };
-
-    // A small moving window avoids retaining 200 decoded 1080p frames.
-    // The current frame always takes priority over speculative neighbours.
-    const pump = () => {
-      if (disposed || !near) return;
-      const target = Math.round(sequence.frame);
-      const wanted = [target];
-      for (let distance = 1; distance <= 10; distance++) {
-        if (target + distance <= FRAME_COUNT) wanted.push(target + distance);
-        if (target - distance >= 1) wanted.push(target - distance);
-      }
-      for (const index of wanted) {
-        if (loading.size >= 4) break;
-        if (images.has(index) || loading.has(index) || failed.has(index)) continue;
-        const img = new Image();
-        loading.set(index, img);
-        img.onload = () => {
-          loading.delete(index);
-          if (disposed) return;
-          if (img.naturalWidth) images.set(index, img);
-          else failed.add(index);
-          draw();
-          const current = Math.round(sequence.frame);
-          const oldest = [...images.keys()].filter(key => key !== displayed).sort((a, b) => Math.abs(b - current) - Math.abs(a - current));
-          while (images.size > 24 && oldest.length) images.delete(oldest.shift()!);
-          pump();
-        };
-        img.onerror = () => { loading.delete(index); if (!disposed) { failed.add(index); pump(); } };
-        img.src = `/images/greetly-sequence/ezgif-frame-${String(index).padStart(3, '0')}.jpg`;
-      }
-    };
-    const render = () => { draw(); pump(); };
+    let layoutReady = false;
+    let inViewport = false;
+    const sequence = { frame: 1 };
     const resize = () => {
       const rect = container.getBoundingClientRect();
-      width = rect.width;
-      height = rect.height;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      draw();
+      renderer.resize(rect.width, rect.height);
+      layoutReady = true;
+      if (inViewport) renderer.setActive(true);
     };
-    resize();
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
     const observer = new IntersectionObserver(entries => {
-      near = entries[0].isIntersecting;
-      if (near) render();
-    }, { rootMargin: '800px 0px' });
+      inViewport = entries[0].isIntersecting;
+      renderer.setActive(inViewport && layoutReady);
+    }, { rootMargin: '1200px 0px' });
     observer.observe(container);
 
     const ctx = gsap.context(() => {
@@ -119,7 +58,7 @@ export function GreetlySequence() {
         },
       });
       // Frame movement spans the whole caption timeline, including its final fade.
-      tl.to(sequence, { frame: FRAME_COUNT, duration: 1.05, snap: 'frame', ease: 'none', onUpdate: render }, 0);
+      tl.to(sequence, { frame: FRAME_COUNT, duration: 1.05, snap: 'frame', ease: 'none', onUpdate: () => renderer.setFrame(sequence.frame) }, 0);
       tl.fromTo(text1Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .1 }, 0);
       tl.to(text1Ref.current, { opacity: 0, y: -20, duration: .1 }, .25);
       tl.fromTo(text2Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .1 }, .35);
@@ -133,9 +72,7 @@ export function GreetlySequence() {
       ctx.revert();
       observer.disconnect();
       resizeObserver.disconnect();
-      loading.forEach(img => { img.onload = null; img.onerror = null; img.removeAttribute('src'); });
-      loading.clear();
-      images.clear();
+      renderer.dispose();
     };
   }, [staticView]);
 

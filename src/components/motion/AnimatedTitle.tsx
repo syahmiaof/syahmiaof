@@ -1,98 +1,113 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type HTMLAttributes } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import { useGSAP } from '@gsap/react';
-import { useReducedMotion } from '@/hooks/useExperience';
+import { useReducedMotion, useViewportTier } from '@/hooks/useExperience';
+import './title-motion.css';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
-type AnimationType = 'cinematic' | 'wipe' | 'swing' | 'focal' | 'epic';
+let pendingRefresh = 0;
+function refreshTitles() {
+  if (!pendingRefresh) pendingRefresh = requestAnimationFrame(() => {
+    pendingRefresh = 0;
+    ScrollTrigger.refresh();
+  });
+}
 
-interface AnimatedTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
-  animation: AnimationType;
+export type TitleAnimation = 'editorial' | 'opposing' | 'wave' | 'terminal' | 'hinge' | 'depth' | 'continuation' | 'recognition' | 'converge';
+interface AnimatedTitleProps extends HTMLAttributes<HTMLHeadingElement> {
+  animation: TitleAnimation;
   as?: 'h1' | 'h2' | 'h3';
 }
 
-export function AnimatedTitle({ animation, as: Tag = 'h2', children, style, ...props }: AnimatedTitleProps) {
-  const elementRef = useRef<HTMLHeadingElement>(null);
-  const reducedMotion = useReducedMotion();
-
-  useGSAP(() => {
-    if (reducedMotion || !elementRef.current) return;
-
-    const el = elementRef.current;
-    
-    // Set initial states based on animation type
-    let fromState: gsap.TweenVars = { opacity: 0 };
-    
-    switch (animation) {
-      case 'cinematic':
-        fromState = { y: 60, opacity: 0 };
-        break;
-      case 'wipe':
-        fromState = { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', opacity: 1 };
-        break;
-      case 'swing':
-        fromState = { rotationX: -60, y: 30, opacity: 0, transformOrigin: 'bottom', transformPerspective: 1000 };
-        break;
-      case 'focal':
-        fromState = { scale: 1.05, filter: 'blur(8px)', opacity: 0 };
-        break;
-      case 'epic':
-        fromState = { letterSpacing: '0.15em', opacity: 0 };
-        break;
-    }
-
-    gsap.set(el, fromState);
-
-    let toState: gsap.TweenVars = {
-      opacity: 1,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse'
-      }
-    };
-
-    switch (animation) {
-      case 'cinematic':
-        toState = { ...toState, y: 0 };
-        break;
-      case 'wipe':
-        toState = { ...toState, clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' };
-        break;
-      case 'swing':
-        toState = { ...toState, rotationX: 0, y: 0 };
-        break;
-      case 'focal':
-        toState = { ...toState, scale: 1, filter: 'blur(0px)' };
-        break;
-      case 'epic':
-        // Greetly h2 has a specific structure, we don't want to break it, 
-        // just letterSpacing and opacity is enough
-        toState = { ...toState, letterSpacing: 'normal', ease: 'power2.out', duration: 1.2 };
-        break;
-    }
-
-    gsap.to(el, toState);
-
-  }, [animation, reducedMotion]);
-
-  // Combine perspective for 3D transforms if needed
-  const combinedStyle = animation === 'swing' 
-    ? { ...style } 
-    : style;
-
-  return (
-    <Tag ref={elementRef} style={combinedStyle} {...props}>
-      {children}
-    </Tag>
-  );
+function poses(variant: TitleAnimation, small: boolean) {
+  const distance = small ? .55 : 1;
+  const from: gsap.TweenVars = { opacity: 0 };
+  const exit: gsap.TweenVars = { opacity: 0, y: -12 * distance };
+  let stagger = .09;
+  let duration = small ? .6 : .85;
+  switch (variant) {
+    case 'editorial': Object.assign(from, { yPercent: 105 }); Object.assign(exit, { yPercent: -105, y: 0 }); break;
+    case 'opposing': Object.assign(from, { x: (i: number) => (i % 2 ? 28 : -28) * distance }); Object.assign(exit, { x: (i: number) => (i % 2 ? 12 : -12) * distance, y: 0 }); break;
+    case 'wave': Object.assign(from, { x: -10 * distance, y: 24 * distance }); Object.assign(exit, { x: 8 * distance }); stagger = .045; break;
+    case 'terminal': Object.assign(from, { opacity: 1, clipPath: 'inset(0% 100% 0% 0%)' }); Object.assign(exit, { y: 0, clipPath: 'inset(0% 100% 0% 0%)' }); duration = .65; stagger = 0; break;
+    case 'hinge': Object.assign(from, { rotationX: -10 * distance, y: 18 * distance, transformPerspective: 900, transformOrigin: '50% 100%' }); Object.assign(exit, { rotationX: 4 * distance }); break;
+    case 'depth': Object.assign(from, { z: (i: number) => (i % 2 ? -12 : -28) * distance, transformPerspective: 700 }); Object.assign(exit, { z: -20 * distance, y: 0 }); break;
+    case 'continuation': Object.assign(from, { clipPath: 'inset(0% 100% 0% 0%)' }); Object.assign(exit, { y: 0 }); stagger = .15; break;
+    case 'recognition': Object.assign(from, { clipPath: 'inset(0% 50% 0% 50%)', scale: .985 }); Object.assign(exit, { clipPath: 'inset(0% 50% 0% 50%)', y: 0 }); duration = small ? .7 : .95; break;
+    case 'converge': Object.assign(from, { y: (i: number) => (i % 2 ? 20 : -16) * distance }); Object.assign(exit, { y: (i: number) => (i % 2 ? 10 : -8) * distance }); duration = small ? .7 : 1; break;
+  }
+  return { from, exit, stagger, duration };
 }
 
+export function AnimatedTitle({ animation, as: Tag = 'h2', children, ...props }: AnimatedTitleProps) {
+  const elementRef = useRef<HTMLHeadingElement>(null);
+  const reduced = useReducedMotion();
+  const tier = useViewportTier();
 
+  useGSAP((_, contextSafe) => {
+    const heading = elementRef.current;
+    if (reduced || !heading || !contextSafe) return;
+    const small = tier === 'LITE';
+    document.addEventListener('toggle', refreshTitles, true);
+    let controller: gsap.core.Tween | undefined;
+    let disposed = false;
+    const split = SplitText.create(heading, {
+      type: animation === 'wave' ? 'lines,words' : 'lines',
+      autoSplit: true,
+      mask: animation === 'editorial' ? 'lines' : undefined,
+      linesClass: 'motion-title-line',
+      wordsClass: 'motion-title-word',
+      onRevert: () => { controller?.kill(); },
+      onSplit(self) {
+        const targets = animation === 'wave' ? self.words : self.lines;
+        const { from, exit, duration, stagger } = poses(animation, small);
+        const timeline = gsap.timeline({ paused: true });
+        timeline.fromTo(targets, from, {
+          x: 0, y: 0, yPercent: 0, z: 0, rotationX: 0, scale: 1, opacity: 1,
+          clipPath: animation === 'terminal' ? 'inset(0% 0% 0% 0%)' : 'inset(-15% -2% -15% -2%)',
+          duration, stagger: { amount: Math.min(stagger * Math.max(0, targets.length - 1), .25) },
+          ease: animation === 'terminal' ? 'steps(4)' : 'power3.out',
+        });
+        timeline.addLabel('read').to(targets, { ...exit, duration: small ? .3 : .4, stagger: animation === 'continuation' ? { each: .04, from: 'end' } : .025, ease: 'power2.inOut' });
+        timeline.addLabel('out');
+        const move = contextSafe((label: 'read' | 'out' | 'start') => {
+          if (disposed) return;
+          controller?.kill();
+          heading.dataset.titleState = label === 'read' ? 'reading' : 'exiting';
+          controller = timeline.tweenTo(label === 'start' ? 0 : label, { ease: 'none' });
+        });
+        ScrollTrigger.create({
+          id: `title-${heading.id || animation}`,
+          trigger: heading, animation: timeline,
+          start: 'top 88%', end: 'bottom top+=100',
+          toggleActions: 'none none none none',
+          refreshPriority: -1,
+          onEnter: () => move('read'), onLeave: () => move('out'),
+          onEnterBack: () => move('read'), onLeaveBack: () => move('start'),
+          onRefresh: self => {
+            controller?.kill();
+            const position = self.scroll();
+            timeline.pause(position >= self.end ? 'out' : position >= self.start ? 'read' : 0);
+            heading.dataset.titleState = self.isActive ? 'reading' : 'outside';
+          },
+        });
+        refreshTitles();
+        return timeline;
+      },
+    });
+    return () => {
+      disposed = true;
+      document.removeEventListener('toggle', refreshTitles, true);
+      controller?.kill();
+      split.revert();
+      delete heading.dataset.titleState;
+    };
+  }, { scope: elementRef, dependencies: [animation, reduced, tier], revertOnUpdate: true });
+
+  return <Tag ref={elementRef} data-title-animation={animation} {...props}>{children}</Tag>;
+}
