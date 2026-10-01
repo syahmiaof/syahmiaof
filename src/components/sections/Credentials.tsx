@@ -1,6 +1,16 @@
 import { AnimatedTitle } from '@/components/motion/AnimatedTitle';
-import { certifications, selfReportedCredentials } from '@/data/capabilities';
+import { featuredPrograms } from '@/data/credentials';
 import { TextLink } from '@/components/ui/Primitives';
+import { CredentialSummary, NextTargets, ProgramList } from '@/components/credentials/CredentialRecords';
+
 export function Credentials() {
-  return <section id="credentials" className="section credentials-section" aria-labelledby="credentials-title"><div className="credentials-layout"><div><AnimatedTitle animation="continuation" id="credentials-title">Always a<br /><span className="muted">work in progress.</span></AnimatedTitle><p>Building the fundamentals, then going deeper. This is the direction of travel.</p><TextLink href="https://github.com/syahmiaof#-professional-certifications" external>Public profile</TextLink></div><div className="passport"><details className="roadmap-details"><summary>Explore my certification roadmap</summary><p className="passport-note">Aspirational targets. No earned status implied.</p><ul>{certifications.map(certification => <li key={certification.title}><div><span className="mono muted">{certification.issuer}</span><h4>{certification.title}</h4></div><span className="status-outline mono">TARGET</span></li>)}</ul></details><details className="self-reported"><summary>Credentials listed on my public profile</summary><p>The titles below are self-reported on GitHub. Issuer verification links and issue dates have not been supplied, so they are not marked as verified here.</p><ul>{selfReportedCredentials.map(title => <li key={title}>{title}</li>)}</ul></details></div></div></section>;
+  return <section id="credentials" className="section credentials-section" aria-labelledby="credentials-title">
+    <div className="credentials-intro">
+      <AnimatedTitle animation="continuation" id="credentials-title">Always a<br /><span className="muted">work in progress.</span></AnimatedTitle>
+      <div><p>Learning across cloud security, AI, IT support and data engineering. Completed programs, backed by certificate evidence.</p><TextLink href="/credentials">Explore all credentials</TextLink></div>
+    </div>
+    <CredentialSummary />
+    <ProgramList programs={featuredPrograms} compact />
+    <NextTargets />
+  </section>;
 }

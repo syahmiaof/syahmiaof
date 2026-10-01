@@ -133,8 +133,8 @@ test('future projects and credentials do not imply verified achievements', async
   await page.getByText('Cloudscope', { exact: true }).click();
   await expect(page.locator('.future-row').first()).toContainText('NOT A SHIPPED PRODUCT');
   await expect(page.locator('#credentials')).toContainText('Aspirational targets');
-  await page.getByText('Credentials listed on my public profile').click();
-  await expect(page.locator('.self-reported')).toContainText('not marked as verified');
+  await page.getByText('Next certification targets', { exact: true }).click();
+  await expect(page.locator('.credential-targets')).toContainText('not earned credentials');
 });
 
 for (const route of ['/', '/quick', '/projects/greetly']) {

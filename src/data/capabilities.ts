@@ -1,4 +1,4 @@
-import type { Capability, Certification } from '@/types/portfolio';
+import type { Capability } from '@/types/portfolio';
 
 export const capabilities: Capability[] = [
   { name: 'Cloud', description: 'Connect the edge to a service people can reach.', level: 'used-in-projects', technologies: ['Supabase', 'Vercel', 'Cloudflare', 'Firebase'], evidence: 'Greetly documents Vercel deployment, Cloudflare DNS and a Supabase data layer.', href: '/projects/greetly' },
@@ -9,16 +9,6 @@ export const capabilities: Capability[] = [
   { name: 'Edge / IoT', description: 'Let the device do useful work where the data begins.', level: 'used-in-projects', technologies: ['Raspberry Pi 3', 'OpenCV / LBPH', 'Camera input', 'OLED', 'Telemetry'], evidence: 'The public Greetly Python script handles recognition, cooldowns and device telemetry.', href: 'https://github.com/syahmiaof/greetly/tree/main/pi_scripts' },
   { name: 'Network', description: 'Understand how services communicate and where trust lives.', level: 'exploring', technologies: ['DNS / TLS', 'API security', 'IAM concepts', 'Secret management', 'Secure integration'], evidence: 'Cloudflare DNS is documented in Greetly. Broader network and security topics are a learning focus.', href: '/#lab' },
 ];
-
-export const certifications: Certification[] = [
-  { title: 'AWS Solutions Architect — Professional', issuer: 'Amazon Web Services', status: 'target' },
-  { title: 'AWS DevOps Engineer — Professional', issuer: 'Amazon Web Services', status: 'target' },
-  { title: 'Certified Kubernetes Application Developer', issuer: 'CNCF / Linux Foundation', status: 'target' },
-  { title: 'Azure Administrator · AZ-104', issuer: 'Microsoft', status: 'target' },
-  { title: 'Associate Cloud Engineer', issuer: 'Google Cloud', status: 'target' },
-];
-
-export const selfReportedCredentials = ['AWS Cloud Practitioner', 'AWS Solutions Architect — Associate', 'AWS Developer — Associate', 'Azure Fundamentals · AZ-900', 'Terraform Associate', 'Certified Kubernetes Administrator', 'LPIC-1', 'CCNA', 'CompTIA Security+'];
 
 export const aiWorkflows = [
   { name: 'Agent orchestration', description: 'Delegate a bounded task, inspect tool output, then validate before a human approves the action.', steps: ['Objective', 'Orchestrator', 'Specialist agents', 'Tools / MCP', 'Validation', 'Human approval'] },

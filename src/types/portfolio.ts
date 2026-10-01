@@ -14,3 +14,40 @@ export type Certification = {
   issued?: string; credentialUrl?: string; evidence?: string;
 };
 export type JourneyStep = { id: string; name: string; component: string; description: string };
+
+export type CredentialKind = 'professional-certificate' | 'specialization' | 'course' | 'guided-lab';
+export type EvidenceLevel = 'issuer-verified' | 'certificate-only';
+export interface Credential {
+  slug: string;
+  title: string;
+  issuer: string;
+  provider?: string;
+  kind: CredentialKind;
+  issuedAt: string;
+  verificationUrl?: string;
+  certificateId?: string;
+  parentSlug?: string;
+  featured: boolean;
+  category: 'program' | 'completion';
+  skills: readonly string[];
+  summary?: string;
+  disclaimer?: string;
+  evidenceLevel: EvidenceLevel;
+}
+export interface CompetitionRecognition {
+  slug: string;
+  event: string;
+  year: string;
+  scope: string;
+  result: string;
+  achievements: readonly string[];
+  organizers: readonly string[];
+  project?: string;
+  description?: string;
+  venue?: string;
+  startsAt: string;
+  endsAt: string;
+  bootcampAt?: string;
+  evidenceLevel: 'certificate-only';
+  featured: boolean;
+}

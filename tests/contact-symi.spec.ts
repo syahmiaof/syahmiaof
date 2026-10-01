@@ -15,7 +15,7 @@ test('contact links use supplied details and unpublished profiles remain honest'
     await expect(footer.getByRole('img', { name: `${name} profile coming soon` })).toHaveCount(1);
     await expect(footer.getByRole('link', { name, exact: true })).toHaveCount(0);
   }
-  await expect(page.locator('#awards')).toContainText('Awards and competition highlights will be shared here.');
+  await expect(page.locator('#awards')).toContainText('NetAcad Riders 2026');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',  /^https:\/\/syahmiaof\.my\/?$/);
 });
 

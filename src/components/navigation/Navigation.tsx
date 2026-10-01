@@ -43,7 +43,7 @@ export function Navigation() {
     { label: 'View GitHub', detail: 'Source code', href: profile.github },
     { label: 'Open Lab', detail: 'Experiments', href: '/#lab' },
     { label: 'Open tech stack', detail: 'Tools and platforms', href: '/#stack' },
-    { label: 'View credentials', detail: 'Learning passport', href: '/#credentials' },
+    { label: 'View credentials', detail: 'Programs, courses & recognition', href: '/credentials' },
     { label: 'Request resume', detail: 'Email', href: profile.resumeUrl },
     { label: 'Contact Syahmi', detail: 'Email', href: `mailto:${profile.email}` },
     { label: reduced ? 'Enable motion (unless system preference is reduced)' : 'Reduce motion', detail: 'Preference', action: toggleMotion },

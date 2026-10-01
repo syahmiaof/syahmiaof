@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import './responsive.css';
 import './enhancements.css';
+import './credentials.css';
 import { Symi } from '@/components/chat/Symi';
 import { Navigation } from '@/components/navigation/Navigation';
 import { ExperienceControls } from '@/components/layout/ExperienceControls';

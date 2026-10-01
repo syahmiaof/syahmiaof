@@ -11,3 +11,6 @@ playwright-report/
 *.log
 
 .vercel
+
+# Private evidence: publish only curated metadata and issuer verification links.
+/certificate/
