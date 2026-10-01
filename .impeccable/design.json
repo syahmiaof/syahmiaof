@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T08:53:36.066Z",
+  "title": "Design System: SYAHMI AOF",
+  "extensions": {
+    "colorMeta": {
+      "bg-primary": {
+        "role": "neutral",
+        "displayName": "Graphite Ground",
+        "tonalRamp": [
+          "oklch(0.1500 0.0064 156.42)",
+          "oklch(0.2643 0.0064 156.42)",
+          "oklch(0.3786 0.0064 156.42)",
+          "oklch(0.4929 0.0064 156.42)",
+          "oklch(0.6071 0.0064 156.42)",
+          "oklch(0.7214 0.0064 156.42)",
+          "oklch(0.8357 0.0064 156.42)",
+          "oklch(0.9500 0.0064 156.42)"
+        ]
+      },
+      "bg-secondary": {
+        "role": "neutral",
+        "displayName": "Graphite Panel",
+        "tonalRamp": [
+          "oklch(0.1500 0.0121 155.94)",
+          "oklch(0.2643 0.0121 155.94)",
+          "oklch(0.3786 0.0121 155.94)",
+          "oklch(0.4929 0.0121 155.94)",
+          "oklch(0.6071 0.0121 155.94)",
+          "oklch(0.7214 0.0121 155.94)",
+          "oklch(0.8357 0.0121 155.94)",
+          "oklch(0.9500 0.0121 155.94)"
+        ]
+      },
+      "fg-primary": {
+        "role": "neutral",
+        "displayName": "Warm White",
+        "tonalRamp": [
+          "oklch(0.1500 0.0124 121.71)",
+          "oklch(0.2643 0.0124 121.71)",
+          "oklch(0.3786 0.0124 121.71)",
+          "oklch(0.4929 0.0124 121.71)",
+          "oklch(0.6071 0.0124 121.71)",
+          "oklch(0.7214 0.0124 121.71)",
+          "oklch(0.8357 0.0124 121.71)",
+          "oklch(0.9500 0.0124 121.71)"
+        ]
+      },
+      "fg-muted": {
+        "role": "neutral",
+        "displayName": "Sage Gray",
+        "tonalRamp": [
+          "oklch(0.1500 0.0189 148.02)",
+          "oklch(0.2643 0.0189 148.02)",
+          "oklch(0.3786 0.0189 148.02)",
+          "oklch(0.4929 0.0189 148.02)",
+          "oklch(0.6071 0.0189 148.02)",
+          "oklch(0.7214 0.0189 148.02)",
+          "oklch(0.8357 0.0189 148.02)",
+          "oklch(0.9500 0.0189 148.02)"
+        ]
+      },
+      "fg-dim": {
+        "role": "neutral",
+        "displayName": "Dim Sage",
+        "tonalRamp": [
+          "oklch(0.1500 0.0284 154.11)",
+          "oklch(0.2643 0.0284 154.11)",
+          "oklch(0.3786 0.0284 154.11)",
+          "oklch(0.4929 0.0284 154.11)",
+          "oklch(0.6071 0.0284 154.11)",
+          "oklch(0.7214 0.0284 154.11)",
+          "oklch(0.8357 0.0284 154.11)",
+          "oklch(0.9500 0.0284 154.11)"
+        ]
+      },
+      "signal-primary": {
+        "role": "primary",
+        "displayName": "Emerald Signal",
+        "tonalRamp": [
+          "oklch(0.1500 0.1309 165.57)",
+          "oklch(0.2643 0.1309 165.57)",
+          "oklch(0.3786 0.1309 165.57)",
+          "oklch(0.4929 0.1309 165.57)",
+          "oklch(0.6071 0.1309 165.57)",
+          "oklch(0.7214 0.1309 165.57)",
+          "oklch(0.8357 0.1309 165.57)",
+          "oklch(0.9500 0.1309 165.57)"
+        ]
+      },
+      "border-subtle": {
+        "role": "neutral",
+        "displayName": "Graphite Rule",
+        "tonalRamp": [
+          "oklch(0.1500 0.0257 153.71)",
+          "oklch(0.2643 0.0257 153.71)",
+          "oklch(0.3786 0.0257 153.71)",
+          "oklch(0.4929 0.0257 153.71)",
+          "oklch(0.6071 0.0257 153.71)",
+          "oklch(0.7214 0.0257 153.71)",
+          "oklch(0.8357 0.0257 153.71)",
+          "oklch(0.9500 0.0257 153.71)"
+        ]
+      },
+      "border-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "tonalRamp": [
+          "oklch(0.1500 0.0374 153.16)",
+          "oklch(0.2643 0.0374 153.16)",
+          "oklch(0.3786 0.0374 153.16)",
+          "oklch(0.4929 0.0374 153.16)",
+          "oklch(0.6071 0.0374 153.16)",
+          "oklch(0.7214 0.0374 153.16)",
+          "oklch(0.8357 0.0374 153.16)",
+          "oklch(0.9500 0.0374 153.16)"
+        ]
+      },
+      "button-ink": {
+        "role": "neutral",
+        "displayName": "Dark Button Ink",
+        "tonalRamp": [
+          "oklch(0.1500 0.0354 162.74)",
+          "oklch(0.2643 0.0354 162.74)",
+          "oklch(0.3786 0.0354 162.74)",
+          "oklch(0.4929 0.0354 162.74)",
+          "oklch(0.6071 0.0354 162.74)",
+          "oklch(0.7214 0.0354 162.74)",
+          "oklch(0.8357 0.0354 162.74)",
+          "oklch(0.9500 0.0354 162.74)"
+        ]
+      },
+      "button-hover": {
+        "role": "primary",
+        "displayName": "Pale Signal",
+        "tonalRamp": [
+          "oklch(0.1500 0.0912 166.56)",
+          "oklch(0.2643 0.0912 166.56)",
+          "oklch(0.3786 0.0912 166.56)",
+          "oklch(0.4929 0.0912 166.56)",
+          "oklch(0.6071 0.0912 166.56)",
+          "oklch(0.7214 0.0912 166.56)",
+          "oklch(0.8357 0.0912 166.56)",
+          "oklch(0.9500 0.0912 166.56)"
+        ]
+      },
+      "selected-surface": {
+        "role": "primary",
+        "displayName": "Deep Signal Surface",
+        "tonalRamp": [
+          "oklch(0.1500 0.0561 159.77)",
+          "oklch(0.2643 0.0561 159.77)",
+          "oklch(0.3786 0.0561 159.77)",
+          "oklch(0.4929 0.0561 159.77)",
+          "oklch(0.6071 0.0561 159.77)",
+          "oklch(0.7214 0.0561 159.77)",
+          "oklch(0.8357 0.0561 159.77)",
+          "oklch(0.9500 0.0561 159.77)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Architectural identity",
+        "purpose": "Hero identity; mobile overrides documented in DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "General h2 scale."
+      },
+      "title": {
+        "displayName": "Section title",
+        "purpose": "General h3 scale."
+      },
+      "body": {
+        "displayName": "Project prose",
+        "purpose": "Recurring 14px project and architecture body text."
+      },
+      "label": {
+        "displayName": "Technical control",
+        "purpose": "Mono controls, links, and state metadata; smaller metadata is not a reusable legibility floor."
+      }
+    },
+    "shadows": [
+      {
+        "name": "command-modal",
+        "value": "0 25px 90px #0009",
+        "purpose": "Modal separation."
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "0 20px 35px #0005",
+        "purpose": "Mobile disclosure separation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "robot-cinematic-arrival",
+        "value": "1.8s GSAP camera and rig arrival; .9s eye wake",
+        "purpose": "Overlaps the outgoing network intro with a three-quarter camera move; skipping resolves to the final pose. Studio reflections are generated once at 64px."
+      },
+      {
+        "name": "greetly-device-breakdown",
+        "value": "1900px pinned desktop sequence; .65s scrub smoothing",
+        "purpose": "Separates device layers before connecting an event to an illustrative record. Direct six-stage selection remains available. No pinning below 1100px width or 760px height, on touch or with reduced motion."
+      },
+      {
+        "name": "pointer-responsive-surfaces",
+        "value": ".75s power3.out; surface yaw +/-6deg, pitch +/-5deg",
+        "purpose": "Large images and passport tilt with cursor-positioned reflected light; headings react and key CTAs move magnetically. Fine pointers only; reset on exit and clean up for reduced motion."
+      },
+      {
+        "name": "robot-gaze",
+        "value": "Damped head, torso and pupil tracking; 220ms blink every 4.2s while visible",
+        "purpose": "Original 3D robot replaces the hero compute core. Demand rendering settles between interactions; static robot remains for touch, reduced motion and GPU failure."
+      },
+      {
+        "name": "homepage-entry-sequence",
+        "value": "2.7s topology sequence + 1.8s layered crossfade",
+        "purpose": "Fullscreen SVG network converges toward the hero core; mobile has its own node composition. Skip/Escape, reduced motion, deep links and client return navigation bypass it. No live network telemetry is implied."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Text-link arrow and project-image response."
+      },
+      {
+        "name": "control-transition",
+        "value": ".2s",
+        "purpose": "Common hover state transitions."
+      },
+      {
+        "name": "image-transition",
+        "value": ".7s",
+        "purpose": "Project image scales to 1.025."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "System preference or stored user setting",
+        "purpose": "Suppress CSS motion, GSAP effects, cursor annotations, and WebGL enhancement; system preference takes priority."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "small-phone-max",
+        "value": "380px"
+      },
+      {
+        "name": "mobile-layout-max",
+        "value": "760px"
+      },
+      {
+        "name": "tablet-layout-max",
+        "value": "1100px"
+      },
+      {
+        "name": "high-rendering-min",
+        "value": "1200px"
+      },
+      {
+        "name": "wide-hero-min",
+        "value": "1600px"
+      }
+    ],
+    "rendering": {
+      "lite": "Width <760px or coarse pointer; static topology. Reduced motion independently disables WebGL.",
+      "balanced": "Fine pointer, width 760–1199px; DPR 1, antialias false.",
+      "high": "Fine pointer, width >=1200px; DPR [1,1.5], antialias true.",
+      "loading": "Dynamic canvas after intersection within 180px; SVG stays visible until ready.",
+      "failure": "Error boundary and WebGL context-loss handling retain fallback.",
+      "scheduling": "On-demand frames in observer range; frameloop never outside it."
+    },
+    "accessibility": {
+      "focus": "2px solid var(--signal-primary), outline-offset 6px; command input uses emerald focus-within border.",
+      "navigation": "Skip link, semantic landmarks, labelled native dialog, mobile disclosure, keyboard-operable tabs.",
+      "content": "Architecture panel and complete DOM transcript stay available; decorative scene aria-hidden.",
+      "limits": "Source-grounded inventory, not blanket accessibility certification. Existing 6–9px metadata and text glyph ornaments are not canonized."
+    },
+    "tonalRampNote": "Derived OKLCH ramps are panel visualization metadata only, not additional shipped CSS tokens."
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Flat emerald anchor CTA with hover lift; square corners match the shipped anchor.",
+      "html": "<a href=\"#work\" class=\"ds-primary\">Explore my work<svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;padding:19px 22px;min-height:54px;background:var(--signal-primary,#63dfb0);color:#092016;font:400 11px var(--font-mono, 'IBM Plex Mono', monospace);letter-spacing:.035em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s}.ds-primary:hover{background:#a0f0cf;transform:translateY(-2px)}.ds-primary:focus-visible{outline:2px solid var(--signal-primary,#63dfb0);outline-offset:6px}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
+    },
+    {
+      "name": "Text link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Quiet action with a structural rule and a diagonal SVG arrow.",
+      "html": "<a href=\"#work\" class=\"ds-link\">Explore the context<svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-link{display:inline-flex;align-items:center;gap:18px;padding:12px 0;color:var(--fg-primary,#e9ece3);border-bottom:1px solid var(--border-strong,#455b4b);font:400 11px/1.7 var(--font-mono, 'IBM Plex Mono', monospace);letter-spacing:.035em;text-transform:uppercase;text-decoration:none;transition:color .2s,border-color .2s}.ds-link:hover{color:var(--signal-primary,#63dfb0);border-color:var(--signal-primary,#63dfb0)}.ds-link svg{transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-link:hover svg{transform:translate(2px,-2px)}.ds-link:focus-visible{outline:2px solid var(--signal-primary,#63dfb0);outline-offset:6px}@media(prefers-reduced-motion:reduce){.ds-link,.ds-link svg{transition:none}}"
+    },
+    {
+      "name": "Command search",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Transparent input with focus carried by the enclosing border.",
+      "html": "<div class=\"ds-search\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input aria-label=\"Search commands\" placeholder=\"Search projects, pages, actions…\"/></div>",
+      "css": ".ds-search{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--border-strong,#455b4b);background:var(--bg-secondary,#111713);color:var(--fg-muted,#9da89e)}.ds-search svg{flex-shrink:0}.ds-search input{width:100%;min-width:0;border:0;outline:0;border-radius:3px;background:transparent;color:var(--fg-primary,#e9ece3);caret-color:var(--signal-primary,#63dfb0);font:14px var(--font-display, 'Space Grotesk', sans-serif)}.ds-search input::placeholder{color:var(--fg-muted,#9da89e)}.ds-search:focus-within{border-color:var(--signal-primary,#63dfb0)}"
+    },
+    {
+      "name": "Desktop navigation",
+      "kind": "nav",
+      "description": "Mono navigation with a current-location signal marker.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Sample main navigation\"><a href=\"#index\" aria-current=\"location\">Index</a><a href=\"#work\">Work</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:34px;padding:20px;background:var(--bg-primary,#0b0e0c);font:400 11px var(--font-mono, 'IBM Plex Mono', monospace);letter-spacing:.035em;text-transform:uppercase}.ds-nav a{position:relative;padding:14px 0;color:var(--fg-muted,#9da89e);text-decoration:none;transition:color .2s}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--fg-primary,#e9ece3)}.ds-nav a[aria-current]::before{content:'';position:absolute;left:-10px;top:19px;width:3px;height:3px;background:var(--signal-primary,#63dfb0)}.ds-nav a:focus-visible{outline:2px solid var(--signal-primary,#63dfb0);outline-offset:6px}"
+    },
+    {
+      "name": "Outlined status",
+      "kind": "chip",
+      "refersTo": "status-chip",
+      "description": "Noninteractive rectangular status marker; it does not acquire button states.",
+      "html": "<span class=\"ds-status\">Planned</span>",
+      "css": ".ds-status{display:inline-block;width:max-content;border:1px solid var(--border-strong,#455b4b);padding:6px 9px;color:#c3d1c5;font:400 10px var(--font-mono, 'IBM Plex Mono', monospace);text-transform:uppercase}"
+    },
+    {
+      "name": "Capability tab",
+      "kind": "button",
+      "refersTo": "capability-tab",
+      "description": "Selected and resting node controls, shown in their compact mobile flow arrangement.",
+      "html": "<div class=\"ds-capabilities\" role=\"tablist\" aria-label=\"Sample capabilities\"><button class=\"ds-capability\" role=\"tab\" aria-selected=\"true\">Cloud</button><button class=\"ds-capability\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">DevOps</button></div>",
+      "css": ".ds-capabilities{display:flex;flex-wrap:wrap;gap:8px}.ds-capability{display:flex;align-items:center;gap:9px;padding:14px 16px;border:1px solid var(--border-strong,#455b4b);border-radius:3px;background:var(--bg-primary,#0b0e0c);color:var(--fg-primary,#e9ece3);font:10px var(--font-mono, 'IBM Plex Mono', monospace);text-transform:uppercase;cursor:pointer}.ds-capability::before{content:'';width:4px;height:4px;background:var(--fg-dim,#798b7e)}.ds-capability[aria-selected=true]{background:#173e2b;border-color:var(--signal-primary,#63dfb0);color:var(--signal-primary,#63dfb0)}.ds-capability[aria-selected=true]::before{background:var(--signal-primary,#63dfb0)}.ds-capability:focus-visible{outline:2px solid var(--signal-primary,#63dfb0);outline-offset:6px}"
+    },
+    {
+      "name": "Command result",
+      "kind": "button",
+      "description": "Selected command result in the native dialog; selection is driven by focus or arrow-key state in the application.",
+      "html": "<button class=\"ds-result\"><span>Open Greetly case study</span><small>Project</small></button><button class=\"ds-result ds-result-selected\"><span>Quick view</span><small>Recruiter overview</small></button>",
+      "css": ".ds-result{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;padding:13px 12px;text-align:left;border:0;border-radius:3px;background:transparent;color:var(--fg-primary,#e9ece3);font:13px var(--font-display, 'Space Grotesk', sans-serif);cursor:pointer}.ds-result-selected{background:#22372a}.ds-result small{font:9px var(--font-mono, 'IBM Plex Mono', monospace);color:var(--fg-muted,#9da89e);white-space:nowrap}.ds-result:focus-visible{outline:2px solid var(--signal-primary,#63dfb0);outline-offset:6px}"
+    },
+    {
+      "name": "Credential passport",
+      "kind": "card",
+      "description": "Flat bordered ledger with an explicit evidence note; display only.",
+      "html": "<article class=\"ds-passport\"><h3>Learning passport</h3><p>Self-reported learning; verification links are not supplied.</p><div class=\"ds-passport-row\">Cloud / infrastructure</div></article>",
+      "css": ".ds-passport{padding:28px;border:1px solid var(--border-strong,#455b4b);background:#101712;color:var(--fg-primary,#e9ece3);font-family:var(--font-display, 'Space Grotesk', sans-serif)}.ds-passport h3{margin:0;font-size:24px;font-weight:500;letter-spacing:-.04em}.ds-passport p{margin:8px 0 20px;color:var(--fg-muted,#9da89e);font-size:11px;line-height:1.7}.ds-passport-row{border-top:1px solid var(--border-subtle,#29372d);padding:17px 0;font-size:13px}"
+    },
+    {
+      "name": "Journey stage",
+      "kind": "custom",
+      "description": "Emerald active square with a real SVG architecture icon and a labelled stage.",
+      "html": "<button class=\"ds-stage\" role=\"tab\" aria-selected=\"true\"><span class=\"ds-stage-number\">01</span><span class=\"ds-stage-icon\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\" aria-hidden=\"true\"><path d=\"M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z\"/><circle cx=\"12\" cy=\"13\" r=\"3\"/></svg></span><span>Capture</span></button>",
+      "css": ".ds-stage{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:0;border:0;border-radius:3px;background:transparent;color:var(--signal-primary,#63dfb0);font:13px var(--font-display, 'Space Grotesk', sans-serif);cursor:pointer}.ds-stage-number{font:10px var(--font-mono, 'IBM Plex Mono', monospace);color:var(--fg-dim,#798b7e)}.ds-stage-icon{display:grid;place-items:center;width:66px;height:66px;border:1px solid var(--signal-primary,#63dfb0);background:var(--signal-primary,#63dfb0);color:#092a1c;transition:background .25s,color .25s,border .25s}.ds-stage:focus-visible{outline:2px solid var(--signal-primary,#63dfb0);outline-offset:6px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Editorial Systems Atlas",
+    "overview": "Graphite spreads, warm off-white type, and emerald signals connect a human identity to technical architecture. The recurring node, line, and signal motif gives the portfolio a coherent diagram language. Large typography and asymmetric image placement establish hierarchy; flat surfaces and thin rules keep the interface precise.\n\nThis record describes the implementation in `src/app/globals.css`, `src/app/responsive.css`, the shared layout, and its navigation, journey, capability, and scene components. The chosen world comes from `DIRECTION.md`; source-backed claims, original portrait use, and accessible alternatives follow `PRODUCT.md`. Spatial media enriches the page without owning its information.",
+    "keyCharacteristics": [
+      "Architectural display type paired with restrained monospace controls.",
+      "Dark tonal surfaces, thin rules, square nodes, and sparse emerald emphasis.",
+      "Editorial asymmetry with readable DOM architecture alongside spatial media.",
+      "Native scrolling and responsive, motion-aware rendering."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Has Meaning Rule",
+        "body": "Emerald identifies an action, current state, focus, or a node in the system; preserve that relationship when extending the interface.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Use Space Grotesk for human narrative and headings; use IBM Plex Mono for technical controls, state, and compact metadata.",
+        "section": "typography"
+      },
+      {
+        "name": "The Native Journey Rule",
+        "body": "Keep native scrolling, direct node selection, and the complete text transcript available; spatial rendering must not gate the story.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Keep content surfaces flat; reserve soft shadows for the existing overlay roles.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use emerald for actions, state, focus, and meaningful network markers.",
+      "**Do** pair Space Grotesk narrative with IBM Plex Mono technical controls.",
+      "**Do** preserve thin rules, rectilinear surfaces, and varied editorial compositions.",
+      "**Do** keep keyboard selection, native scrolling, reduced motion, and DOM architecture available.",
+      "**Do** label conceptual diagrams, future work, and self-reported credentials honestly."
+    ],
+    "donts": [
+      "**Don't** replace the chosen graphite/emerald world with decorative glass or generic glowing cards.",
+      "**Don't** require WebGL, animation, or pointer movement to read project evidence.",
+      "**Don't** invent proof, verification badges, performance metrics, or missing resume downloads.",
+      "**Don't** canonize the existing 6–9px metadata, repeated eyebrow labels, or text glyph ornaments as requirements for new surfaces."
+    ]
+  }
+}
+

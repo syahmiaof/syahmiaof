@@ -1,0 +1,11 @@
+# Homepage network introduction
+
+Requested behavior: reload begins with a fullscreen initializing network, followed by the existing hero. The implemented sequence draws connections and moves packet strokes around the identity statement, then crossfades into the hero as the network recedes toward the compute core. The network represents the portfolio theme; it does not claim to monitor a live backend. The font status follows the browser's actual font readiness.
+
+The bounded desktop/mobile visual pass found a sparse mobile crop; separate mobile node coordinates now preserve the connected full-screen composition. Both scenes retain the existing graphite, warm white and emerald palette. No external assets, dependencies or additional WebGL renderer were introduced.
+
+Focus restoration originally raced with dialog removal during early pointer dismissal. Modal setup now happens before paint and focus restoration runs on the next animation frame after dismissal. All timers and keyboard/preference listeners are cancelled on completion or unmount, so a skipped intro cannot reopen or swallow later command shortcuts.
+
+Ten dedicated production-build tests cover: automatic reveal and scroll restoration; immediate skip without timer resurrection; Escape and modal focus; reload replay versus client return navigation; deep-link, stored and OS preference bypass; live preference change; JavaScript-disabled fallback; small-screen overflow plus axe accessibility checks; measurable overlap of the outgoing background and incoming hero; and interruption during the reveal without residual transforms. Screenshots are `.impeccable/review/desktop-intro.png`, `mobile-intro.png`, and their `-transition` / `-revealed` counterparts. Reproduce with `node scripts/capture-intro.mjs` while the production server runs on port 3100.
+
+Timing: 2.7 seconds of introduction plus 1.8s reveal. A 6.5-second JavaScript watchdog releases the dialog; an eight-second CSS fallback hides a pre-hydration cover, and noscript immediately removes it when scripting is disabled. The animation is deliberately bypassed for reduced motion, hash links and in-document return navigation. Physical mobile hardware performance remains unmeasured.

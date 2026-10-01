@@ -1,0 +1,2 @@
+import { TextLink } from '@/components/ui/Primitives';
+export default function NotFound() { return <main id="main" className="section error-page"><span className="mono signal-text">404 / CONNECTION NOT FOUND</span><h1>This node<br />doesn’t exist.</h1><p>The link may have moved. Start again from the portfolio or jump straight to the quick view.</p><TextLink href="/">Back to the index</TextLink><TextLink href="/quick">Quick view</TextLink></main>; }

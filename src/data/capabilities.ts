@@ -1,0 +1,28 @@
+import type { Capability, Certification } from '@/types/portfolio';
+
+export const capabilities: Capability[] = [
+  { name: 'Cloud', description: 'Connect the edge to a service people can reach.', level: 'used-in-projects', technologies: ['Supabase', 'Vercel', 'Cloudflare', 'Firebase'], evidence: 'Greetly documents Vercel deployment, Cloudflare DNS and a Supabase data layer.', href: '/projects/greetly' },
+  { name: 'DevOps', description: 'Make a change repeatable, from source to running system.', level: 'used-in-projects', technologies: ['Git', 'Linux', 'systemd', 'GitHub → Vercel'], evidence: 'Greetly includes a systemd kiosk setup and repository-connected deployment. Docker, Kubernetes and Terraform remain areas of exploration.', href: '/projects/greetly#deployment' },
+  { name: 'Application', description: 'Make complex systems understandable at the interface.', level: 'used-in-projects', technologies: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'HTML / CSS'], evidence: 'A typed dashboard in Greetly, alongside service websites and the hostel reporting interface.', href: '/#selected' },
+  { name: 'Data', description: 'Keep the event, its identity and its state connected.', level: 'used-in-projects', technologies: ['PostgreSQL', 'Supabase Realtime', 'Firestore', 'Python'], evidence: 'Attendance records, student profiles and device telemetry connect the Greetly edge script to its dashboard.', href: '/projects/greetly' },
+  { name: 'AI systems', description: 'Study systems that can retrieve, reason and use tools.', level: 'exploring', technologies: ['Agentic AI', 'MCP', 'RAG / embeddings', 'Vector databases', 'Tool calling', 'Human approval', 'AI observability'], evidence: 'An exploration direction, not a claim of production multi-agent deployments. See the conceptual workflows below.', href: '/#intelligence' },
+  { name: 'Edge / IoT', description: 'Let the device do useful work where the data begins.', level: 'used-in-projects', technologies: ['Raspberry Pi 3', 'OpenCV / LBPH', 'Camera input', 'OLED', 'Telemetry'], evidence: 'The public Greetly Python script handles recognition, cooldowns and device telemetry.', href: 'https://github.com/syahmiaof/greetly/tree/main/pi_scripts' },
+  { name: 'Network', description: 'Understand how services communicate and where trust lives.', level: 'exploring', technologies: ['DNS / TLS', 'API security', 'IAM concepts', 'Secret management', 'Secure integration'], evidence: 'Cloudflare DNS is documented in Greetly. Broader network and security topics are a learning focus.', href: '/#lab' },
+];
+
+export const certifications: Certification[] = [
+  { title: 'AWS Solutions Architect — Professional', issuer: 'Amazon Web Services', status: 'target' },
+  { title: 'AWS DevOps Engineer — Professional', issuer: 'Amazon Web Services', status: 'target' },
+  { title: 'Certified Kubernetes Application Developer', issuer: 'CNCF / Linux Foundation', status: 'target' },
+  { title: 'Azure Administrator · AZ-104', issuer: 'Microsoft', status: 'target' },
+  { title: 'Associate Cloud Engineer', issuer: 'Google Cloud', status: 'target' },
+];
+
+export const selfReportedCredentials = ['AWS Cloud Practitioner', 'AWS Solutions Architect — Associate', 'AWS Developer — Associate', 'Azure Fundamentals · AZ-900', 'Terraform Associate', 'Certified Kubernetes Administrator', 'LPIC-1', 'CCNA', 'CompTIA Security+'];
+
+export const aiWorkflows = [
+  { name: 'Agent orchestration', description: 'Delegate a bounded task, inspect tool output, then validate before a human approves the action.', steps: ['Objective', 'Orchestrator', 'Specialist agents', 'Tools / MCP', 'Validation', 'Human approval'] },
+  { name: 'Retrieval / RAG', description: 'Retrieve relevant material before generating a response. Evaluate grounding, retrieval quality and the ability to say “not found”.', steps: ['Documents', 'Chunks', 'Embeddings', 'Vector store', 'Retrieval', 'Grounded response'] },
+  { name: 'MCP / tools', description: 'Expose narrowly scoped tools through a server boundary. Keep credentials server-side, and check each action against the user’s intent.', steps: ['Agent', 'MCP server', 'Scoped tools', 'Services', 'Result', 'Evaluation'] },
+  { name: 'AI automation', description: 'Start with an event, call the necessary tool, validate its result and make failures observable before taking action.', steps: ['Trigger', 'Agent', 'API / tool', 'Validation', 'Approval', 'Action / log'] },
+];
