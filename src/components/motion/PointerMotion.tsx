@@ -47,7 +47,7 @@ export function PointerMotion() {
           });
         });
       };
-      bind('.portrait, .project-image, .greetly-cover, .passport', 'surface');
+      bind('.portrait, .project-image, .passport', 'surface');
       bind('.hero h1, .section h2, .journey-heading h3, .philosophy > p:first-of-type', 'title');
       bind('.hero .primary-button, .contact-email, .project-caption .text-link', 'magnetic');
     });

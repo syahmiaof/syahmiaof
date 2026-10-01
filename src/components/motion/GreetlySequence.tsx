@@ -82,7 +82,7 @@ export function GreetlySequence() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'center center',
-          end: '+=300%', // Pin for 300% of viewport height
+          end: '+=500%', // Pin for 500% of viewport height
           pin: true,
           scrub: 0.5,
         }
