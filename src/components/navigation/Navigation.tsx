@@ -57,7 +57,7 @@ export function Navigation() {
   return <>
     <a href="#main" className="skip-link">Skip to content</a>
     <header className="site-header">
-      <Link href="/" className="wordmark" aria-label="Syahmi Aof home">SA<span>/</span></Link>
+      <Link href="/" className="wordmark" aria-label="Syahmi Aof home">THE BUILDER<span>.</span></Link>
       <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(item => <Link key={item.id} href={item.href} aria-current={pathname === '/' && active === item.id ? 'location' : undefined}>{item.name}</Link>)}</nav>
       <div className="nav-actions"><Link className="quick-nav" href="/quick">Quick view <ArrowUpRight size={13} aria-hidden="true" /></Link><button className="command-trigger" onClick={openPalette} aria-label="Open command palette"><Command size={14} aria-hidden="true" /><span>K</span></button>
         <div ref={menuRef} className="mobile-menu-wrap"><button className="menu-trigger" aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu ? 'Close navigation' : 'Open navigation'} onClick={() => setMenu(!menu)}>{menu ? <X size={20} /> : <Menu size={20} />}</button>{menu && <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation">{navigation.map(item => <Link key={item.id} href={item.href} onClick={() => setMenu(false)}>{item.name}<ArrowUpRight size={16} /></Link>)}<Link href="/quick" onClick={() => setMenu(false)}>Quick view<ArrowUpRight size={16} /></Link></nav>}</div>
