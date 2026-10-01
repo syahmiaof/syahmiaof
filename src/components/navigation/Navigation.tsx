@@ -42,6 +42,7 @@ export function Navigation() {
     { label: 'Quick view', detail: 'Recruiter overview', href: '/quick' },
     { label: 'View GitHub', detail: 'Source code', href: profile.github },
     { label: 'Open Lab', detail: 'Experiments', href: '/#lab' },
+    { label: 'Open tech stack', detail: 'Tools and platforms', href: '/#stack' },
     { label: 'View credentials', detail: 'Learning passport', href: '/#credentials' },
     { label: 'Request resume', detail: 'Email', href: profile.resumeUrl },
     { label: 'Contact Syahmi', detail: 'Email', href: `mailto:${profile.email}` },

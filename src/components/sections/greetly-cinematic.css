@@ -1,4 +1,5 @@
-.journey-stage { background: var(--bg-primary); }
+.journey { scroll-margin-top: 110px; }
+.journey-stage { position: relative; background: var(--bg-secondary); border-block: 1px solid var(--border-subtle); padding-inline: 0; }
 .case-page .journey-stage { background: var(--bg-secondary); }
 .journey-scroll-hint { display: none; }
 .journey .device-inspection { height: 440px; overflow: hidden; }

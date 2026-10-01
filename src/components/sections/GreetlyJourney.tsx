@@ -17,9 +17,24 @@ export function GreetlyJourney() {
   const reduced = useReducedMotion();
   const tier = useViewportTier();
   const root = useRef<HTMLDivElement>(null);
+  const title = useRef<HTMLHeadingElement>(null);
   const progress = useMemo(() => createSceneProgress(), []);
   const trigger = useRef<ScrollTrigger | null>(null);
   const manual = useRef<gsap.core.Tween | null>(null);
+  useEffect(() => {
+    if (reduced || !root.current || !title.current) return;
+    // Track the whole pinned journey so its title stays readable through all six stages.
+    const context = gsap.context(() => {
+      gsap.fromTo(title.current, { autoAlpha: 0, y: 18 }, {
+        autoAlpha: 1, y: 0, duration: .85, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: root.current, start: 'top 88%', end: 'bottom top+=100',
+          toggleActions: 'play reverse play reverse', refreshPriority: -1,
+        },
+      });
+    }, root);
+    return () => context.revert();
+  }, [reduced, tier]);
   useEffect(() => {
     const element = root.current;
     if (!element || reduced || tier === 'LITE') return;
@@ -53,8 +68,8 @@ export function GreetlyJourney() {
       manual.current = gsap.to(progress, { value: index, duration: .8, ease: 'power2.inOut', onUpdate: () => { progress.notify(); root.current?.style.setProperty('--event-progress', String(Math.max(0, (progress.value - 2) / 3))); } });
     } else { progress.set(index); }
   };
-  return <div className="journey section" ref={root}><div className="journey-stage">
-    <div className="journey-heading"><div><h3>From a face{' '}<br />to a record.</h3></div><p>Six steps. One connected system.<br /><span className="journey-scroll-hint">Try me — scroll or choose a stage.</span><span className="journey-tap-hint">Try me — tap a stage to follow the event.</span></p></div>
+  return <div className="journey section" ref={root} aria-labelledby="journey-title"><div className="journey-stage">
+    <div className="journey-heading"><div><h3 ref={title} id="journey-title">From a face{' '}<br />to a record.</h3></div><p>Six steps. One connected system.<br /><span className="journey-scroll-hint">Try me — scroll or choose a stage.</span><span className="journey-tap-hint">Try me — tap a stage to follow the event.</span></p></div>
     <div className="device-inspection"><InfrastructureScene mode="device" step={active} progress={progress} />
       <div className="device-layer-labels mono" aria-hidden="true"><span>01 / OPTICS</span><span>02 / SENSOR</span><span>03 / COMPUTE</span><span>04 / ENCLOSURE</span></div>
       <svg className="event-link" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path className="event-track" d="M 470 230 H 600 V 130 H 680" /><path className="event-travel" pathLength="1" d="M 470 230 H 600 V 130 H 680" /></svg>

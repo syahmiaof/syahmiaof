@@ -21,5 +21,6 @@ export const navigation = [
   { name: 'About', href: '/#about', id: 'about' },
   { name: 'Work', href: '/#work', id: 'work' },
   { name: 'Lab', href: '/#lab', id: 'lab' },
+  { name: 'Stack', href: '/#stack', id: 'stack' },
   { name: 'Contact', href: '/#contact', id: 'contact' },
 ];

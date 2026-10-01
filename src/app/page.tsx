@@ -6,6 +6,7 @@ import { SelectedWork } from '@/components/sections/SelectedWork';
 import { FutureAndLab } from '@/components/sections/FutureAndLab';
 import { Capabilities, Intelligence } from '@/components/sections/Capabilities';
 import { Collaborations } from '@/components/sections/Collaborations';
+import { TechStack } from '@/components/sections/TechStack';
 import { Awards } from '@/components/sections/Awards';
 import { Credentials } from '@/components/sections/Credentials';
 import { Footer } from '@/components/layout/Footer';
@@ -15,5 +16,5 @@ import { NetworkIntro } from '@/components/motion/NetworkIntro';
 import { PointerMotion } from '@/components/motion/PointerMotion';
 export const metadata: Metadata = { alternates: { canonical: canonical('/') } };
 export default function Home() {
-  return <><NetworkIntro /><HomeMotion /><PointerMotion /><main id="main" tabIndex={-1}><Hero /><About /><Philosophy /><Greetly /><SelectedWork /><Collaborations /><FutureAndLab /><Capabilities /><Intelligence /><Credentials /><Awards /></main><Footer /></>;
+  return <><NetworkIntro /><HomeMotion /><PointerMotion /><main id="main" tabIndex={-1}><Hero /><About /><Philosophy /><Greetly /><SelectedWork /><Collaborations /><FutureAndLab /><Capabilities /><Intelligence /><TechStack /><Credentials /><Awards /></main><Footer /></>;
 }
