@@ -28,7 +28,7 @@ export function HeroTitle() {
       onMouseLeave={handleMouseLeave}
       style={{
         position: 'relative',
-        display: 'inline-block',
+        display: 'block', // use block as original, not inline-block which might break layout
       }}
     >
       {/* Background layer (darker text) */}
@@ -54,8 +54,8 @@ export function HeroTitle() {
           transition: reducedMotion ? 'none' : 'opacity 0.2s ease-out',
         }}
       >
-        <span className="hero-first">SYAHMI</span>
-        <span className="hero-second">AOF<span className="hero-period" style={{ color: 'var(--signal-primary)' }}>.</span></span>
+        <span className="hero-first" style={{ display: 'block', width: 'max-content' }}>SYAHMI</span>
+        <span className="hero-second" style={{ display: 'block', width: 'max-content' }}>AOF<span className="hero-period" style={{ color: 'var(--signal-primary)' }}>.</span></span>
       </div>
     </h1>
   );
