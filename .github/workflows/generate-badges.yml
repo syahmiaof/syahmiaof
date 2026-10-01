@@ -1,0 +1,38 @@
+﻿name: Generate Badges SVG
+
+on:
+  push:
+    paths:
+      - '.github/badges/data.json'
+      - '.github/badges/index.js'
+      - '.github/badges/package.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./.github/badges
+        run: npm install mustache
+
+      - name: Generate SVG
+        run: node ./.github/badges/index.js
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add badges.svg
+          git commit -m "chore: auto-generate badges.svg" || echo "No changes to commit"
+          git push
