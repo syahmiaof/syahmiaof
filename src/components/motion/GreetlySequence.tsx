@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useReducedMotion } from '@/hooks/useExperience';
+import { useReducedMotion, useViewportTier } from '@/hooks/useExperience';
+import { SafeImage } from '@/components/ui/SafeImage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,137 +17,127 @@ export function GreetlySequence() {
   const text2Ref = useRef<HTMLDivElement>(null);
   const text3Ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
+  const tier = useViewportTier();
+  const staticView = reducedMotion || tier === 'LITE';
 
   useEffect(() => {
-    if (reducedMotion || !canvasRef.current || !containerRef.current) return;
-
     const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (staticView || !canvas || !container) return;
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    // Load images
-    const images: HTMLImageElement[] = [];
-    let imagesLoaded = 0;
-    
-    // We only draw the first frame once it's loaded
-    const onImageLoad = () => {
-      imagesLoaded++;
-      if (imagesLoaded === 1) {
-        renderFrame(1);
-      }
-    };
-
-    for (let i = 1; i <= FRAME_COUNT; i++) {
-      const img = new Image();
-      const paddedIndex = i.toString().padStart(3, '0');
-      img.src = `/images/greetly-sequence/ezgif-frame-${paddedIndex}.jpg`;
-      img.onload = onImageLoad;
-      images.push(img);
-    }
-
-    const renderFrame = (index: number) => {
-      if (!images[index - 1] || !images[index - 1].complete) return;
-      
-      const img = images[index - 1];
-      // Use logical width/height instead of physical pixel dimensions for calculation
-      const rect = canvas.getBoundingClientRect();
-      const canvasRatio = rect.width / rect.height;
-      const imgRatio = img.width / img.height;
-      
-      let drawWidth = canvas.width;
-      let drawHeight = canvas.height;
-      let offsetX = 0;
-      let offsetY = 0;
-
-      // Fit the image within the canvas without cropping (contain), or scale down slightly
-      // Let's use 'contain' logic to make it smaller as requested, but covering 80%
-      if (canvasRatio > imgRatio) {
-        drawHeight = canvas.height * 0.9; // 90% of height to make it smaller
-        drawWidth = drawHeight * imgRatio;
-      } else {
-        drawWidth = canvas.width * 0.9;
-        drawHeight = drawWidth / imgRatio;
-      }
-      
-      offsetX = (canvas.width - drawWidth) / 2;
-      offsetY = (canvas.height - drawHeight) / 2;
-
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-    };
-
     const sequence = { frame: 1 };
+    const images = new Map<number, HTMLImageElement>();
+    const loading = new Map<number, HTMLImageElement>();
+    const failed = new Set<number>();
+    let disposed = false;
+    let near = false;
+    let width = 1;
+    let height = 1;
+    let displayed = 0;
+
+    const draw = () => {
+      if (disposed) return;
+      const target = Math.round(sequence.frame);
+      const index = images.has(target) ? target : [...images.keys()].sort((a, b) => Math.abs(a - target) - Math.abs(b - target))[0];
+      const img = images.get(index);
+      if (!img || !img.naturalWidth || !img.naturalHeight) return;
+      // Drawing uses CSS pixels; only the backing store is multiplied by DPR.
+      const scale = Math.min(width / img.naturalWidth, height / img.naturalHeight) * .9;
+      const drawWidth = img.naturalWidth * scale;
+      const drawHeight = img.naturalHeight * scale;
+      context.clearRect(0, 0, width, height);
+      context.drawImage(img, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
+      displayed = index;
+      canvas.dataset.frame = String(index);
+      canvas.style.opacity = '1';
+    };
+
+    // A small moving window avoids retaining 200 decoded 1080p frames.
+    // The current frame always takes priority over speculative neighbours.
+    const pump = () => {
+      if (disposed || !near) return;
+      const target = Math.round(sequence.frame);
+      const wanted = [target];
+      for (let distance = 1; distance <= 10; distance++) {
+        if (target + distance <= FRAME_COUNT) wanted.push(target + distance);
+        if (target - distance >= 1) wanted.push(target - distance);
+      }
+      for (const index of wanted) {
+        if (loading.size >= 4) break;
+        if (images.has(index) || loading.has(index) || failed.has(index)) continue;
+        const img = new Image();
+        loading.set(index, img);
+        img.onload = () => {
+          loading.delete(index);
+          if (disposed) return;
+          if (img.naturalWidth) images.set(index, img);
+          else failed.add(index);
+          draw();
+          const current = Math.round(sequence.frame);
+          const oldest = [...images.keys()].filter(key => key !== displayed).sort((a, b) => Math.abs(b - current) - Math.abs(a - current));
+          while (images.size > 24 && oldest.length) images.delete(oldest.shift()!);
+          pump();
+        };
+        img.onerror = () => { loading.delete(index); if (!disposed) { failed.add(index); pump(); } };
+        img.src = `/images/greetly-sequence/ezgif-frame-${String(index).padStart(3, '0')}.jpg`;
+      }
+    };
+    const render = () => { draw(); pump(); };
+    const resize = () => {
+      const rect = container.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw();
+    };
+    resize();
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(container);
+    const observer = new IntersectionObserver(entries => {
+      near = entries[0].isIntersecting;
+      if (near) render();
+    }, { rootMargin: '800px 0px' });
+    observer.observe(container);
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: containerRef.current,
+          id: 'greetly-sequence',
+          trigger: container,
           start: 'center center',
-          end: '+=500%', // Pin for 500% of viewport height
+          end: '+=500%',
           pin: true,
-          scrub: 0.5,
-        }
+          scrub: .8,
+          invalidateOnRefresh: true,
+        },
       });
-
-      // Animate frame sequence
-      tl.to(sequence, {
-        frame: FRAME_COUNT,
-        snap: 'frame',
-        ease: 'none',
-        onUpdate: () => renderFrame(sequence.frame)
-      }, 0);
-
-      // Animate Text 1 (Zero-Touch) at frame 1 - 50
-      tl.fromTo(text1Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.1 }, 0);
-      tl.to(text1Ref.current, { opacity: 0, y: -20, duration: 0.1 }, 0.25);
-
-      // Animate Text 2 (Lightning Fast) at frame 60 - 130
-      tl.fromTo(text2Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.1 }, 0.35);
-      tl.to(text2Ref.current, { opacity: 0, y: -20, duration: 0.1 }, 0.60);
-
-      // Animate Text 3 (No Cheating) at frame 140 - 200
-      tl.fromTo(text3Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.1 }, 0.70);
-      tl.to(text3Ref.current, { opacity: 0, y: -20, duration: 0.1 }, 0.95);
-
-    }, containerRef);
-
-    // Handle resizing for HD DPI
-    const handleResize = () => {
-      if (containerRef.current && canvasRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        
-        // Physical pixels
-        canvasRef.current.width = rect.width * dpr;
-        canvasRef.current.height = rect.height * dpr;
-        
-        // Logical CSS pixels
-        canvasRef.current.style.width = `${rect.width}px`;
-        canvasRef.current.style.height = `${rect.height}px`;
-        
-        context.scale(dpr, dpr); // Normalize coordinates
-        renderFrame(sequence.frame);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
+      // Frame movement spans the whole caption timeline, including its final fade.
+      tl.to(sequence, { frame: FRAME_COUNT, duration: 1.05, snap: 'frame', ease: 'none', onUpdate: render }, 0);
+      tl.fromTo(text1Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .1 }, 0);
+      tl.to(text1Ref.current, { opacity: 0, y: -20, duration: .1 }, .25);
+      tl.fromTo(text2Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .1 }, .35);
+      tl.to(text2Ref.current, { opacity: 0, y: -20, duration: .1 }, .60);
+      tl.fromTo(text3Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .1 }, .70);
+      tl.to(text3Ref.current, { opacity: 0, y: -20, duration: .1 }, .95);
+    }, container);
+    document.fonts.ready.then(() => { if (!disposed) ScrollTrigger.refresh(); });
     return () => {
+      disposed = true;
       ctx.revert();
-      window.removeEventListener('resize', handleResize);
+      observer.disconnect();
+      resizeObserver.disconnect();
+      loading.forEach(img => { img.onload = null; img.onerror = null; img.removeAttribute('src'); });
+      loading.clear();
+      images.clear();
     };
-  }, [reducedMotion]);
-
-  if (reducedMotion) {
-    return (
-      <img 
-        src="/images/greetly-sequence/ezgif-frame-200.jpg" 
-        alt="Greetly device concept artwork" 
-        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-      />
-    );
-  }
+  }, [staticView]);
 
   // Common styling for overlay text
   const overlayStyle: React.CSSProperties = {
@@ -160,30 +151,37 @@ export function GreetlySequence() {
   };
 
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100vh', position: 'relative', background: '#0a0a0a', overflow: 'hidden' }}>
-      <canvas 
+    <div className="greetly-sequence" ref={containerRef} data-static={staticView}>
+      {staticView ? <SafeImage src="/images/greetly-sequence/ezgif-frame-200.jpg" alt="Greetly device concept artwork" width={1920} height={1080} sizes="100vw" className="greetly-sequence-poster" /> : <>
+      <div aria-hidden="true" style={{ position: 'absolute', inset: '5%', pointerEvents: 'none' }}>
+        <SafeImage src="/images/greetly-sequence/ezgif-frame-001.jpg" alt="" width={1920} height={1080} sizes="90vw" className="greetly-sequence-underlay" />
+      </div>
+      <canvas
         ref={canvasRef} 
-        style={{ display: 'block', margin: '0 auto' }}
+        aria-label="Greetly device assembly animation"
+        role="img"
+        style={{ display: 'block', margin: '0 auto', position: 'relative', opacity: 0 }}
       />
       
       {/* Overlay Texts */}
       <div ref={text1Ref} style={{ ...overlayStyle, left: '5%' }}>
         <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>— Welcome to Greetly</p>
         <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>Zero-Touch<br/>Attendance</h3>
-        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>No cards to swipe. No screens to touch. Just walk in and you're recorded.</p>
+        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>No cards to swipe. No screens to touch. Just walk in and you&apos;re recorded.</p>
       </div>
 
       <div ref={text2Ref} style={{ ...overlayStyle, right: '5%', textAlign: 'right' }}>
-        <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>Lightning Fast —</p>
-        <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>1.5 Seconds</h3>
-        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>Our smart camera recognizes faces instantly. It processes data directly on the device, meaning no waiting for internet delays.</p>
+        <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>Local Intelligence —</p>
+        <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>On-Device</h3>
+        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>Camera frames are processed on the Raspberry Pi. Recognition stays local; attendance events connect to the cloud.</p>
       </div>
 
       <div ref={text3Ref} style={{ ...overlayStyle, left: '5%' }}>
-        <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>— Super Secure</p>
-        <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>No Cheating</h3>
-        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>Say goodbye to 'buddy-punching' (tolong punch kad kawan). The 3D depth sensor knows the difference between a real person and a photo.</p>
+        <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>— Edge to Cloud</p>
+        <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>Stay Connected</h3>
+        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>From a local recognition event to an attendance record. One connected path to the dashboard.</p>
       </div>
+      </>}
     </div>
   );
 }

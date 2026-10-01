@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, MousePointer2 } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
@@ -10,3 +10,5 @@ export function SectionLabel({ number, children }: { number: string; children: R
 }
 export function Status({ children }: { children: ReactNode }) { return <span className="status"><span />{children}</span>; }
 export function ScrollLink() { return <a href="#about" className="scroll-link"><ArrowDown size={15} aria-hidden="true" />Scroll to enter</a>; }
+
+export function InteractionHint({ children }: { children: ReactNode }) { return <p className="interaction-hint"><MousePointer2 size={17} aria-hidden="true" />{children}</p>; }

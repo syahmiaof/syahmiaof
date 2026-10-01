@@ -15,7 +15,6 @@ export function HomeMotion() {
         .addLabel('enter-network').to('.hero-first', { x: -24, ease: 'none' }, 'enter-network').to('.hero-second', { x: 38, ease: 'none' }, 'enter-network');
       gsap.fromTo('.portrait img', { clipPath: 'inset(5% 0 5% 0)' }, { clipPath: 'inset(0% 0 0% 0)', ease: 'none', scrollTrigger: { trigger: '.portrait', start: 'top 85%', end: 'center 55%', scrub: .7 } });
       gsap.fromTo('.philosophy > p span', { color: '#8b998d' }, { color: '#e9ece3', scrollTrigger: { trigger: '.philosophy', start: 'top 75%', end: 'center 45%', scrub: true } });
-      gsap.fromTo('.footer-network', { rotation: -35, scale: .7, opacity: .2 }, { rotation: -12, scale: 1, opacity: .4, scrollTrigger: { trigger: '#contact', start: 'top 85%', end: 'top 25%', scrub: .8 } });
       document.fonts.ready.then(() => ScrollTrigger.refresh());
     });
     return () => context.revert();

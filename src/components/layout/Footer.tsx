@@ -1,6 +1,17 @@
-import { ArrowUp, ArrowUpRight } from 'lucide-react';
-import { profile } from '@/data/profile';
-import { SectionLabel } from '@/components/ui/Primitives';
+import { ArrowUp, ArrowUpRight, Mail, MessageCircle } from 'lucide-react';
+import { profile, socials } from '@/data/profile';
+import { SocialIcon } from '@/components/ui/SocialIcon';
+
 export function Footer({ compact = false }: { compact?: boolean }) {
-  return <footer id="contact" className={`section contact-section ${compact ? 'compact-contact' : ''}`}><div className="footer-network" aria-hidden="true"><span /><span /><span /><span /><span /></div>{!compact && <><SectionLabel number="08">Make a connection</SectionLabel><h2>LET’S BUILD<br />SOMETHING <span>REAL.</span></h2><div className="contact-intro"><p>Have a project, an opportunity,<br />or a system worth figuring out?</p><a href={`mailto:${profile.email}`} className="contact-email" data-cursor="OPEN">Let’s talk<ArrowUpRight size={36} strokeWidth={1.2} aria-hidden="true" /></a></div></>}<div className="footer-links"><a href={`mailto:${profile.email}`}>Email<ArrowUpRight size={15} /></a><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub<ArrowUpRight size={15} /></a><a href={profile.resumeUrl}>Request resume<ArrowUpRight size={15} /></a><a href="#main" className="back-top">Back to top<ArrowUp size={15} /></a></div><div className="footer-bottom mono"><span>© 2026 SYAHMI AOF</span><span>DESIGNED + ENGINEERED BY SYAHMI AOF</span><span>CLOUD / DEVOPS / AI / EDGE</span></div>{!compact && <p className="footer-statement">I build systems that connect.</p>}</footer>;
+  return <footer id="contact" className={`section contact-section ${compact ? 'compact-contact' : ''}`}>
+    {!compact && <><h2>LET’S BUILD<br />SOMETHING <span>REAL.</span></h2><p className="contact-lead">Have a project, an opportunity, or a system worth figuring out?</p></>}
+    <div className="contact-methods">
+      <a href={`mailto:${profile.email}`} className="contact-method"><Mail size={22} aria-hidden="true" /><span><span className="contact-method-label">Email me</span><strong>{profile.email}</strong></span><ArrowUpRight size={24} aria-hidden="true" /></a>
+      <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-method"><MessageCircle size={22} aria-hidden="true" /><span><span className="contact-method-label">Let’s talk on WhatsApp</span><strong>{profile.phone}</strong></span><ArrowUpRight size={24} aria-hidden="true" /></a>
+    </div>
+    <div className="footer-connect"><div><h3>Elsewhere on the internet.</h3><div className="social-links" aria-label="Social profiles">
+      {socials.map(social => social.href ? <a key={social.platform} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}><SocialIcon platform={social.platform} /><span>{social.label}</span></a> : <span key={social.platform} className="social-unavailable" role="img" aria-label={`${social.label} profile coming soon`} title={`${social.label} — profile coming soon`}><SocialIcon platform={social.platform} /><span>{social.label}</span></span>)}
+    </div>{socials.some(social => !social.href) && <p className="social-note">More profiles coming soon.</p>}</div><a href={profile.resumeUrl} className="footer-resume">Request resume<ArrowUpRight size={18} aria-hidden="true" /></a></div>
+    <div className="footer-bottom"><span>© {new Date().getFullYear()} Syahmi Aof</span><a href={profile.siteUrl}>syahmiaof.my</a><a href="#main" className="back-top">Back to top<ArrowUp size={16} aria-hidden="true" /></a></div>
+  </footer>;
 }

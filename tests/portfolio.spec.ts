@@ -115,7 +115,7 @@ test('quick view loads without WebGL and has usable contact links', async ({ pag
   await page.goto('/quick');
   await expect(page.locator('canvas')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Selected work' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Email me' })).toHaveAttribute('href', 'mailto:syahmiaof123@gmail.com');
+  await expect(page.getByRole('link', { name: 'Email me', exact: true })).toHaveAttribute('href', 'mailto:syahmiaof123@gmail.com');
   await expect(page.getByRole('link', { name: 'Request resume' }).first()).toHaveAttribute('href', /mailto:.*subject=Resume/);
   expect(await page.evaluate(() => performance.getEntriesByType('resource').filter(item => /ComputeCanvas|three_core|three_module/.test(item.name)).length)).toBe(0);
 });
@@ -150,7 +150,7 @@ test('fallback survives a missing project image', async ({ page }) => {
   await page.route('**/_next/image?*', route => route.abort());
   await page.goto('/quick');
   await expect(page.getByText('Image unavailable')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Email me' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Email me', exact: true })).toBeVisible();
 });
 
 test('WebGL unavailable retains the topology and readable content', async ({ page }) => {

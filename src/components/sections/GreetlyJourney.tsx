@@ -54,7 +54,7 @@ export function GreetlyJourney() {
     } else { progress.set(index); }
   };
   return <div className="journey section" ref={root}><div className="journey-stage">
-    <div className="journey-heading"><div><span className="mono signal-text">FOLLOW ONE ATTENDANCE EVENT</span><h3>From a face{' '}<br />to a record.</h3></div><p>Six steps. One connected system.<br /><span className="journey-scroll-hint">Scroll to take it apart, or select a stage.</span><span className="journey-tap-hint">Select a stage to follow the event.</span></p></div>
+    <div className="journey-heading"><div><h3>From a face{' '}<br />to a record.</h3></div><p>Six steps. One connected system.<br /><span className="journey-scroll-hint">Try me — scroll or choose a stage.</span><span className="journey-tap-hint">Try me — tap a stage to follow the event.</span></p></div>
     <div className="device-inspection"><InfrastructureScene mode="device" step={active} progress={progress} />
       <div className="device-layer-labels mono" aria-hidden="true"><span>01 / OPTICS</span><span>02 / SENSOR</span><span>03 / COMPUTE</span><span>04 / ENCLOSURE</span></div>
       <svg className="event-link" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path className="event-track" d="M 470 230 H 600 V 130 H 680" /><path className="event-travel" pathLength="1" d="M 470 230 H 600 V 130 H 680" /></svg>

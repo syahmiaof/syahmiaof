@@ -1,15 +1,18 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { useReducedMotion } from '@/hooks/useExperience';
 
 export function LiveBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reducedMotion = useReducedMotion();
+  const pathname = usePathname();
+  const disabled = reducedMotion || pathname === '/quick';
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (disabled) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -102,7 +105,9 @@ export function LiveBackground() {
       window.removeEventListener('mousemove', onMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [reducedMotion]);
+  }, [disabled]);
+
+  if (disabled) return null;
 
   return (
     <canvas 

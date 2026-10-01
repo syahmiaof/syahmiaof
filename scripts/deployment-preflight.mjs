@@ -1,6 +1,7 @@
-import { loadEnvConfig } from '@next/env';
+import nextEnv from '@next/env';
+const { loadEnvConfig } = nextEnv;
 loadEnvConfig(process.cwd());
-const value = process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : '');
+const value = process.env.NEXT_PUBLIC_SITE_URL || 'https://syahmiaof.my';
 try {
   const url = new URL(value);
   if (url.protocol !== 'https:' || ['localhost', '127.0.0.1'].includes(url.hostname)) throw new Error('Expected a public HTTPS origin.');

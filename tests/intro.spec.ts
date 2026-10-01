@@ -68,6 +68,8 @@ test('reload replays but client navigation back to the homepage does not', async
   await page.getByRole('link', { name: 'Quick view', exact: true }).click();
   await expect(page).toHaveURL('/quick');
   await page.getByRole('link', { name: 'Syahmi Aof home' }).click();
+  await expect(page).toHaveURL('/');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('SYAHMI');
   await expect(page.locator('.network-intro')).toHaveCount(0);
   await page.reload({ waitUntil: 'domcontentloaded' });
   await expect(page.getByRole('button', { name: 'Skip intro' })).toBeVisible();

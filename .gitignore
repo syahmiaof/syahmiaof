@@ -9,3 +9,5 @@ playwright-report/
 .impeccable/review/
 .impeccable/config.local.json
 *.log
+
+.vercel

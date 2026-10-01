@@ -2,10 +2,12 @@ import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import './responsive.css';
+import './enhancements.css';
+import { Symi } from '@/components/chat/Symi';
 import { Navigation } from '@/components/navigation/Navigation';
 import { ExperienceControls } from '@/components/layout/ExperienceControls';
 import { canonical, siteOrigin } from '@/lib/seo';
-import { profile } from '@/data/profile';
+import { profile, socials } from '@/data/profile';
 
 const display = localFont({ src: '../../node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2', variable: '--font-display-loaded', display: 'swap', weight: '300 700', preload: true });
 const mono = localFont({ src: '../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2', variable: '--font-mono-loaded', display: 'swap', weight: '400', preload: true });
@@ -22,6 +24,6 @@ export const viewport: Viewport = { themeColor: '#0b0e0c', width: 'device-width'
 import { LiveBackground } from '@/components/motion/LiveBackground';
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const jsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: profile.name, alternateName: profile.displayName, ...(canonical() ? { url: canonical() } : {}), sameAs: [profile.github], description: profile.description, jobTitle: profile.role };
-  return <html lang="en" className={`${display.variable} ${mono.variable}`}><body><LiveBackground /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} /><Navigation />{children}<ExperienceControls /></body></html>;
+  const jsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: profile.name, alternateName: profile.displayName, ...(canonical() ? { url: canonical() } : {}), email: profile.email, telephone: profile.phoneInternational, sameAs: socials.flatMap(social => social.href ? [social.href] : []), description: profile.description, jobTitle: profile.role };
+  return <html lang="en" className={`${display.variable} ${mono.variable}`}><body><LiveBackground /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} /><Navigation />{children}<ExperienceControls /><Symi /></body></html>;
 }

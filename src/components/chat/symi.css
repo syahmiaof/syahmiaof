@@ -1,0 +1,32 @@
+.symi-widget { position: fixed; z-index: 80; left: max(20px, env(safe-area-inset-left)); bottom: max(20px, env(safe-area-inset-bottom)); }
+.symi-launcher { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 12px 18px; border: 1px solid var(--signal-primary); border-radius: 28px; background: var(--bg-primary); color: var(--signal-primary); box-shadow: 0 6px 28px #0005; font-size: 15px; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+.symi-launcher:hover { background: var(--signal-primary); color: var(--bg-primary); transform: translateY(-2px); }
+.symi-panel { position: absolute; bottom: 66px; left: 0; width: min(400px, calc(100vw - 40px)); height: min(570px, calc(100dvh - 116px)); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #395345; border-radius: 18px; background: #101813; box-shadow: 0 18px 70px #0009; animation: symi-enter .24s ease-out; }
+.symi-header { display: flex; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--border-subtle); flex-shrink: 0; }
+.symi-avatar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--signal-deep); color: var(--signal-primary); }
+.symi-header h2 { font-size: 21px; letter-spacing: -.03em; line-height: 1.2; }
+.symi-header p { color: var(--fg-muted); font-size: 13px; margin: 4px 0 0; }
+.symi-header button { margin-left: auto; display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: transparent; color: var(--fg-primary); cursor: pointer; border-radius: 8px; }
+.symi-header button:hover { background: var(--bg-raised); }
+.symi-log { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px; }
+.symi-message + .symi-message { margin-top: 20px; }
+.symi-speaker { font-size: 12px; color: var(--signal-primary); }
+.symi-message p { margin-top: 5px; font-size: 15px; line-height: 1.55; overflow-wrap: anywhere; white-space: pre-line; }
+.symi-user { padding: 12px 14px; background: #1b2b21; border-radius: 12px 12px 2px 12px; margin-left: 28px; }
+.symi-user .symi-speaker { color: var(--fg-muted); }
+.symi-message-links { display: flex; gap: 8px 14px; flex-wrap: wrap; margin-top: 10px; }
+.symi-message-links a { color: var(--signal-primary); font-size: 14px; display: inline-flex; align-items: center; gap: 4px; min-height: 32px; text-decoration: underline; text-underline-offset: 4px; }
+.symi-suggestions { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 16px 12px; flex-shrink: 0; }
+.symi-suggestions button { border: 1px solid #3b5344; background: transparent; color: var(--fg-primary); padding: 8px 10px; border-radius: 6px; font-size: 12px; min-height: 36px; cursor: pointer; text-align: left; }
+.symi-suggestions button:hover { border-color: var(--signal-primary); color: var(--signal-primary); }
+.symi-form { display: flex; gap: 8px; padding: 0 16px; flex-shrink: 0; }
+.symi-form input { min-width: 0; width: 100%; border: 1px solid #3b5344; border-radius: 8px; background: #0b110d; color: var(--fg-primary); padding: 12px; font: inherit; font-size: 16px; }
+.symi-form input::placeholder { color: var(--fg-muted); }
+.symi-form button { flex: 0 0 46px; display: grid; place-items: center; border: 0; border-radius: 8px; background: var(--signal-primary); color: #092016; cursor: pointer; }
+.symi-form button:disabled { opacity: .4; cursor: default; }
+.symi-note { padding: 10px 16px 14px; margin: 0; color: var(--fg-muted); font-size: 12px; line-height: 1.4; flex-shrink: 0; }
+.symi-error, .symi-thinking { padding: 8px 16px; font-size: 14px; color: var(--fg-primary); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@keyframes symi-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-height: 560px) { .symi-suggestions { display: none; } .symi-header { padding: 8px 16px; } }
+@media (prefers-reduced-motion: reduce) { .symi-panel { animation: none; } .symi-launcher { transition: none; } }
