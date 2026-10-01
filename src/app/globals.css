@@ -313,3 +313,6 @@ html[data-motion=reduced] *, html[data-motion=reduced] *::before, html[data-moti
 .greetly-sequence[data-static='true'] { height: auto; }
 .greetly-cover .greetly-sequence-underlay { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; }
 .greetly-cover .greetly-sequence-poster { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+
+.recognition-image-wrapper { margin-top: 25px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-subtle); max-width: 400px; }
+.recognition-image { width: 100%; height: auto; display: block; object-fit: contain; }

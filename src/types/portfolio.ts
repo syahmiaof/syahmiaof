@@ -49,5 +49,6 @@ export interface CompetitionRecognition {
   endsAt: string;
   bootcampAt?: string;
   evidenceLevel: 'certificate-only';
+  certificateImage?: string;
   featured: boolean;
 }

@@ -637,6 +637,7 @@ export const competitionRecognitions: readonly CompetitionRecognition[] = [
     "startsAt": "2026-03-26",
     "endsAt": "2026-04-03",
     "evidenceLevel": "certificate-only",
+    "certificateImage": "/images/certificates/netacad.jpg",
     "featured": true
   },
   {
@@ -653,6 +654,7 @@ export const competitionRecognitions: readonly CompetitionRecognition[] = [
     "startsAt": "2026-08-11",
     "endsAt": "2026-08-13",
     "evidenceLevel": "certificate-only",
+    "certificateImage": "/images/certificates/icompex.jpg",
     "featured": true
   },
   {
@@ -674,6 +676,7 @@ export const competitionRecognitions: readonly CompetitionRecognition[] = [
     "endsAt": "2025-10-13",
     "bootcampAt": "2025-10-10",
     "evidenceLevel": "certificate-only",
+    "certificateImage": "/images/certificates/cloudhunt.jpg",
     "featured": true
   }
 ];

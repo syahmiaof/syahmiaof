@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
-import type { Credential } from '@/types/portfolio';
+import type { Credential, CompetitionRecognition } from '@/types/portfolio';
 import { competitionRecognitions, componentsFor, credentialCounts, credentialKindLabels, formatCredentialDate, nextTargets } from '@/data/credentials';
+import { SafeImage } from '@/components/ui/SafeImage';
 
 export function CredentialSummary() {
   return <dl className="credential-summary" aria-label="Evidence summary">
@@ -41,6 +42,7 @@ export function CompetitionList() {
       {record.achievements.length > 0 && <ul className="recognition-achievements" aria-label="Additional recognition">{record.achievements.map(achievement => <li key={achievement}>{achievement}</li>)}</ul>}
       {record.bootcampAt && <p className="credential-meta">Bootcamp: <time dateTime={record.bootcampAt}>{formatCredentialDate(record.bootcampAt)}</time></p>}
       <p className="credential-evidence">Certificate evidence</p>
+      {record.certificateImage && <div className="recognition-image-wrapper"><SafeImage src={record.certificateImage} alt={`Certificate for ${record.event}`} width={800} height={600} sizes="(max-width: 768px) 100vw, 400px" className="recognition-image" /></div>}
     </div>
   </li>)}</ol>;
 }
