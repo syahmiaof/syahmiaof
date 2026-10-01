@@ -12,6 +12,9 @@ const FRAME_COUNT = 200;
 export function GreetlySequence() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const text1Ref = useRef<HTMLDivElement>(null);
+  const text2Ref = useRef<HTMLDivElement>(null);
+  const text3Ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -35,7 +38,6 @@ export function GreetlySequence() {
 
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
-      // Pad with leading zeros: 001, 002, ... 200
       const paddedIndex = i.toString().padStart(3, '0');
       img.src = `/images/greetly-sequence/ezgif-frame-${paddedIndex}.jpg`;
       img.onload = onImageLoad;
@@ -45,9 +47,10 @@ export function GreetlySequence() {
     const renderFrame = (index: number) => {
       if (!images[index - 1] || !images[index - 1].complete) return;
       
-      // Calculate aspect ratio to cover canvas completely
       const img = images[index - 1];
-      const canvasRatio = canvas.width / canvas.height;
+      // Use logical width/height instead of physical pixel dimensions for calculation
+      const rect = canvas.getBoundingClientRect();
+      const canvasRatio = rect.width / rect.height;
       const imgRatio = img.width / img.height;
       
       let drawWidth = canvas.width;
@@ -55,13 +58,18 @@ export function GreetlySequence() {
       let offsetX = 0;
       let offsetY = 0;
 
+      // Fit the image within the canvas without cropping (contain), or scale down slightly
+      // Let's use 'contain' logic to make it smaller as requested, but covering 80%
       if (canvasRatio > imgRatio) {
-        drawHeight = canvas.width / imgRatio;
-        offsetY = (canvas.height - drawHeight) / 2;
+        drawHeight = canvas.height * 0.9; // 90% of height to make it smaller
+        drawWidth = drawHeight * imgRatio;
       } else {
-        drawWidth = canvas.height * imgRatio;
-        offsetX = (canvas.width - drawWidth) / 2;
+        drawWidth = canvas.width * 0.9;
+        drawHeight = drawWidth / imgRatio;
       }
+      
+      offsetX = (canvas.width - drawWidth) / 2;
+      offsetY = (canvas.height - drawHeight) / 2;
 
       context.clearRect(0, 0, canvas.width, canvas.height);
       context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
@@ -70,33 +78,59 @@ export function GreetlySequence() {
     const sequence = { frame: 1 };
 
     const ctx = gsap.context(() => {
-      gsap.to(sequence, {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'center center',
+          end: '+=300%', // Pin for 300% of viewport height
+          pin: true,
+          scrub: 0.5,
+        }
+      });
+
+      // Animate frame sequence
+      tl.to(sequence, {
         frame: FRAME_COUNT,
         snap: 'frame',
         ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: 0.5, // Smooth scrubbing
-        },
         onUpdate: () => renderFrame(sequence.frame)
-      });
+      }, 0);
+
+      // Animate Text 1 (Zero-Touch) at frame 1 - 50
+      tl.fromTo(text1Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.1 }, 0);
+      tl.to(text1Ref.current, { opacity: 0, y: -20, duration: 0.1 }, 0.25);
+
+      // Animate Text 2 (Lightning Fast) at frame 60 - 130
+      tl.fromTo(text2Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.1 }, 0.35);
+      tl.to(text2Ref.current, { opacity: 0, y: -20, duration: 0.1 }, 0.60);
+
+      // Animate Text 3 (No Cheating) at frame 140 - 200
+      tl.fromTo(text3Ref.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.1 }, 0.70);
+      tl.to(text3Ref.current, { opacity: 0, y: -20, duration: 0.1 }, 0.95);
+
     }, containerRef);
 
-    // Handle resizing
+    // Handle resizing for HD DPI
     const handleResize = () => {
       if (containerRef.current && canvasRef.current) {
-        // Match container size
         const rect = containerRef.current.getBoundingClientRect();
-        canvasRef.current.width = rect.width;
-        canvasRef.current.height = rect.height;
+        const dpr = window.devicePixelRatio || 1;
+        
+        // Physical pixels
+        canvasRef.current.width = rect.width * dpr;
+        canvasRef.current.height = rect.height * dpr;
+        
+        // Logical CSS pixels
+        canvasRef.current.style.width = `${rect.width}px`;
+        canvasRef.current.style.height = `${rect.height}px`;
+        
+        context.scale(dpr, dpr); // Normalize coordinates
         renderFrame(sequence.frame);
       }
     };
 
     window.addEventListener('resize', handleResize);
-    handleResize(); // Initial sizing
+    handleResize();
 
     return () => {
       ctx.revert();
@@ -109,17 +143,47 @@ export function GreetlySequence() {
       <img 
         src="/images/greetly-sequence/ezgif-frame-200.jpg" 
         alt="Greetly device concept artwork" 
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       />
     );
   }
 
+  // Common styling for overlay text
+  const overlayStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: '35%',
+    opacity: 0,
+    color: '#fff',
+    pointerEvents: 'none',
+  };
+
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
+    <div ref={containerRef} style={{ width: '100%', height: '100vh', position: 'relative', background: '#0a0a0a', overflow: 'hidden' }}>
       <canvas 
         ref={canvasRef} 
-        style={{ width: '100%', height: '100%', display: 'block' }}
+        style={{ display: 'block', margin: '0 auto' }}
       />
+      
+      {/* Overlay Texts */}
+      <div ref={text1Ref} style={{ ...overlayStyle, left: '5%' }}>
+        <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>— Welcome to Greetly</p>
+        <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>Zero-Touch<br/>Attendance</h3>
+        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>No cards to swipe. No screens to touch. Just walk in and you're recorded.</p>
+      </div>
+
+      <div ref={text2Ref} style={{ ...overlayStyle, right: '5%', textAlign: 'right' }}>
+        <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>Lightning Fast —</p>
+        <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>1.5 Seconds</h3>
+        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>Our smart camera recognizes faces instantly. It processes data directly on the device, meaning no waiting for internet delays.</p>
+      </div>
+
+      <div ref={text3Ref} style={{ ...overlayStyle, left: '5%' }}>
+        <p style={{ color: 'var(--signal-primary)', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>— Super Secure</p>
+        <h3 style={{ fontSize: '3rem', lineHeight: 1.1, marginBottom: '20px' }}>No Cheating</h3>
+        <p style={{ color: '#a0a0a0', fontSize: '1.1rem', lineHeight: 1.6 }}>Say goodbye to 'buddy-punching' (tolong punch kad kawan). The 3D depth sensor knows the difference between a real person and a photo.</p>
+      </div>
     </div>
   );
 }
