@@ -19,7 +19,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 export const viewport: Viewport = { themeColor: '#0b0e0c', width: 'device-width', initialScale: 1 };
+import { LiveBackground } from '@/components/motion/LiveBackground';
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const jsonLd = { '@context': 'https://schema.org', '@type': 'Person', name: profile.name, alternateName: profile.displayName, ...(canonical() ? { url: canonical() } : {}), sameAs: [profile.github], description: profile.description, jobTitle: profile.role };
-  return <html lang="en" className={`${display.variable} ${mono.variable}`}><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} /><Navigation />{children}<ExperienceControls /></body></html>;
+  return <html lang="en" className={`${display.variable} ${mono.variable}`}><body><LiveBackground /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} /><Navigation />{children}<ExperienceControls /></body></html>;
 }
