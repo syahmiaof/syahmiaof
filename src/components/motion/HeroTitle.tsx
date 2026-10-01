@@ -45,10 +45,13 @@ export function HeroTitle() {
           right: 0,
           bottom: 0,
           pointerEvents: 'none',
-          WebkitMaskImage: `radial-gradient(circle 180px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
-          maskImage: `radial-gradient(circle 180px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+          ...(mousePos.x !== -100 && {
+            WebkitMaskImage: `radial-gradient(circle 180px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+            maskImage: `radial-gradient(circle 180px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 100%)`,
+          }),
+          opacity: mousePos.x === -100 ? 0 : 1, // Hide layer completely when not hovered
           color: 'var(--fg-primary)',
-          transition: reducedMotion ? 'none' : 'mask-position 0.05s ease-out',
+          transition: reducedMotion ? 'none' : 'opacity 0.2s ease-out',
         }}
       >
         <span className="hero-first">SYAHMI</span>
