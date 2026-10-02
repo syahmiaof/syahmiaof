@@ -33,18 +33,53 @@ export function CompletionList({ records }: { records: readonly Credential[] }) 
 }
 
 export function CompetitionList() {
-  return <ol className="recognition-records">{competitionRecognitions.map(record => <li key={record.slug} data-competition={record.slug}>
-    <div className="recognition-result"><span className="credential-meta">{record.year}</span><p>{record.result}</p></div>
-    <div><h3>{record.event}</h3><p className="recognition-scope">{record.scope}{record.project && ` · ${record.project}`}</p>
-      {record.description && <p>{record.description}</p>}
-      <p className="credential-meta"><time dateTime={record.startsAt}>{formatCredentialDate(record.startsAt)}</time> – <time dateTime={record.endsAt}>{formatCredentialDate(record.endsAt)}</time></p>
-      {record.organizers.length > 0 && <p className="credential-meta">{record.organizers.join(' / ')}</p>}{record.venue && <p className="credential-meta">{record.venue}</p>}
-      {record.achievements.length > 0 && <ul className="recognition-achievements" aria-label="Additional recognition">{record.achievements.map(achievement => <li key={achievement}>{achievement}</li>)}</ul>}
-      {record.bootcampAt && <p className="credential-meta">Bootcamp: <time dateTime={record.bootcampAt}>{formatCredentialDate(record.bootcampAt)}</time></p>}
-      <p className="credential-evidence">Certificate evidence</p>
-      {record.certificateImage && <div className="recognition-image-wrapper"><SafeImage src={record.certificateImage} alt={`Certificate for ${record.event}`} width={800} height={600} sizes="(max-width: 768px) 100vw, 400px" className="recognition-image" /></div>}
-    </div>
-  </li>)}</ol>;
+  return (
+    <ol className="recognition-records">
+      {competitionRecognitions.map(record => (
+        <li key={record.slug} data-competition={record.slug}>
+          <div className="recognition-result">
+            <span className="credential-meta">{record.year}</span>
+            <p>{record.result}</p>
+          </div>
+          
+          <div className="recognition-content-wrapper">
+            <div>
+              <h3>{record.event}</h3>
+              <p className="recognition-scope">{record.scope}{record.project && ` · ${record.project}`}</p>
+              {record.description && <p>{record.description}</p>}
+              <p className="credential-meta">
+                <time dateTime={record.startsAt}>{formatCredentialDate(record.startsAt)}</time> — <time dateTime={record.endsAt}>{formatCredentialDate(record.endsAt)}</time>
+              </p>
+              {record.organizers.length > 0 && <p className="credential-meta">{record.organizers.join(' / ')}</p>}
+              {record.venue && <p className="credential-meta">{record.venue}</p>}
+              {record.achievements.length > 0 && (
+                <ul className="recognition-achievements" aria-label="Additional recognition">
+                  {record.achievements.map(achievement => <li key={achievement}>{achievement}</li>)}
+                </ul>
+              )}
+              {record.bootcampAt && (
+                <p className="credential-meta">Bootcamp: <time dateTime={record.bootcampAt}>{formatCredentialDate(record.bootcampAt)}</time></p>
+              )}
+              
+              {record.verificationUrl ? (
+                <a className="credential-verify" href={record.verificationUrl} target="_blank" rel="noopener noreferrer" aria-label={`Verify on issuer website`}>
+                  <span>Verification available</span><ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+              ) : (
+                <p className="credential-evidence">Certificate evidence</p>
+              )}
+            </div>
+            
+            {record.certificateImage && (
+              <div className="recognition-image-wrapper">
+                <SafeImage src={record.certificateImage} alt={`Certificate for ${record.event}`} width={600} height={450} sizes="(max-width: 768px) 100vw, 320px" className="recognition-image" />
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
 }
 
 export function NextTargets() {

@@ -48,7 +48,8 @@ export interface CompetitionRecognition {
   startsAt: string;
   endsAt: string;
   bootcampAt?: string;
-  evidenceLevel: 'certificate-only';
+  evidenceLevel: 'certificate-only' | 'issuer-verified';
+  verificationUrl?: string;
   certificateImage?: string;
   featured: boolean;
 }

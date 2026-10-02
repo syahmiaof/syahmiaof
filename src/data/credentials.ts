@@ -626,7 +626,7 @@ export const credentials: readonly Credential[] = [
 export const competitionRecognitions: readonly CompetitionRecognition[] = [
   {
     "slug": "netacad-riders-2026",
-    "event": "NetAcad Riders 2026",
+    "event": "NetAcad Riders International 2026",
     "year": "2026",
     "scope": "APJC NetAcad Riders",
     "result": "Silver Medal",
@@ -675,7 +675,8 @@ export const competitionRecognitions: readonly CompetitionRecognition[] = [
     "startsAt": "2025-10-12",
     "endsAt": "2025-10-13",
     "bootcampAt": "2025-10-10",
-    "evidenceLevel": "certificate-only",
+    "evidenceLevel": "issuer-verified",
+    "verificationUrl": "https://cert.runcloud.education/en/verify/78091311723534?ref=email",
     "certificateImage": "/images/certificates/cloudhunt.jpg",
     "featured": true
   }

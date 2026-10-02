@@ -316,3 +316,11 @@ html[data-motion=reduced] *, html[data-motion=reduced] *::before, html[data-moti
 
 .recognition-image-wrapper { margin-top: 25px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border-subtle); max-width: 400px; }
 .recognition-image { width: 100%; height: auto; display: block; object-fit: contain; }
+
+.recognition-content-wrapper { display: flex; gap: 32px; align-items: flex-start; justify-content: space-between; }
+.recognition-content-wrapper > div:first-child { flex: 1; min-width: 0; }
+.recognition-content-wrapper .recognition-image-wrapper { width: 320px; flex-shrink: 0; margin-top: 0; }
+@media (max-width: 760px) {
+  .recognition-content-wrapper { flex-direction: column; }
+  .recognition-content-wrapper .recognition-image-wrapper { width: 100%; margin-top: 16px; }
+}
