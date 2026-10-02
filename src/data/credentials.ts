@@ -640,6 +640,63 @@ export const credentials: readonly Credential[] = [
     "evidenceLevel": "certificate-only",
     "summary": "Student-level course credential."
   }
+,
+  {
+    "slug": "aws-cloud-technical-essentials",
+    "title": "AWS Cloud Technical Essentials",
+    "issuer": "Amazon Web Services",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-02",
+    "verificationUrl": "https://coursera.org/verify/6BB2NDGVTEKB",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "aws-cloud-solutions-architect"
+  },
+  {
+    "slug": "architecting-solutions-on-aws",
+    "title": "Architecting Solutions on AWS",
+    "issuer": "Amazon Web Services",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-02",
+    "verificationUrl": "https://coursera.org/verify/6JQ7WZKLI2UR",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "aws-cloud-solutions-architect"
+  },
+  {
+    "slug": "building-data-lakes-on-aws",
+    "title": "Building Data Lakes on AWS",
+    "issuer": "Amazon Web Services",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-02",
+    "verificationUrl": "https://coursera.org/verify/KPEQVXVHF23O",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "aws-cloud-solutions-architect"
+  },
+  {
+    "slug": "exam-prep-aws-certified-solutions-architect-associate",
+    "title": "Exam Prep: AWS Certified Solutions Architect - Associate",
+    "issuer": "Amazon Web Services",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-02",
+    "verificationUrl": "https://coursera.org/verify/ZL35JOPUO5DL",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "aws-cloud-solutions-architect"
+  }
 ];
 
 export const competitionRecognitions: readonly CompetitionRecognition[] = [
