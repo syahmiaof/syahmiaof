@@ -35,6 +35,11 @@ export const ongoingProjects: (Project & { stage: string; scope: readonly string
     stage: 'Early development · Website & ecosystem design',
     scope: ['Members & gelanggang', 'Learning & heritage', 'Athlete development'],
     developmentNote: 'An initial website is implemented. The broader draft covers membership and grading, attendance, events, learning, athlete analytics and a marketplace. These modules are under development; the full ecosystem has not launched.',
+    images: [
+      { src: '/images/gayongx-dashboard.jpg', alt: 'Command Centre Dashboard for GayongX', caption: 'Command Centre · Centralised dashboard for members, branch and program management.' },
+      { src: '/images/gayongx-website.jpg', alt: 'Gayong Malaysia main website landing page', caption: 'Main Website · The digital home for PSSGM Perak.' },
+      { src: '/images/gayongx-portal.jpg', alt: 'Portal Anak Gayong member portal', caption: 'Member Portal · Personalized dashboard for member journey and digital belt tracking.' }
+    ]
   },
 ];
 

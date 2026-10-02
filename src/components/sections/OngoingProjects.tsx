@@ -13,6 +13,16 @@ export function OngoingProjects() {
         <details><summary>Explore development notes<ArrowDownRight size={18} aria-hidden="true" /></summary><p>{project.developmentNote}</p><p className="mono">Current interface: {project.stack.join(' / ')}</p></details>
         {project.liveUrl ? <div className="project-links"><TextLink href={project.liveUrl} external>Explore the dashboard prototype</TextLink>{project.github && <TextLink href={project.github} external>View source</TextLink>}</div> : <p className="ongoing-availability">Public demo coming after the initial build.</p>}
         {project.image && project.liveUrl && <figure className="ongoing-preview"><a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-image" aria-label={`Open ${project.title} dashboard prototype`}><SafeImage src={project.image} alt="CerviScan-AI prototype CMS overview with screening trend and risk distribution charts using demo data" width={1440} height={740} sizes="(max-width: 760px) 90vw, 45vw" /></a><figcaption>Dashboard prototype &middot; Demo data; displayed metrics and certification labels are unverified.</figcaption></figure>}
+        {project.images && <div className="ongoing-gallery" style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginTop: '40px' }}>
+          {project.images.map((img, idx) => (
+            <figure key={idx} className="ongoing-preview" style={{ marginTop: 0 }}>
+              <div className="project-image">
+                <SafeImage src={img.src} alt={img.alt} width={1440} height={810} sizes="(max-width: 760px) 90vw, 45vw" />
+              </div>
+              <figcaption dangerouslySetInnerHTML={{ __html: img.caption }} />
+            </figure>
+          ))}
+        </div>}
       </div>
     </article>)}</div>
   </section>;
