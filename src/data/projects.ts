@@ -13,7 +13,7 @@ export const projects: Project[] = [
     stack: ['HTML', 'CSS', 'JavaScript'], github: 'https://github.com/syahmiaof/nurizmabridal', liveUrl: 'https://henna.nurizmabridal.my', featured: false, image: '/images/nurizma-bridal.webp' },
   { slug: 'sistem-aduan', title: 'Sistem Aduan Asrama', subtitle: 'From a reported problem to a visible status.', status: 'active',
     description: 'A hostel complaint system for IKM Besut. Students submit and track reports; the documented workflow connects Firebase data with Telegram notifications.',
-    stack: ['JavaScript', 'Firebase', 'Telegram API', 'Chart.js'], github: 'https://github.com/syahmiaof/sistem-aduan-asrama-ikm', liveUrl: 'https://sistem-aduan-asrama-ikm.web.app/', image: '/images/sistem-aduan.webp', featured: false },
+    stack: ['JavaScript', 'Firebase', 'Telegram API', 'Chart.js'], github: 'https://github.com/syahmiaof/sistem-aduan-asrama-ikm', liveUrl: 'https://sistemaduanasrama.syahmiaof.my', image: '/images/sistem-aduan.webp', featured: false },
   { slug: 'ai-growth-automation', title: 'AI Growth Marketer & Automation Specialist', subtitle: 'Agentic growth and revenue system.', status: 'active',
     description: 'An agentic growth and revenue system that turns social engagement into qualified, traceable sales opportunities through intent detection, lead scoring, structured qualification, model routing and failure-safe handoffs.',
     stack: ['AI', 'Automation', 'Agents'], liveUrl: '/projects/ai-growth-automation', featured: false },
@@ -31,7 +31,7 @@ export const ongoingProjects: (Project & { stage: string; scope: readonly string
   {
     slug: 'gayongx', title: 'GayongX', subtitle: 'A connected ecosystem for Silat Seni Gayong Perak.', status: 'in-development',
     description: 'Building a digital home for the association: member and gelanggang management, learning resources, and athlete development, connected through one ecosystem.',
-    stack: ['Next.js', 'React', 'TypeScript'], featured: false,
+    stack: ['Next.js', 'React', 'TypeScript'], featured: false, liveUrl: 'https://gayongx.syahmiaof.my',
     stage: 'Early development · Website & ecosystem design',
     scope: ['Members & gelanggang', 'Learning & heritage', 'Athlete development'],
     developmentNote: 'An initial website is implemented. The broader draft covers membership and grading, attendance, events, learning, athlete analytics and a marketplace. These modules are under development; the full ecosystem has not launched.',
