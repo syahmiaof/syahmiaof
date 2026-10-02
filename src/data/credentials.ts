@@ -21,7 +21,26 @@ export const credentials: readonly Credential[] = [
     "evidenceLevel": "certificate-only",
     "disclaimer": "AWS-authorized Coursera professional program that prepares learners for security engineering work and the AWS Certified Security – Specialty pathway. This is not the AWS certification exam credential."
   },
-  {
+    {
+    "slug": "aws-cloud-solutions-architect",
+    "title": "AWS Cloud Solutions Architect Professional Certificate",
+    "issuer": "Amazon Web Services",
+    "provider": "Coursera",
+    "kind": "professional-certificate",
+    "issuedAt": "2026-10-02",
+    "verificationUrl": "https://coursera.org/verify/professional-cert/N82YX2O4AE7L",
+    "featured": true,
+    "category": "program",
+    "skills": [
+      "Cloud architecture",
+      "Infrastructure",
+      "Deployment"
+    ],
+    "summary": "Architecting and deploying secure, robust applications on AWS technologies.",
+    "evidenceLevel": "certificate-only",
+    "disclaimer": "AWS-authorized Coursera professional program that prepares learners for cloud architecture work and the AWS Certified Solutions Architect - Associate pathway. This is not the AWS certification exam credential."
+  },
+{
     "slug": "google-ai",
     "title": "Google AI Professional Certificate",
     "issuer": "Google",
