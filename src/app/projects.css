@@ -15,7 +15,7 @@
 .ongoing-projects { border-top: 1px solid var(--border-strong); }
 .ongoing-project { display: grid; grid-template-columns: .85fr 1.15fr; gap: 10%; padding-block: 48px; border-bottom: 1px solid var(--border-subtle); }
 .ongoing-project { row-gap: 36px; }
-.ongoing-preview { grid-column: 1 / -1; min-width: 0; margin: 0; }
+.ongoing-preview { min-width: 0; margin: 0; margin-top: 40px; }
 .ongoing-preview .project-image img { aspect-ratio: 1440 / 740; object-fit: contain; }
 .ongoing-preview figcaption { margin-top: 14px; color: var(--fg-muted); font-size: 13px; }
 .ongoing-identity h3 { margin: 0 0 16px; font-size: clamp(32px, 3.5vw, 50px); }
