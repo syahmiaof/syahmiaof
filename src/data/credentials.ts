@@ -628,7 +628,7 @@ export const competitionRecognitions: readonly CompetitionRecognition[] = [
     "slug": "netacad-riders-2026",
     "event": "NetAcad Riders International 2026",
     "year": "2026",
-    "scope": "APJC NetAcad Riders",
+    "scope": "APJC NetAcad Riders International",
     "result": "Silver Medal",
     "achievements": [],
     "organizers": [
@@ -642,7 +642,7 @@ export const competitionRecognitions: readonly CompetitionRecognition[] = [
   },
   {
     "slug": "icompex-2026",
-    "event": "iCompEx 2026",
+    "event": "iCompEx International 2026",
     "year": "2026",
     "scope": "Class D — ICT & Multimedia",
     "result": "Silver Medal",
