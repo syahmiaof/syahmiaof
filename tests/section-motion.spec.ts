@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const titles = ['about-title', 'selected-title', 'collaboration-title', 'future-title', 'lab-title', 'capability-title', 'intelligence-title', 'stack-title', 'credentials-title', 'awards-title', 'contact-title'];
+const titles = ['work-title', 'greetly-title', 'about-title', 'selected-title', 'collaboration-title', 'future-title', 'lab-title', 'capability-title', 'intelligence-title', 'stack-title', 'credentials-title', 'awards-title', 'contact-title'];
 async function place(page: Page, id: string, viewportY: number) {
   await page.locator(`#${id}`).evaluate((element, y) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - y, behavior: 'instant' }), viewportY);
 }

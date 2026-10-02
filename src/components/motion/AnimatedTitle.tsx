@@ -18,7 +18,7 @@ function refreshTitles() {
   });
 }
 
-export type TitleAnimation = 'editorial' | 'opposing' | 'wave' | 'terminal' | 'hinge' | 'depth' | 'continuation' | 'recognition' | 'converge' | 'stack';
+export type TitleAnimation = 'editorial' | 'opposing' | 'wave' | 'terminal' | 'hinge' | 'depth' | 'continuation' | 'recognition' | 'converge' | 'stack' | 'chapter';
 interface AnimatedTitleProps extends HTMLAttributes<HTMLHeadingElement> {
   animation: TitleAnimation;
   as?: 'h1' | 'h2' | 'h3';
@@ -31,6 +31,7 @@ function poses(variant: TitleAnimation, small: boolean) {
   let stagger = .09;
   let duration = small ? .6 : .85;
   switch (variant) {
+    case 'chapter': Object.assign(from, { yPercent: 110, rotationX: -16, transformPerspective: 1000, transformOrigin: '50% 100%' }); Object.assign(exit, { yPercent: -105, y: 0, rotationX: 8 }); duration = small ? 1 : 1.3; stagger = .16; break;
     case 'stack': Object.assign(from, { yPercent: 105, x: (i: number) => (i % 2 ? 30 : -30) * distance }); Object.assign(exit, { yPercent: -105, x: (i: number) => (i % 2 ? -18 : 18) * distance, y: 0 }); duration = small ? .85 : 1.1; stagger = .18; break;
     case 'editorial': Object.assign(from, { yPercent: 105 }); Object.assign(exit, { yPercent: -105, y: 0 }); break;
     case 'opposing': Object.assign(from, { x: (i: number) => (i % 2 ? 28 : -28) * distance }); Object.assign(exit, { x: (i: number) => (i % 2 ? 12 : -12) * distance, y: 0 }); break;
@@ -60,7 +61,7 @@ export function AnimatedTitle({ animation, as: Tag = 'h2', children, ...props }:
     const split = SplitText.create(heading, {
       type: animation === 'wave' ? 'lines,words' : 'lines',
       autoSplit: true,
-      mask: animation === 'editorial' || animation === 'stack' ? 'lines' : undefined,
+      mask: animation === 'editorial' || animation === 'stack' || animation === 'chapter' ? 'lines' : undefined,
       linesClass: 'motion-title-line',
       wordsClass: 'motion-title-word',
       onRevert: () => { controller?.kill(); },
@@ -85,7 +86,7 @@ export function AnimatedTitle({ animation, as: Tag = 'h2', children, ...props }:
         ScrollTrigger.create({
           id: `title-${heading.id || animation}`,
           trigger: heading, animation: timeline,
-          start: 'top 88%', end: 'bottom top+=100',
+          start: animation === 'chapter' ? 'top 80%' : 'top 88%', end: 'bottom top+=100',
           toggleActions: 'none none none none',
           refreshPriority: -1,
           onEnter: () => move('read'), onLeave: () => move('out'),

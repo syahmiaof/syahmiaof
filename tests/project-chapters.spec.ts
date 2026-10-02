@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 test('project categories contain real work and precede collaboration', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#work');
-  await expect(page.getByRole('heading', { name: 'Active projects.', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'My active project', exact: true })).toBeVisible();
   expect(await page.locator('#work, #ongoing, #collaboration, #lab').evaluateAll(nodes => nodes.map(node => node.id))).toEqual(['work', 'ongoing', 'collaboration', 'lab']);
   await expect(page.locator('#work #greetly, #work #selected')).toHaveCount(2);
   await expect(page.locator('#ongoing article')).toHaveCount(2);
@@ -16,7 +16,10 @@ test('project categories contain real work and precede collaboration', async ({ 
   await expect(page.locator('#cerviscan-ai details')).toHaveAttribute('open', '');
   await expect(page.locator('#cerviscan-ai')).toContainText('mock data');
   await expect(page.locator('#cerviscan-ai')).toContainText('not a clinically validated');
-  await expect(page.locator('#cerviscan-ai a')).toHaveAttribute('href', 'https://cervi-scan-ai.vercel.app/');
+  await expect(page.locator('#cerviscan-ai').getByRole('link', { name: 'Explore the dashboard prototype', exact: true })).toHaveAttribute('href', 'https://cerviscan-ai.syahmiaof.my/');
+  await expect(page.locator('#cerviscan-ai').getByRole('link', { name: 'View source', exact: true })).toHaveAttribute('href', 'https://github.com/syahmiaof/CerviScan-AI');
+  await page.locator('#cerviscan-ai img').scrollIntoViewIfNeeded();
+  await expect.poll(() => page.locator('#cerviscan-ai img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   await page.locator('#gayongx summary').click();
   await expect(page.locator('#gayongx')).toContainText('full ecosystem has not launched');
   await expect(page.locator('.project-aduan-preview .project-image')).toHaveAttribute('href', 'https://sistem-aduan-asrama-ikm.web.app/');
@@ -25,27 +28,40 @@ test('project categories contain real work and precede collaboration', async ({ 
   for (const link of await page.locator('#ongoing a[target], .project-aduan-preview a[target]').all()) await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
 });
 
-test('active chapter assembles, holds, exits and reverses without hiding its links', async ({ page }) => {
+test('minimal chapter and Greetly reveal, hold, exit, reverse and respond to hover', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/#work');
   await page.evaluate(() => document.fonts.ready);
-  const header = page.locator('.project-chapter-intro');
-  const place = async (y: number) => header.evaluate((el, top) => window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - top, behavior: 'instant' }), y);
-  await place(180);
-  await expect.poll(() => page.locator('.chapter-word').evaluateAll(nodes => nodes.every(node => Number(getComputedStyle(node).opacity) > .99))).toBe(true);
-  await expect(page.getByRole('link', { name: 'Start with Greetly' })).toBeVisible();
-  await header.evaluate(el => window.scrollTo({ top: el.getBoundingClientRect().bottom + scrollY, behavior: 'instant' }));
-  await expect.poll(() => page.locator('.chapter-word').evaluateAll(nodes => nodes.every(node => Number(getComputedStyle(node).opacity) < .01))).toBe(true);
-  await place(180);
-  await expect.poll(() => page.locator('.chapter-word').evaluateAll(nodes => nodes.every(node => Number(getComputedStyle(node).opacity) > .99))).toBe(true);
+  await expect(page.locator('.project-chapter-intro p, .project-chapter-intro svg, .project-chapter-intro a')).toHaveCount(0);
+  for (const id of ['work-title', 'greetly-title']) {
+    const heading = page.locator(`#${id}`);
+    const lines = heading.locator('.motion-title-line');
+    await lines.first().waitFor({ state: 'attached' });
+    const place = (y: number) => heading.evaluate((el, top) => window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - top, behavior: 'instant' }), y);
+    await place(1200);
+    await expect.poll(() => lines.evaluateAll(nodes => nodes.every(node => Number(getComputedStyle(node).opacity) < .01))).toBe(true);
+    await place(450);
+    await expect.poll(() => lines.evaluateAll(nodes => nodes.some(node => { const o = Number(getComputedStyle(node).opacity); return o > .01 && o < .98; })), { intervals: [30, 50, 80] }).toBe(true);
+    await expect.poll(() => lines.evaluateAll(nodes => nodes.every(node => Number(getComputedStyle(node).opacity) > .99))).toBe(true);
+    await expect(heading).toHaveAttribute('data-pointer-effect', 'title');
+    const box = (await heading.boundingBox())!;
+    await page.mouse.move(box.x + box.width * .8, box.y + box.height * .5);
+    await page.mouse.move(box.x + box.width * .82, box.y + box.height * .5);
+    await expect(heading).toHaveCSS('color', 'rgb(99, 223, 176)');
+    await expect.poll(() => heading.evaluate(el => new DOMMatrix(getComputedStyle(el).transform).m41)).toBeGreaterThan(1);
+    await page.mouse.move(1, 1);
+    await place(-350);
+    await expect.poll(() => lines.evaluateAll(nodes => nodes.every(node => Number(getComputedStyle(node).opacity) < .01))).toBe(true);
+    await place(420);
+    await expect.poll(() => lines.evaluateAll(nodes => nodes.every(node => Number(getComputedStyle(node).opacity) > .99))).toBe(true);
+  }
   await page.getByRole('button', { name: 'Motion on', exact: true }).click();
-  await expect(page.locator('html')).toHaveAttribute('data-motion', 'reduced');
-  for (const word of await page.locator('.chapter-word').all()) await expect(word).toHaveCSS('opacity', '1');
-  await expect(page.locator('.chapter-circuit')).toHaveCSS('transform', 'none');
+  await expect(page.locator('.motion-title-line')).toHaveCount(0);
+  await expect(page.locator('[data-pointer-effect]')).toHaveCount(0);
+  await expect(page.locator('#work-title')).toHaveCSS('transform', 'none');
   expect(errors).toEqual([]);
 });
-
 for (const width of [320, 390, 1280, 1440]) test(`project chapter layout and keyboard at ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -54,7 +70,7 @@ for (const width of [320, 390, 1280, 1440]) test(`project chapter layout and key
   const chapterSize = await page.locator('#work-title').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
   const projectSize = await page.locator('#greetly-title').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
   expect(chapterSize).toBeGreaterThanOrEqual(projectSize);
-  await page.getByRole('link', { name: 'See ongoing projects' }).click();
+  await page.goto('/#ongoing');
   await expect(page).toHaveURL(/#ongoing$/);
   await page.locator('#gayongx summary').focus();
   await page.keyboard.press('Enter');

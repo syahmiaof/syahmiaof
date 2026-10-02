@@ -17,5 +17,13 @@
     "title": "Portal E-Aduan Asrama TVET MARA Besut",
     "captured": "2026-10-02",
     "asset": "public/images/sistem-aduan.webp"
+  },
+  {
+    "name": "cerviscan-dashboard",
+    "url": "https://cerviscan-ai.syahmiaof.my/",
+    "title": "CerviScan-AI prototype dashboard",
+    "captured": "2026-10-02",
+    "asset": "public/images/cerviscan-dashboard.webp",
+    "note": "Public demo UI; displayed metrics and certification labels are unverified. Capture excludes patient table."
   }
 ]

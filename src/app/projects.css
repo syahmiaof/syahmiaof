@@ -1,24 +1,11 @@
 .work-chapter { background: #101611; border-block: 1px solid var(--border-strong); }
-.project-chapter-intro { padding-bottom: 0; }
-.project-chapter-panel { display: grid; grid-template-columns: 1.2fr .8fr; gap: 64px; padding: clamp(24px, 4vw, 64px); border: 1px solid var(--border-strong); background: var(--bg-primary); }
-.chapter-heading h2 { font-size: clamp(54px, 7.4vw, 108px); line-height: .98; }
-.chapter-word { display: block; }
-.chapter-period { color: var(--signal-primary); }
-.chapter-heading > p { color: var(--fg-muted); font-size: 18px; margin-top: 28px; }
-.chapter-index { display: flex; flex-direction: column; justify-content: end; min-width: 0; }
-.chapter-circuit { width: 100%; max-width: 360px; margin-bottom: 32px; stroke: var(--signal-primary); stroke-width: 1; }
-.chapter-node { fill: var(--signal-deep); }
-.chapter-index > p { color: var(--fg-muted); margin-bottom: 16px; }
-.chapter-index nav { display: flex; flex-direction: column; }
-.chapter-index a { display: flex; justify-content: space-between; align-items: center; min-height: 48px; gap: 12px; border-top: 1px solid var(--border-subtle); font-size: 15px; }
-.chapter-index a:hover { color: var(--signal-primary); }
-.chapter-index a svg { flex-shrink: 0; }
+.project-chapter-intro { padding-block: clamp(80px, 12vh, 150px); }
+.project-chapter-intro h2 { font-size: clamp(72px, 10.5vw, 160px); line-height: .98; }
 .work-chapter .greetly-section { border: 0; background: transparent; }
 .work-chapter .greetly-intro { padding-top: 64px; }
 .work-chapter .section-heading-row { margin-bottom: 20px; }
 .work-chapter .section-heading-row .status { font-size: 11px; }
-.greetly-heading h3 { display: flex; gap: 24px; align-items: start; font-size: clamp(46px, 5.3vw, 76px); line-height: 1; }
-.greetly-heading h3 > svg { width: .4em; height: .4em; margin-top: .12em; }
+.greetly-heading h3 { font-size: clamp(46px, 5.3vw, 76px); line-height: 1; }
 .work-chapter .selected-section { border-top: 1px solid var(--border-strong); }
 .selected-section #selected-title { font-size: clamp(38px, 4vw, 60px); }
 .project-aduan-preview { align-items: center; }
@@ -27,6 +14,10 @@
 .ongoing-section { padding-block: 110px; }
 .ongoing-projects { border-top: 1px solid var(--border-strong); }
 .ongoing-project { display: grid; grid-template-columns: .85fr 1.15fr; gap: 10%; padding-block: 48px; border-bottom: 1px solid var(--border-subtle); }
+.ongoing-project { row-gap: 36px; }
+.ongoing-preview { grid-column: 1 / -1; min-width: 0; margin: 0; }
+.ongoing-preview .project-image img { aspect-ratio: 1440 / 740; object-fit: contain; }
+.ongoing-preview figcaption { margin-top: 14px; color: var(--fg-muted); font-size: 13px; }
 .ongoing-identity h3 { margin: 0 0 16px; font-size: clamp(32px, 3.5vw, 50px); }
 .ongoing-identity > .status-outline { display: inline-block; margin-bottom: 20px; }
 .ongoing-identity > p { color: var(--fg-muted); max-width: 32ch; }
@@ -45,13 +36,8 @@
 .ongoing-description .ongoing-availability { color: var(--fg-muted); font-size: 14px; padding-block: 12px; }
 .ongoing-section .text-link, .project-links .text-link { min-height: 44px; }
 .collaboration-section { background: var(--bg-secondary); border-block: 1px solid var(--border-strong); }
-@media (max-width: 1000px) { .project-chapter-panel { gap: 32px; grid-template-columns: 1.1fr .9fr; } }
 @media (max-width: 760px) {
-  .project-chapter-panel { grid-template-columns: 1fr; gap: 32px; }
-  .chapter-heading h2 { font-size: clamp(40px, 10vw, 66px); }
-  .chapter-heading > p { font-size: 16px; margin-top: 24px; }
-  .chapter-circuit { max-width: 210px; margin-bottom: 24px; }
-  .chapter-index a { font-size: 14px; }
+  .project-chapter-intro h2 { font-size: clamp(52px, 13vw, 96px); }
   .work-chapter .greetly-intro { padding-top: 48px; }
   .greetly-heading h3 { font-size: clamp(36px, 9vw, 54px); }
   .ongoing-section { padding-block: 70px; }

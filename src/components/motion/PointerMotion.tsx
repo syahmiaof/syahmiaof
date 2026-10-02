@@ -48,7 +48,7 @@ export function PointerMotion() {
         });
       };
       bind('.portrait, .project-image, .passport', 'surface');
-      bind('.hero h1, .journey-heading h3, .philosophy > p:first-of-type', 'title');
+      bind('.hero h1, [data-title-animation], .journey-heading h3, .philosophy > p:first-of-type', 'title');
       bind('.hero .primary-button, .contact-email, .project-caption .text-link', 'magnetic');
     });
     return () => { context.revert(); cleanups.forEach(cleanup => cleanup()); };

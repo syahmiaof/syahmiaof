@@ -22,11 +22,11 @@ export const projects: Project[] = [
 export const ongoingProjects: (Project & { stage: string; scope: readonly string[]; developmentNote: string })[] = [
   {
     slug: 'cerviscan-ai', title: 'CerviScan-AI', subtitle: 'Computer vision for cervical screening research.', status: 'in-development',
-    description: 'A team-built research prototype connecting a digital examination device with an AI-assisted cervical screening workspace. The goal is to support clinician review of cervical images.',
-    stack: ['React', 'TypeScript', 'Vite'], liveUrl: 'https://cervi-scan-ai.vercel.app/', featured: false,
-    stage: 'Team project · Dashboard prototype',
-    scope: ['Image capture', 'Computer vision', 'Clinician review'],
-    developmentNote: 'The current dashboard uses mock data. Wireless imaging, Python/OpenCV and YOLOv8 integration are development work described in the draft. This is a research prototype, not a clinically validated diagnostic device; demo metrics and certification labels are not verified claims.',
+    description: 'A team project for AI-assisted cervical screening research. I build the CMS dashboard and video-streaming application, integrating YOLOv8 to analyse cervical samples and support image review.',
+    stack: ['React', 'TypeScript', 'Vite', 'YOLOv8'], liveUrl: 'https://cerviscan-ai.syahmiaof.my/', github: 'https://github.com/syahmiaof/CerviScan-AI', image: '/images/cerviscan-dashboard.webp', featured: false,
+    stage: 'My role · CMS dashboard, video streaming & AI integration',
+    scope: ['CMS dashboard', 'Video streaming', 'YOLOv8 integration'],
+    developmentNote: 'Built with my team and still in development. The public dashboard uses mock data. This is a research prototype, not a clinically validated diagnostic device; demo metrics and certification labels are not verified claims.',
   },
   {
     slug: 'gayongx', title: 'GayongX', subtitle: 'A connected ecosystem for Silat Seni Gayong Perak.', status: 'in-development',
