@@ -128,10 +128,10 @@ test('project route has sourced technical details and deployment', async ({ page
   await expect(page.locator('#deployment')).toContainText('Cloudflare');
 });
 
-test('future projects and credentials do not imply verified achievements', async ({ page }) => {
+test('ongoing projects and credentials do not imply verified achievements', async ({ page }) => {
   await gotoHomepage(page);
-  await page.getByText('Cloudscope', { exact: true }).click();
-  await expect(page.locator('.future-row').first()).toContainText('NOT A SHIPPED PRODUCT');
+  await page.locator('#cerviscan-ai summary').click();
+  await expect(page.locator('#cerviscan-ai')).toContainText('not a clinically validated diagnostic device');
   await expect(page.locator('#credentials')).toContainText('Aspirational targets');
   await page.getByText('Next certification targets', { exact: true }).click();
   await expect(page.locator('.credential-targets')).toContainText('not earned credentials');

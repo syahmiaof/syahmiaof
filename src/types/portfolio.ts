@@ -1,4 +1,4 @@
-export type ProjectStatus = 'active' | 'experiment' | 'planned' | 'concept';
+export type ProjectStatus = 'active' | 'in-development' | 'experiment';
 export type Project = {
   slug: string; title: string; subtitle: string; status: ProjectStatus;
   description: string; stack: string[]; github?: string; liveUrl?: string;

@@ -128,8 +128,6 @@ small { font-size: 12px; }
 .greetly-intro { padding-bottom: 50px; }
 .section-heading-row { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
 .greetly-heading { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
-.greetly-heading h2 { font-size: clamp(66px, 12.8vw, 185px); line-height: .85; letter-spacing: -.04em; }
-.greetly-heading h2 span { font-size: .2em; vertical-align: top; display: inline-block; padding: .1em 0 0 .3em; font-weight: 400; }
 .greetly-heading > p { color: var(--fg-muted); font-size: 17px; line-height: 1.5; padding-bottom: 4px; }
 .greetly-cover { position: relative; overflow: hidden; background: #0a1010; }
 .greetly-cover img { width: 100%; aspect-ratio: 2.2; object-fit: cover; }
@@ -193,19 +191,7 @@ summary { cursor: pointer; }
 .aduan-workflow > div span { font: 9px var(--font-mono); color: var(--signal-primary); }
 .aduan-workflow i { flex: 1; height: 1px; background: var(--border-strong); min-width: 15px; margin-top: 23px; }
 .aduan-workflow p { width: 100%; text-align: right; font-size: 9px; margin-top: 40px; }
-.future-section { padding-top: 40px; }
-.future-row { border-top: 1px solid var(--border-subtle); }
-.future-row:last-child { border-bottom: 1px solid var(--border-subtle); }
-.future-row summary { list-style: none; display: grid; grid-template-columns: 45px 1fr 1fr 90px 20px; align-items: center; gap: 20px; padding: 30px 0; }
-.future-row summary::-webkit-details-marker { display: none; }
-.future-index { font-size: 9px; color: var(--fg-dim); }
-.future-row h3 { font-size: clamp(26px, 3vw, 42px); }
-.future-subtitle { font-size: 13px; color: var(--fg-muted); }
 .expand-sign { font-size: 24px; font-weight: 300; color: var(--fg-muted); transition: transform .2s; }
-.future-row[open] .expand-sign { transform: rotate(45deg); }
-.future-description { margin: 0 0 28px 65px; max-width: 620px; }
-.future-description p { color: var(--fg-muted); font-size: 14px; margin-bottom: 15px; }
-.future-description .mono { font-size: 9px; }
 .lab-section { background: var(--bg-secondary); border-block: 1px solid var(--border-subtle); }
 .lab-heading { display: flex; gap: 50px; justify-content: space-between; align-items: flex-end; margin-bottom: 65px; }
 .lab-heading h2 { font-size: clamp(82px, 12vw, 165px); line-height: .85; }

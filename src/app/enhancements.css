@@ -32,7 +32,6 @@
 .award-list a { display: flex; align-items: center; gap: 8px; color: var(--signal-primary); }
 .interaction-hint { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--signal-primary); margin: 0 0 20px; }
 .interaction-hint svg { flex-shrink: 0; }
-.future-row summary:hover h3, .future-row summary:focus-visible h3 { color: var(--signal-primary); }
 .capability-node { cursor: pointer; }.capability-node:hover { border-color: var(--signal-primary); color: var(--signal-primary); }
 .hero-topline, .hero-discipline, .hero-bottom { font-size: 11px; }
 .hero-intro-detail, .about-facts dd { font-size: 14px; }
