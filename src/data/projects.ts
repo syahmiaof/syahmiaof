@@ -41,7 +41,23 @@ export const ongoingProjects: (Project & { stage: string; scope: readonly string
       { src: '/images/gayongx-portal.jpg', alt: 'Portal Anak Gayong member portal', caption: 'Member Portal · Personalized dashboard for member journey and digital belt tracking.' }
     ]
   },
-];
+    {
+      slug: 'gayongx-athlete-analytics', title: 'GayongX : Athlete Analytics', subtitle: 'Combat athlete intelligence for PSSGM Perak.', status: 'in-development',
+      description: 'A specialized analytics dashboard for tracking combat athlete performance, including readiness scores, body composition, training load, and recovery metrics.',
+      stack: ['Next.js', 'React', 'TypeScript'], featured: false, liveUrl: 'https://gxaa.syahmiaof.my', image: '/images/gayongx-athlete-analytics.png',
+      stage: 'Prototype · Data integration & visualization',
+      scope: ['Performance tracking', 'Health metrics', 'Training schedules'],
+      developmentNote: 'The dashboard prototype is functional but currently uses demo data. Integration with actual training sensors and member databases is planned for the next phase.'
+    },
+    {
+      slug: 'gamegayongx-warisan', title: 'Game GayongX : Warisan', subtitle: 'Sebuah kisah tentang amanah.', status: 'in-development',
+      description: 'A web-based interactive dramatization exploring the history and heritage of Silat Seni Gayong. Features keyboard and touch controls, taking players back to Pulau Sudong, 1942.',
+      stack: ['Next.js', 'React', 'TypeScript'], featured: false, liveUrl: 'https://gamegayongx-warisan.syahmiaof.my', image: '/images/game-gayongx-warisan.png',
+      stage: 'Early development · Chapter 1 demo',
+      scope: ['Interactive storytelling', 'Historical dramatization', 'Game mechanics'],
+      developmentNote: 'Currently in early development. Chapter 1 serves as a proof of concept for the game engine and narrative direction.'
+    }
+  ];
 
 export const journey: JourneyStep[] = [
   { id: 'capture', name: 'Capture', component: 'Camera input', description: 'The Pi reads camera frames locally. The frame stays at the edge for the recognition step.' },
