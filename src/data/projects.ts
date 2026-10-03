@@ -29,7 +29,7 @@ export const ongoingProjects: (Project & { stage: string; scope: readonly string
     developmentNote: 'Built with my team and still in development. The public dashboard uses mock data. This is a research prototype, not a clinically validated diagnostic device; demo metrics and certification labels are not verified claims.',
   },
   {
-    slug: 'gayongx', title: 'GayongX', subtitle: 'A connected ecosystem for Silat Seni Gayong Perak.', status: 'in-development',
+    slug: 'gayongx', title: 'GayongX : Official Website , Portal User & CMS Admin', subtitle: 'A connected ecosystem for Silat Seni Gayong Perak.', status: 'in-development',
     description: 'Building a digital home for the association: member and gelanggang management, learning resources, and athlete development, connected through one ecosystem.',
     stack: ['Next.js', 'React', 'TypeScript'], featured: false, liveUrl: 'https://gayongx.syahmiaof.my',
     stage: 'Early development · Website & ecosystem design',
