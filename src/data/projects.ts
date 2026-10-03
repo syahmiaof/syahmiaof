@@ -56,8 +56,16 @@ export const ongoingProjects: (Project & { stage: string; scope: readonly string
       stage: 'Early development · Chapter 1 demo',
       scope: ['Interactive storytelling', 'Historical dramatization', 'Game mechanics'],
       developmentNote: 'Currently in early development. Chapter 1 serves as a proof of concept for the game engine and narrative direction.'
-    }
-  ];
+    },
+      {
+        slug: 'symi', title: 'SYMI', subtitle: 'Crafted Frozen Yogurt.', status: 'in-development',
+        description: 'A digital storefront and e-commerce experience for SYMI Crafted Frozen Yogurt, showcasing the flavor universe and driving daily swirl promotions.',
+        stack: ['Next.js', 'React', 'TypeScript'], featured: false, liveUrl: 'https://symi.syahmiaof.my', image: '/images/symi.png',
+        stage: 'Prototyping · UI/UX Design',
+        scope: ['E-commerce', 'Brand identity', 'Mobile-first design'],
+        developmentNote: 'Currently in the design and prototyping phase. The interface focuses on high-quality visuals and smooth interactions to represent the crafted frozen yogurt brand.'
+      }
+    ];
 
 export const journey: JourneyStep[] = [
   { id: 'capture', name: 'Capture', component: 'Camera input', description: 'The Pi reads camera frames locally. The frame stays at the edge for the recognition step.' },
