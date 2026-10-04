@@ -31,13 +31,10 @@ export const ongoingProjects: (Project & { stage: string; scope: readonly string
   {
     slug: 'gayongx', title: 'GayongX : Official Website , Portal User & CMS Admin', subtitle: 'A connected ecosystem for Silat Seni Gayong Perak.', status: 'in-development',
     description: 'Building a digital home for the association: member and gelanggang management, learning resources, and athlete development, connected through one ecosystem.',
-    stack: ['Next.js', 'React', 'TypeScript'], featured: false, liveUrl: 'https://gayongx.syahmiaof.my',
+    stack: ['Next.js', 'React', 'TypeScript'], featured: false, liveUrl: 'https://gayongx.syahmiaof.my', image: '/images/gayongx-website.jpg',
     stage: 'Early development · Website & ecosystem design',
     scope: ['Members & gelanggang', 'Learning & heritage', 'Athlete development'],
     developmentNote: 'An initial website is implemented. The broader draft covers membership and grading, attendance, events, learning, athlete analytics and a marketplace. These modules are under development; the full ecosystem has not launched.',
-    images: [
-      { src: '/images/gayongx-website.jpg', alt: 'Gayong Malaysia main website landing page', caption: 'Main Website · The digital home for PSSGM Perak.' },
-    ]
   },
     {
       slug: 'gayongx-athlete-analytics', title: 'GayongX : Athlete Analytics', subtitle: 'Combat athlete intelligence for PSSGM Perak.', status: 'in-development',
