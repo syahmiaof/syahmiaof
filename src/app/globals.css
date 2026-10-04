@@ -112,8 +112,7 @@ small { font-size: 12px; }
 .about-facts dt { font: 9px var(--font-mono); color: var(--fg-dim); }
 .about-facts dd { margin: 0; font-size: 12px; color: var(--fg-muted); }
 .portrait { position: relative; padding-top: 35px; }
-.portrait img { aspect-ratio: 3/4; object-fit: cover; object-position: 50% 15%; filter: grayscale(1); transition: filter .6s; width: 100%; }
-.portrait:hover img { filter: grayscale(0); }
+.portrait img { aspect-ratio: 3/4; object-fit: cover; object-position: 50% 15%; width: 100%; }
 .portrait figcaption { display: flex; justify-content: space-between; gap: 20px; padding-top: 18px; font: 9px var(--font-mono); color: var(--fg-muted); }
 .portrait-cross { position: absolute; top: 8px; right: 0; font-size: 18px; color: var(--signal-primary); }
 .philosophy { text-align: center; padding-top: 90px; padding-bottom: 110px; }
