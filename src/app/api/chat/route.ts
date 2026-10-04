@@ -1,47 +1,50 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenAI } from '@google/genai';
-import { profile } from '@/data/profile';
-import { projects, ongoingProjects } from '@/data/projects';
-import { capabilities } from '@/data/capabilities';
+import { generateSymiAnswer, SymiServiceError, type ChatTurn } from '@/lib/symi-server';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY });
-
-const systemPrompt = `You are Symi, the AI portfolio guide for Muhammad Syahmi (Syahmi Aof).
-You speak in a friendly, professional tone. If asked in Malay, you can reply in casual but polite Malay (like using 'Saya' or 'Symi' and 'Tuan Syahmi' or 'Syahmi').
-Do not hallucinate. Use the following facts about Syahmi:
-- Name: Muhammad Syahmi (Syahmi Aof)
-- Location: Malaysia
-- Role: Cloud Computing Student, aiming for Cloud/DevOps Engineer and AI Infrastructure.
-- Contact: ${profile.email}, WhatsApp: ${profile.whatsapp}
-- Resume: Can be requested via ${profile.resumeUrl}
-- Projects: ${projects.map(p => p.title).join(', ')}. Ongoing: ${ongoingProjects.map(p => p.title).join(', ')}.
-- Skills: ${capabilities.map(c => `${c.name} (${c.technologies.join(', ')})`).join('; ')}
-If someone asks about Greetly, it's his flagship edge-to-cloud project connecting a Raspberry Pi camera to Supabase and Next.js.
-If someone wants to hire or collaborate, direct them to his email or WhatsApp.
-Keep your answers concise, no more than 3 sentences if possible.`;
+export const runtime = 'nodejs';
+export const maxDuration = 40;
+// Best-effort per-instance protection; provider quotas remain the global budget limit.
+const requests = new Map<string, { count: number; expires: number }>();
 
 export async function POST(req: Request) {
+  const origin = req.headers.get('origin');
+  const requestHost = req.headers.get('host') || new URL(req.url).host;
+  if (origin) {
+    try {
+      if (new URL(origin).host !== requestHost) return NextResponse.json({ error: 'Request origin is not allowed.' }, { status: 403 });
+    } catch { return NextResponse.json({ error: 'Request origin is not allowed.' }, { status: 403 }); }
+  }
+  if (!req.headers.get('content-type')?.includes('application/json')) return NextResponse.json({ error: 'Send a JSON message.' }, { status: 415 });
+  if (Number(req.headers.get('content-length')) > 12_000) return NextResponse.json({ error: 'Message is too large.' }, { status: 413 });
+  let body: unknown;
   try {
-    if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
-      return NextResponse.json({ error: 'LLM API key not configured.' }, { status: 500 });
+    const raw = await req.text();
+    if (raw.length > 12_000) return NextResponse.json({ error: 'Message is too large.' }, { status: 413 });
+    body = JSON.parse(raw);
+  } catch { return NextResponse.json({ error: 'Invalid JSON message.' }, { status: 400 }); }
+  if (!body || typeof body !== 'object' || !('message' in body) || typeof body.message !== 'string' || !body.message.trim() || body.message.length > 500) {
+    return NextResponse.json({ error: 'Enter a question between 1 and 500 characters.' }, { status: 400 });
+  }
+  const history: ChatTurn[] = [];
+  if ('history' in body) {
+    if (!Array.isArray(body.history) || body.history.length > 6) return NextResponse.json({ error: 'Invalid conversation history.' }, { status: 400 });
+    for (const turn of body.history) {
+      if (!turn || !['user', 'assistant'].includes(turn.role) || typeof turn.text !== 'string' || turn.text.length > 1500) return NextResponse.json({ error: 'Invalid conversation history.' }, { status: 400 });
+      history.push({ role: turn.role, text: turn.text });
     }
-    const { message } = await req.json();
-    if (!message) {
-      return NextResponse.json({ error: 'Message is required' }, { status: 400 });
-    }
-
-    const response = await ai.models.generateContent({
-        model: 'gemini-3.8-flash',
-        contents: message,
-        config: {
-            systemInstruction: systemPrompt,
-            temperature: 0.7,
-        }
-    });
-
-    return NextResponse.json({ text: response.text });
-  } catch (error: any) {
-    console.error('Symi API Error:', error);
-    return NextResponse.json({ error: 'Failed to fetch response' }, { status: 500 });
+  }
+  const now = Date.now();
+  for (const [key, bucket] of requests) if (bucket.expires < now) requests.delete(key);
+  const ip = req.headers.get('x-vercel-forwarded-for')?.split(',')[0] || req.headers.get('x-forwarded-for')?.split(',')[0] || 'local';
+  const bucket = requests.get(ip) ?? { count: 0, expires: now + 60_000 };
+  if (bucket.count >= 12 || (requests.size >= 2000 && !requests.has(ip))) return NextResponse.json({ error: 'Too many questions at once. Please try again in a minute.' }, { status: 429, headers: { 'Retry-After': '60' } });
+  bucket.count++;
+  requests.set(ip, bucket);
+  try {
+    return NextResponse.json(await generateSymiAnswer(body.message.trim(), history), { headers: { 'Cache-Control': 'no-store' } });
+  } catch (error: unknown) {
+    const failure = error instanceof SymiServiceError ? error : new SymiServiceError('Symi is temporarily unavailable. Please try again.', 503);
+    console.error('Symi request failed', { status: failure.status });
+    return NextResponse.json({ error: failure.message }, { status: failure.status, headers: { 'Cache-Control': 'no-store' } });
   }
 }

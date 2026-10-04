@@ -15,7 +15,7 @@ test('contact links use supplied details and unpublished profiles remain honest'
     await expect(footer.getByRole('img', { name: `${name} profile coming soon` })).toHaveCount(1);
     await expect(footer.getByRole('link', { name, exact: true })).toHaveCount(0);
   }
-  await expect(page.locator('#awards')).toContainText('NetAcad Riders 2026');
+  await expect(page.locator('#awards')).toContainText('NetAcad Riders International 2026');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',  /^https:\/\/syahmiaof\.my\/?$/);
 });
 
@@ -32,13 +32,16 @@ test('Symi answers portfolio prompts, renders unknown input safely and returns f
   await expect(panel.getByRole('link', { name: 'WhatsApp Syahmi' })).toHaveAttribute('href', 'https://wa.me/60107965236');
   await panel.getByRole('button', { name: 'What does he work with?' }).click();
   await expect(panel).toContainText('Next.js, Python, OpenCV');
+  await page.route('**/api/chat', route => route.fulfill({ json: { text: 'I don’t have that information in my portfolio notes yet.', source: 'gemini' } }));
   await input.fill('<img src=x onerror=alert(1)>');
   await input.press('Enter');
   await expect(panel.locator('img')).toHaveCount(0);
   await expect(panel).toContainText('I don’t have that information');
+  await page.unroute('**/api/chat');
+  await page.route('**/api/chat', route => route.fulfill({ json: { text: 'Symi uses Gemini for AI questions.', source: 'gemini' } }));
   await input.fill('Are you connected to Gemini?');
   await input.press('Enter');
-  await expect(panel).toContainText('not connected to a live AI model');
+  await expect(panel).toContainText('Symi uses Gemini for AI questions.');
   await expect(input).toHaveAttribute('maxlength', '500');
   const audit = await new AxeBuilder({ page }).include('#symi-panel').withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
   expect(audit.violations.map(item => item.id)).toEqual([]);

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { ongoingProjects } from '../src/data/projects';
 import AxeBuilder from '@axe-core/playwright';
 
 test('project categories contain real work and precede collaboration', async ({ page }) => {
@@ -7,7 +8,7 @@ test('project categories contain real work and precede collaboration', async ({ 
   await expect(page.getByRole('heading', { name: 'My active project', exact: true })).toBeVisible();
   expect(await page.locator('#work, #ongoing, #collaboration, #lab').evaluateAll(nodes => nodes.map(node => node.id))).toEqual(['work', 'ongoing', 'collaboration', 'lab']);
   await expect(page.locator('#work #greetly, #work #selected')).toHaveCount(2);
-  await expect(page.locator('#ongoing article')).toHaveCount(2);
+  await expect(page.locator('#ongoing article')).toHaveCount(ongoingProjects.length);
   await expect(page.locator('#ongoing')).toContainText('CerviScan-AI');
   await expect(page.locator('#ongoing')).toContainText('GayongX');
   await expect(page.getByText(/Cloudscope|Deployflow|Nexus Agents|Edgewatch/)).toHaveCount(0);
@@ -22,7 +23,7 @@ test('project categories contain real work and precede collaboration', async ({ 
   await expect.poll(() => page.locator('#cerviscan-ai img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   await page.locator('#gayongx summary').click();
   await expect(page.locator('#gayongx')).toContainText('full ecosystem has not launched');
-  await expect(page.locator('.project-aduan-preview .project-image')).toHaveAttribute('href', 'https://sistem-aduan-asrama-ikm.web.app/');
+  await expect(page.locator('.project-aduan-preview .project-image')).toHaveAttribute('href', 'https://sistemaduanasrama.syahmiaof.my');
   await page.locator('.project-aduan-preview img').scrollIntoViewIfNeeded();
   await expect.poll(() => page.locator('.project-aduan-preview img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   for (const link of await page.locator('#ongoing a[target], .project-aduan-preview a[target]').all()) await expect(link).toHaveAttribute('rel', 'noopener noreferrer');

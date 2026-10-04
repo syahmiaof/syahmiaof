@@ -15,8 +15,10 @@ test('homepage has the complete narrative and healthy images', async ({ page }) 
     await page.locator(`#${id}`).scrollIntoViewIfNeeded();
     await expect(page.locator(`#${id}`)).toBeVisible();
   }
-  await page.evaluate(async () => { await Promise.all([...document.images].map(image => image.decode().catch(() => {}))); });
-  expect(await page.locator('main img').evaluateAll(images => images.every(image => (image as HTMLImageElement).naturalWidth > 0))).toBe(true);
+  for (const image of await page.locator('main img').all()) {
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+  }
   expect(errors).toEqual([]);
 });
 
@@ -116,7 +118,7 @@ test('quick view loads without WebGL and has usable contact links', async ({ pag
   await expect(page.locator('canvas')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Selected work' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Email me', exact: true })).toHaveAttribute('href', 'mailto:syahmiaof123@gmail.com');
-  await expect(page.getByRole('link', { name: 'Request resume' }).first()).toHaveAttribute('href', /mailto:.*subject=Resume/);
+  await expect(page.getByRole('link', { name: 'View CV (PDF)' })).toHaveAttribute('href', '/api/resume');
   expect(await page.evaluate(() => performance.getEntriesByType('resource').filter(item => /ComputeCanvas|three_core|three_module/.test(item.name)).length)).toBe(0);
 });
 
@@ -182,7 +184,7 @@ test('404 and public SEO endpoints work', async ({ page, request }) => {
   expect(response?.status()).toBe(404);
   await expect(page.getByRole('heading', { name: /doesn’t exist/ })).toBeVisible();
   expect((await request.get('/robots.txt')).ok()).toBe(true);
-  const image = await request.get('/opengraph-image');
+  const image = await request.get('/opengraph-image.jpg');
   expect(image.ok()).toBe(true);
-  expect(image.headers()['content-type']).toContain('image/png');
+  expect(image.headers()['content-type']).toContain('image/jpeg');
 });

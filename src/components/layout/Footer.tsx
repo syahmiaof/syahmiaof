@@ -12,7 +12,7 @@ export function Footer({ compact = false }: { compact?: boolean }) {
     </div>
     <div className="footer-connect"><div><h3>Elsewhere on the internet.</h3><div className="social-links" aria-label="Social profiles">
       {socials.map(social => social.href ? <a key={social.platform} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}><SocialIcon platform={social.platform} /><span>{social.label}</span></a> : <span key={social.platform} className="social-unavailable" role="img" aria-label={`${social.label} profile coming soon`} title={`${social.label} — profile coming soon`}><SocialIcon platform={social.platform} /><span>{social.label}</span></span>)}
-    </div>{socials.some(social => !social.href) && <p className="social-note">More profiles coming soon.</p>}</div><a href={profile.resumeUrl} className="footer-resume">Request resume<ArrowUpRight size={18} aria-hidden="true" /></a></div>
+    </div>{socials.some(social => !social.href) && <p className="social-note">More profiles coming soon.</p>}</div><a href={`${profile.resumeUrl}?download=1`} download="Muhammad-Syahmi-CV.pdf" className="footer-resume">Download CV<ArrowUpRight size={18} aria-hidden="true" /></a></div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Syahmi Aof</span><a href={profile.siteUrl}>syahmiaof.my</a><a href="#main" className="back-top">Back to top<ArrowUp size={16} aria-hidden="true" /></a></div>
   </footer>;
 }

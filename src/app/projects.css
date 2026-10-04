@@ -48,3 +48,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .ongoing-description summary svg { transition: none; } }
 html[data-motion="reduced"] .ongoing-description summary svg { transition: none; }
+
+.ongoing-gallery { grid-column: 1 / -1; min-width: 0; }
+.ongoing-gallery .ongoing-preview { margin-top: 0; }
+.ongoing-gallery .project-image img { aspect-ratio: auto; width: 100%; height: auto; }

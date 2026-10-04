@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowUpRight, Command, Menu, Search, X } from 'lucide-react';
+import { projects, ongoingProjects } from '@/data/projects';
 import { navigation, profile } from '@/data/profile';
 import { toggleMotion, useReducedMotion } from '@/hooks/useExperience';
 
@@ -39,12 +40,13 @@ export function Navigation() {
   }, [menu]);
   const commands = [
     { label: 'Open Greetly case study', detail: 'Project', href: '/projects/greetly' },
+    ...[...projects.filter(project => !project.featured), ...ongoingProjects].map(project => ({ label: `Open ${project.title}`, detail: 'Project', href: project.liveUrl || `/#${project.slug}` })),
     { label: 'Quick view', detail: 'Recruiter overview', href: '/quick' },
     { label: 'View GitHub', detail: 'Source code', href: profile.github },
     { label: 'Open Lab', detail: 'Experiments', href: '/#lab' },
     { label: 'Open tech stack', detail: 'Tools and platforms', href: '/#stack' },
     { label: 'View credentials', detail: 'Programs, courses & recognition', href: '/credentials' },
-    { label: 'Request resume', detail: 'Email', href: profile.resumeUrl },
+    { label: 'View CV (PDF)', detail: 'Resume', href: profile.resumeUrl },
     { label: 'Contact Syahmi', detail: 'Email', href: `mailto:${profile.email}` },
     { label: reduced ? 'Enable motion (unless system preference is reduced)' : 'Reduce motion', detail: 'Preference', action: toggleMotion },
   ].filter(command => `${command.label} ${command.detail}`.toLowerCase().includes(query.toLowerCase()));
@@ -52,8 +54,8 @@ export function Navigation() {
     const command = commands[index];
     if (!command) return;
     dialog.current?.close();
-    if (command.action) command.action();
-    else if (command.href) window.location.assign(command.href);
+    if ('action' in command) command.action();
+    else if ('href' in command) window.location.assign(command.href);
   };
   return <>
     <a href="#main" className="skip-link">Skip to content</a>

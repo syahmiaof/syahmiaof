@@ -5,7 +5,7 @@ export const profile = {
   phone: '010-796 5236', phoneInternational: '+60107965236',
   whatsapp: 'https://wa.me/60107965236', siteUrl: 'https://syahmiaof.my',
   description: 'I build systems across software, cloud infrastructure, automation and intelligent edge devices.',
-  resumeUrl: 'mailto:syahmiaof123@gmail.com?subject=Resume%20request',
+  resumeUrl: '/api/resume',
 };
 export type SocialPlatform = 'facebook' | 'tiktok' | 'instagram' | 'threads' | 'github' | 'linkedin';
 export const socials: { platform: SocialPlatform; label: string; href: string | null }[] = [
