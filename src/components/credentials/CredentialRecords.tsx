@@ -5,16 +5,16 @@ import { SafeImage } from '@/components/ui/SafeImage';
 
 function IssuerIcon({ issuer }: { issuer: string }) {
   if (issuer === 'Microsoft') {
-    return <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="issuer-icon" aria-hidden="true"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z"/></svg>;
+    return <svg role="img" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" width="14" height="14" className="issuer-icon" aria-hidden="true"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>;
   }
   if (issuer === 'Google') {
-    return <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="issuer-icon" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>;
+    return <svg role="img" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="14" height="14" className="issuer-icon" aria-hidden="true"><path fill="#4285F4" d="M47.5 24.5c0-1.7-.1-3.3-.4-4.8H24v9.1h13.2c-.6 3-2.3 5.5-4.9 7.2v6h7.9c4.6-4.3 7.3-10.6 7.3-17.5z"/><path fill="#34A853" d="M24 48c6.6 0 12.2-2.2 16.2-5.9l-7.9-6c-2.2 1.5-5 2.4-8.3 2.4-6.4 0-11.8-4.3-13.8-10.1H2.1v6.2C6.1 42.5 14.3 48 24 48z"/><path fill="#FBBC05" d="M10.2 28.4c-.5-1.5-.8-3.1-.8-4.7s.3-3.2.8-4.7V12.7H2.1C.8 15.2 0 18.1 0 21.2s.8 6 2.1 8.5l8.1-6.3z"/><path fill="#EA4335" d="M24 9.5c3.6 0 6.8 1.2 9.4 3.7l7-7C36.2 2.4 30.6 0 24 0 14.3 0 6.1 5.5 2.1 13.4l8.1 6.3c2-5.8 7.4-10.2 13.8-10.2z"/></svg>;
   }
   if (issuer.includes('AWS') || issuer === 'Amazon Web Services') {
-    return <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="issuer-icon" aria-hidden="true"><path d="M23.109 15.654C20.354 18.232 16.32 19.8 11.956 19.8c-4.499 0-8.643-1.66-11.455-4.364L2.096 17c2.616 2.502 6.467 4.015 10.604 4.015 4.024 0 7.753-1.442 10.409-3.842l.024-3.52zM21.579 12.285l-4.148-3.072 1.341 4.707 2.807-1.635z"/></svg>;
+    return <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" className="issuer-icon" aria-hidden="true"><path fill="#FF9900" d="M23.109 15.654C20.354 18.232 16.32 19.8 11.956 19.8c-4.499 0-8.643-1.66-11.455-4.364L2.096 17c2.616 2.502 6.467 4.015 10.604 4.015 4.024 0 7.753-1.442 10.409-3.842l.024-3.52z"/><path fill="#FF9900" d="M21.579 12.285l-4.148-3.072 1.341 4.707 2.807-1.635z"/></svg>;
   }
   if (issuer === 'Whizlabs') {
-    return <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="issuer-icon" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>;
+    return <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="#F15A24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="issuer-icon" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>;
   }
   return null;
 }
