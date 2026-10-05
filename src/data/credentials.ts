@@ -695,7 +695,81 @@ export const credentials: readonly Credential[] = [
     "category": "completion",
     "skills": [],
     "evidenceLevel": "certificate-only",
-    "parentSlug": "aws-cloud-solutions-architect"
+  },
+  {
+    "slug": "microsoft-ai-agents",
+    "title": "Microsoft AI Agents: From Foundations to Applications",
+    "issuer": "Microsoft",
+    "provider": "Coursera",
+    "kind": "professional-certificate",
+    "issuedAt": "2026-10-05",
+    "verificationUrl": "https://coursera.org/verify/professional-cert/W6RMJ39T1GQ5",
+    "featured": true,
+    "category": "program",
+    "skills": [
+      "Azure AI Foundry",
+      "Agentic workflows",
+      "Semantic Kernel",
+      "Multi-agent systems"
+    ],
+    "summary": "Design and deploy multi-agent systems using Azure AI Foundry, Semantic Kernel and AutoGen frameworks.",
+    "evidenceLevel": "certificate-only"
+  },
+  {
+    "slug": "ai-agent-fundamentals-azure",
+    "title": "AI agent fundamentals with Azure AI Foundry",
+    "issuer": "Microsoft",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-05",
+    "verificationUrl": "https://coursera.org/verify/2MBRYL9JRNWV",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "microsoft-ai-agents"
+  },
+  {
+    "slug": "building-intelligent-agent-workflows",
+    "title": "Building intelligent agent workflows",
+    "issuer": "Microsoft",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-05",
+    "verificationUrl": "https://coursera.org/verify/45GY4WQGUHJJ",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "microsoft-ai-agents"
+  },
+  {
+    "slug": "code-framework-based-agent-development",
+    "title": "Code- and framework-based agent development",
+    "issuer": "Microsoft",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-05",
+    "verificationUrl": "https://coursera.org/verify/VSVAII9M715L",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "microsoft-ai-agents"
+  },
+  {
+    "slug": "building-multi-agent-systems",
+    "title": "Building multi-agent systems",
+    "issuer": "Microsoft",
+    "provider": "Coursera",
+    "kind": "course",
+    "issuedAt": "2026-10-05",
+    "verificationUrl": "https://coursera.org/verify/X78Q68FYMDQS",
+    "featured": false,
+    "category": "completion",
+    "skills": [],
+    "evidenceLevel": "certificate-only",
+    "parentSlug": "microsoft-ai-agents"
   }
 ];
 
