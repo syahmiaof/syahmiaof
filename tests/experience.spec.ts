@@ -34,9 +34,9 @@ test('experience can be found from About and command search', async ({ page }) =
   await page.goto('/#about');
   await page.getByRole('link', { name: 'Explore my experience' }).click();
   await expect(page).toHaveURL(/\/experience$/);
-  await page.getByRole('button', { name: 'Open command palette' }).click();
-  await page.getByRole('textbox', { name: 'Search commands' }).fill('experience');
-  await page.getByRole('textbox', { name: 'Search commands' }).press('Enter');
+  await page.getByRole('button', { name: 'Search this portfolio' }).click();
+  await page.getByRole('textbox', { name: 'Search this portfolio' }).fill('experience');
+  await page.getByRole('textbox', { name: 'Search this portfolio' }).press('Enter');
   await expect(page).toHaveURL(/\/experience$/);
   await expect(page.getByRole('dialog')).not.toBeVisible();
 });

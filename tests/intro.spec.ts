@@ -21,8 +21,8 @@ test('skip releases focus immediately and cancelled timers cannot reopen intro',
   await expect(page.locator('#main')).toBeFocused();
   await page.waitForTimeout(3600);
   await expect(page.locator('.network-intro')).toHaveCount(0);
-  await page.getByRole('button', { name: 'Open command palette' }).click();
-  await expect(page.getByRole('textbox', { name: 'Search commands' })).toBeVisible();
+  await page.getByRole('button', { name: 'Search this portfolio' }).click();
+  await expect(page.getByRole('textbox', { name: 'Search this portfolio' })).toBeVisible();
 });
 
 test('hero and outgoing network overlap during a gradual reveal', async ({ page }) => {

@@ -37,16 +37,16 @@ for (const width of [360, 390, 768, 1280, 1920]) {
 
 test('command palette filters, supports arrows, closes with Escape and returns focus', async ({ page }) => {
   await gotoHomepage(page);
-  await page.getByRole('button', { name: 'Open command palette' }).click();
+  await page.getByRole('button', { name: 'Search this portfolio' }).click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
-  await page.getByRole('textbox', { name: 'Search commands' }).fill('greetly');
+  await page.getByRole('textbox', { name: 'Search this portfolio' }).fill('greetly');
   await expect(dialog.getByRole('button', { name: /Open Greetly/ })).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).not.toBeVisible();
-  await expect(page.getByRole('button', { name: 'Open command palette' })).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Search this portfolio' })).toBeFocused();
   await page.keyboard.press('Control+k');
-  await page.getByRole('textbox', { name: 'Search commands' }).fill('quick');
+  await page.getByRole('textbox', { name: 'Search this portfolio' }).fill('quick');
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL('/quick');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Muhammad');
@@ -55,8 +55,8 @@ test('command palette filters, supports arrows, closes with Escape and returns f
 test('palette shows an honest empty state and traps focus', async ({ page }) => {
   await gotoHomepage(page);
   await page.keyboard.press('Control+k');
-  await page.getByRole('textbox', { name: 'Search commands' }).fill('unfindablexyz');
-  await expect(page.getByText('No matching commands.')).toBeVisible();
+  await page.getByRole('textbox', { name: 'Search this portfolio' }).fill('unfindablexyz');
+  await expect(page.getByText('No matching results.')).toBeVisible();
   for(let i=0;i<8;i++) await page.keyboard.press('Tab');
   expect(await page.evaluate(() => document.querySelector('dialog')?.contains(document.activeElement))).toBe(true);
 });
