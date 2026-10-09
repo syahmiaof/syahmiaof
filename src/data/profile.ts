@@ -1,5 +1,4 @@
-// Keep the working address until the owner verifies a replacement mailbox.
-export const contactConfig = { email: 'syahmiaof123@gmail.com', preferredDomainEmail: 'hello@syahmiaof.my', domainEmailVerified: false };
+export const contactConfig = { email: 'hello@syahmiaof.my' } as const;
 export const profile = {
   name: 'Muhammad Syahmi', displayName: 'SYAHMI AOF',
   role: 'Cloud Computing Student', location: 'Malaysia',

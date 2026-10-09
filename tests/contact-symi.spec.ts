@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 test('contact links use supplied details and unpublished profiles remain honest', async ({ page }) => {
   await page.goto('/');
   const footer = page.locator('#contact');
-  await expect(footer.getByRole('link', { name: /Email me/ })).toHaveAttribute('href', 'mailto:syahmiaof123@gmail.com');
+  await expect(footer.getByRole('link', { name: /Email me/ })).toHaveAttribute('href', 'mailto:hello@syahmiaof.my');
   await expect(footer.getByRole('link', { name: /talk on WhatsApp/ })).toHaveAttribute('href', 'https://wa.me/60107965236');
   await expect(footer.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/syahmiaof');
   for (const name of ['Facebook', 'TikTok', 'Instagram', 'Threads', 'LinkedIn']) {

@@ -69,7 +69,7 @@ test('contact copy succeeds and the CV endpoint returns an actual PDF', async ({
   await page.goto('/quick');
   await page.getByRole('button', { name: 'Copy email', exact: true }).click();
   await expect(page.locator('.copy-email [role="status"]')).toHaveText('Copied');
-  await expect(page.locator('html')).toHaveAttribute('data-copied-email', 'syahmiaof123@gmail.com');
+  await expect(page.locator('html')).toHaveAttribute('data-copied-email', 'hello@syahmiaof.my');
   const response = await request.get('/api/resume');
   expect(response.status()).toBe(200);
   expect(response.headers()['content-type']).toContain('application/pdf');

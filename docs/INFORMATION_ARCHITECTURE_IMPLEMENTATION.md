@@ -36,7 +36,7 @@ Heading: Certificates & Specializations. Counts derive from current data: six pr
 
 ## CONTACT
 
-Gmail, WhatsApp and GitHub remain live links. Copy email provides accessible success/failure feedback. CV endpoint produces an actual PDF with preview/download responses. Missing social profiles are omitted. `hello@syahmiaof.my`: **REQUIRES SETUP**; no mailbox or delivery verification performed. LinkedIn URL remains unconfigured.
+The verified domain email, WhatsApp and GitHub remain live links. Copy email provides accessible success/failure feedback. CV endpoint produces an actual PDF with preview/download responses. Missing social profiles are omitted. `hello@syahmiaof.my` is the canonical public address; inbound forwarding and outbound delivery were verified by the owner. LinkedIn URL remains unconfigured.
 
 ## LINKEDIN
 

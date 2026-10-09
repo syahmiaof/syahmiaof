@@ -118,7 +118,7 @@ test('quick view loads without WebGL and has usable contact links', async ({ pag
   await page.goto('/quick');
   await expect(page.locator('canvas')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Selected projects' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Email me', exact: true })).toHaveAttribute('href', 'mailto:syahmiaof123@gmail.com');
+  await expect(page.getByRole('link', { name: 'Email me', exact: true })).toHaveAttribute('href', 'mailto:hello@syahmiaof.my');
   await expect(page.getByRole('link', { name: 'View CV (PDF)' })).toHaveAttribute('href', '/api/resume');
   expect(await page.evaluate(() => performance.getEntriesByType('resource').filter(item => /ComputeCanvas|three_core|three_module/.test(item.name)).length)).toBe(0);
 });
