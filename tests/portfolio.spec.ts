@@ -11,7 +11,7 @@ test('homepage has the complete narrative and healthy images', async ({ page }) 
   page.on('pageerror', error => errors.push(error.message));
   await gotoHomepage(page);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('SYAHMI');
-  for (const id of ['about', 'work', 'selected', 'lab', 'capabilities', 'intelligence', 'credentials', 'contact']) {
+  for (const id of ['about', 'work', 'selected', 'ongoing', 'skills', 'experience', 'credentials', 'contact']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded();
     await expect(page.locator(`#${id}`)).toBeVisible();
   }
@@ -28,7 +28,7 @@ for (const width of [360, 390, 768, 1280, 1920]) {
     await gotoHomepage(page);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
-    for (const id of ['work', 'selected', 'capabilities', 'credentials', 'contact']) {
+    for (const id of ['work', 'selected', 'skills', 'credentials', 'contact']) {
       await page.locator(`#${id}`).scrollIntoViewIfNeeded();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
     }
@@ -66,10 +66,10 @@ test('mobile menu opens, navigates and closes', async ({ page }) => {
   await gotoHomepage(page);
   await page.getByRole('button', { name: 'Open navigation' }).click();
   await expect(page.getByRole('navigation', { name: 'Mobile navigation' })).toBeVisible();
-  await page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link', { name: 'Work', exact: true }).click();
+  await page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link', { name: 'Projects', exact: true }).click();
   await expect(page).toHaveURL('/#work');
   await expect(page.getByRole('navigation', { name: 'Mobile navigation' })).toHaveCount(0);
-  await expect(page.locator('#greetly-title')).toBeInViewport();
+  await expect(page.locator('#work-title')).toBeInViewport();
 });
 
 test('architecture nodes work by keyboard and have a full text transcript', async ({ page }) => {
@@ -85,10 +85,11 @@ test('architecture nodes work by keyboard and have a full text transcript', asyn
 });
 
 test('capability and AI pattern tabs switch actual content', async ({ page }) => {
-  await gotoHomepage(page);
+  await page.goto('/skills');
   await page.getByRole('tab', { name: 'AI systems', exact: true }).click();
   await expect(page.locator('#capability-panel')).toContainText('exploring');
   await expect(page.locator('#capability-panel')).toContainText('MCP');
+  await page.goto('/lab');
   await page.getByRole('tab', { name: 'Retrieval / RAG' }).click();
   await expect(page.locator('#ai-panel')).toContainText('Embeddings');
   await page.keyboard.press('ArrowRight');
@@ -116,7 +117,7 @@ test('motion toggle persists across navigation', async ({ page }) => {
 test('quick view loads without WebGL and has usable contact links', async ({ page }) => {
   await page.goto('/quick');
   await expect(page.locator('canvas')).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'Selected work' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Selected projects' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Email me', exact: true })).toHaveAttribute('href', 'mailto:syahmiaof123@gmail.com');
   await expect(page.getByRole('link', { name: 'View CV (PDF)' })).toHaveAttribute('href', '/api/resume');
   expect(await page.evaluate(() => performance.getEntriesByType('resource').filter(item => /ComputeCanvas|three_core|three_module/.test(item.name)).length)).toBe(0);
@@ -131,10 +132,10 @@ test('project route has sourced technical details and deployment', async ({ page
 });
 
 test('ongoing projects and credentials do not imply verified achievements', async ({ page }) => {
-  await gotoHomepage(page);
+  await page.goto('/projects');
   await page.locator('#cerviscan-ai summary').click();
   await expect(page.locator('#cerviscan-ai')).toContainText('not a clinically validated diagnostic device');
-  await expect(page.locator('#credentials')).toContainText('Aspirational targets');
+  await page.goto('/credentials');
   await page.getByText('Next certification targets', { exact: true }).click();
   await expect(page.locator('.credential-targets')).toContainText('not earned credentials');
 });
@@ -166,7 +167,7 @@ test('WebGL unavailable retains the topology and readable content', async ({ pag
   await gotoHomepage(page);
   await expect(page.locator('.hero .topology-fallback').first()).toBeVisible();
   await expect(page.getByRole('heading', { level: 1 })).toContainText('SYAHMI');
-  await page.getByRole('link', { name: 'Quick view', exact: true }).click();
+  await page.getByRole('link', { name: 'Recruiter? View the 30-second overview', exact: true }).click();
   await expect(page).toHaveURL('/quick');
 });
 

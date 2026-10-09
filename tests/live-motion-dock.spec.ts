@@ -4,7 +4,7 @@ test('mindmap signals run only in view, react to selection and respect reduced m
   await page.goto('/#capabilities');
   const map = page.locator('.capability-signals');
   await expect(map).toHaveAttribute('data-reduced', 'false');
-  await page.locator('.journey[data-cinematic="true"]').waitFor();
+
   await page.evaluate(() => document.fonts.ready);
   // Earlier pinned sections settle after hydration and can shift the hash target.
   await expect(async () => {

@@ -1,0 +1,86 @@
+/* Information hierarchy, extending the existing graphite / emerald system. */
+.page-index { display:flex; flex-wrap:wrap; gap:8px 28px; padding:16px 0; border-block:1px solid var(--border-subtle); margin-top:32px; }
+.page-index a { display:inline-flex; align-items:center; min-height:44px; color:var(--fg-muted); font-size:14px; }
+.page-index a:hover { color:var(--signal-primary); }
+.project-jump { padding-inline:var(--gutter); max-width:var(--content-max); margin-inline:auto; }
+.detail-header { padding-bottom:30px; }
+.detail-header h1, .road-heading h1, .credential-page-hero h1 { font-size:clamp(42px,5.5vw,80px); line-height:1.05; letter-spacing:-.045em; }
+.detail-header h1 > span { color:var(--signal-primary); }
+.detail-header > p { margin-top:28px; max-width:690px; font-size:19px; line-height:1.6; color:var(--fg-muted); }
+.summary-section { border-top:1px solid var(--border-subtle); }
+.summary-rows article { display:grid; grid-template-columns:1fr 1fr auto; gap:32px; align-items:center; padding:28px 0; border-top:1px solid var(--border-subtle); }
+.summary-rows h3 { font-size:clamp(24px,2.4vw,32px); margin-bottom:12px; }
+.summary-rows p { color:var(--fg-muted); line-height:1.6; }
+.focus-columns { display:grid; grid-template-columns:1fr 1fr; gap:10%; }
+.focus-columns h3 { font-size:28px; margin-bottom:18px; }
+.focus-columns p { color:var(--fg-muted); font-size:17px; line-height:1.7; max-width:520px; }
+.preview-lead { font-size:23px; line-height:1.5; max-width:780px; }
+.preview-proof { margin-top:30px; color:var(--fg-muted); line-height:1.7; }
+.preview-proof strong { color:var(--signal-primary); }
+.preview-credentials { list-style:none; padding:0; }
+.preview-credentials li { padding:24px 0; border-top:1px solid var(--border-subtle); }
+.preview-credentials h3 { font-size:24px; }
+.preview-credentials p { color:var(--fg-muted); margin-top:10px; }
+.hero-recruiter { display:flex; align-items:center; gap:12px; margin-top:20px; font-size:14px; width:fit-content; min-height:44px; }
+.hero-recruiter:hover { color:var(--signal-primary); }
+.hero-intro-detail small { display:block; font-size:11px; margin-top:10px; }
+.desktop-nav { gap:clamp(15px,1.8vw,28px); margin-left:20px; }
+.nav-cv { border:1px solid var(--border-subtle); padding:12px 16px; min-height:44px; }
+.mobile-nav a[aria-current] { color:var(--signal-primary); text-decoration:underline; text-underline-offset:8px; }
+.project-feature { display:grid; grid-template-columns:1fr 1fr; gap:8%; border-block:1px solid var(--border-subtle); align-items:center; }
+.project-feature h2 { font-size:clamp(40px,5vw,64px); margin:24px 0; }
+.project-feature p { color:var(--fg-muted); line-height:1.7; margin-bottom:26px; }
+.project-feature .text-link { margin:12px 20px 12px 0; }
+.project-feature img { width:100%; height:auto; }
+.pilot-details { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:48px; }
+.pilot-details h3 { font-size:26px; margin-bottom:16px; }
+.pilot-details p { color:var(--fg-muted); line-height:1.7; }
+.pilot-intro { font-size:21px; line-height:1.6; max-width:750px; margin-bottom:28px; }
+.skill-depth + .skill-depth { margin-top:100px; }
+.skill-depth > header { margin-bottom:45px; max-width:740px; }
+.skill-depth > header h2 { font-size:clamp(32px,4vw,54px); margin-bottom:20px; }
+.skill-depth > header p { color:var(--fg-muted); line-height:1.7; }
+.evidence-stack .stack-group h3 { font-size:26px; padding-bottom:20px; border-bottom:1px solid var(--border-subtle); margin-bottom:20px; }
+.evidence-stack .stack-badge { min-height:48px; }
+.copy-email { display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:12px 0 30px; }
+.copy-email button { background:none; border:1px solid var(--border-subtle); color:var(--fg-primary); padding:10px 16px; min-height:44px; cursor:pointer; }
+.copy-email span { color:var(--signal-primary); font-size:14px; }
+.footer-pages { display:flex; flex-wrap:wrap; gap:8px 24px; padding:24px 0; border-top:1px solid var(--border-subtle); }
+.footer-pages a { display:inline-flex; align-items:center; min-height:44px; font-size:14px; }
+.footer-pages a:hover { color:var(--signal-primary); }
+.quick-target { color:var(--signal-primary); font-size:22px; margin:18px 0; }
+.quick-summary { font-size:17px; line-height:1.6; max-width:660px; }
+.quick-actions { display:flex; flex-wrap:wrap; gap:24px; margin-top:24px; }
+.quick-flagship { max-width:800px; margin:36px 0; }
+.quick-flagship h3 { font-size:42px; margin:12px 0; }
+.quick-flagship p { line-height:1.6; color:var(--fg-muted); margin:18px 0; }
+.quick-experience { display:grid; grid-template-columns:1fr 1fr; gap:28px 50px; }
+.quick-experience > div { border-top:1px solid var(--border-subtle); padding-top:22px; }
+.quick-experience dt { font-size:21px; margin-bottom:12px; }
+.quick-experience dd { margin:0; color:var(--fg-muted); line-height:1.6; }
+.quick-credentials { padding-left:20px; margin:28px 0; line-height:1.8; }
+.credential-achievement { margin-top:60px; padding-top:32px; border-top:1px solid var(--border-subtle); }
+.credential-achievement h2 { font-size:32px; margin-bottom:22px; }
+.credential-achievement p { max-width:750px; line-height:1.7; color:var(--fg-muted); }
+@media(max-width:1000px) {
+  .desktop-nav { display:none; }
+  .mobile-menu-wrap { display:block; }
+  .mobile-nav { position:absolute; top:100%; left:0; right:0; background:var(--bg-primary); padding:24px var(--gutter); max-height:calc(100dvh - 82px); overflow-y:auto; }
+  .mobile-nav a { min-height:48px; display:flex; align-items:center; }
+}
+@media(max-width:760px) {
+  .summary-rows article, .project-feature, .focus-columns, .pilot-details, .quick-experience { grid-template-columns:1fr; gap:24px; }
+  .focus-columns { gap:36px; }
+  .hero-recruiter { font-size:12px; max-width:310px; }
+  .hero-intro-detail small { font-size:10px; }
+  .nav-cv { padding:10px 8px; }
+  .skill-depth + .skill-depth { margin-top:70px; }
+  .mobile-nav { max-height:calc(100dvh - 68px); }
+  .preview-lead { font-size:20px; }
+}
+
+@media(max-width:760px) {
+  .detail-page .lab-heading h2 { font-size:clamp(36px,9vw,60px); overflow-wrap:break-word; }
+  .hero-intro > p { flex-shrink:0; }
+  .hero-intro-detail { min-width:0; }
+}

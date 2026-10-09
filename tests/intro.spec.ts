@@ -10,7 +10,7 @@ test('network introduction reveals hero automatically and restores scrolling', a
   await expect(intro).toBeHidden();
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.style.overflow)).not.toBe('hidden');
-  await page.getByRole('link', { name: 'Explore my work' }).click();
+  await page.getByRole('link', { name: 'Explore my projects' }).click();
   await expect(page).toHaveURL('/#work');
 });
 
@@ -65,7 +65,7 @@ test('Escape skips and modal keeps keyboard focus on the available control', asy
 test('reload replays but client navigation back to the homepage does not', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Skip intro' }).click();
-  await page.getByRole('link', { name: 'Quick view', exact: true }).click();
+  await page.getByRole('link', { name: 'Recruiter? View the 30-second overview', exact: true }).click();
   await expect(page).toHaveURL('/quick');
   await page.getByRole('link', { name: 'Syahmi Aof home' }).click();
   await expect(page).toHaveURL('/');
@@ -100,7 +100,7 @@ test('without JavaScript the portfolio remains available', async ({ browser }) =
   const page = await context.newPage();
   await page.goto('/');
   await expect(page.locator('.network-intro')).toBeHidden();
-  await expect(page.getByRole('link', { name: 'Explore my work' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Explore my projects' })).toBeVisible();
   await context.close();
 });
 

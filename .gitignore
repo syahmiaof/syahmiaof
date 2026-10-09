@@ -14,3 +14,6 @@ playwright-report/
 
 # Private evidence: publish only curated metadata and issuer verification links.
 /certificate/
+
+# Generated local exports
+/output/

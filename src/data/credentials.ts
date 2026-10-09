@@ -804,7 +804,7 @@ export const competitionRecognitions: readonly CompetitionRecognition[] = [
     "startsAt": "2026-08-11",
     "endsAt": "2026-08-13",
     "evidenceLevel": "certificate-only",
-    "certificateImage": "/images/certificates/icompex.jpg",
+    "certificateImage": "/images/certificates/icompex-2026.png",
     "featured": true
   },
   {

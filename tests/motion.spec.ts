@@ -56,7 +56,7 @@ test('large title reacts and magnetic CTA remains clickable', async ({ page }) =
   const title = page.locator('.hero h1');
   await title.hover({ position: { x: 50, y: 60 } });
   await expect(title).toHaveAttribute('data-pointer-active', 'true');
-  const cta = page.getByRole('link', { name: 'Explore my work' });
+  const cta = page.getByRole('link', { name: 'Explore my projects' });
   await cta.hover({ position: { x: 25, y: 20 } });
   await expect(cta).toHaveAttribute('data-pointer-effect', 'magnetic');
   await cta.click();

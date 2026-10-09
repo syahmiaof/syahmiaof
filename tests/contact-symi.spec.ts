@@ -12,10 +12,10 @@ test('contact links use supplied details and unpublished profiles remain honest'
   await expect(footer.getByRole('link', { name: /talk on WhatsApp/ })).toHaveAttribute('href', 'https://wa.me/60107965236');
   await expect(footer.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/syahmiaof');
   for (const name of ['Facebook', 'TikTok', 'Instagram', 'Threads', 'LinkedIn']) {
-    await expect(footer.getByRole('img', { name: `${name} profile coming soon` })).toHaveCount(1);
+    await expect(footer.getByRole('img', { name: `${name} profile coming soon` })).toHaveCount(0);
     await expect(footer.getByRole('link', { name, exact: true })).toHaveCount(0);
   }
-  await expect(page.locator('#awards')).toContainText('NetAcad Riders International 2026');
+  await expect(page.locator('#credentials')).toContainText('NetAcad Riders International 2026');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',  /^https:\/\/syahmiaof\.my\/?$/);
 });
 

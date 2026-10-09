@@ -8,7 +8,7 @@ export function LiveBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reducedMotion = useReducedMotion();
   const pathname = usePathname();
-  const disabled = reducedMotion || pathname === '/quick';
+  const disabled = reducedMotion || pathname !== '/';
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
 
   useEffect(() => {

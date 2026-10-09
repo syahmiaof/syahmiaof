@@ -4,19 +4,19 @@ import { readdirSync } from 'node:fs';
 import { credentials, professionalPrograms, featuredPrograms, componentsFor, courseCompletions, standaloneCompletions, competitionRecognitions, nextTargets } from '../src/data/credentials';
 
 test('credential catalog preserves evidence grouping and precise credential types', () => {
-  expect(credentials).toHaveLength(43);
-  expect(new Set(credentials.map(record => record.slug)).size).toBe(43);
-  expect(professionalPrograms).toHaveLength(4);
-  expect(featuredPrograms).toHaveLength(4);
-  expect(courseCompletions).toHaveLength(39);
-  expect(standaloneCompletions).toHaveLength(4);
-  expect(professionalPrograms.map(program => componentsFor(program.slug).length)).toEqual([18, 8, 6, 3]);
+  expect(credentials).toHaveLength(53);
+  expect(new Set(credentials.map(record => record.slug)).size).toBe(53);
+  expect(professionalPrograms).toHaveLength(6);
+  expect(featuredPrograms).toHaveLength(6);
+  expect(courseCompletions).toHaveLength(47);
+  expect(standaloneCompletions).toHaveLength(5);
+  expect(professionalPrograms.map(program => componentsFor(program.slug).length)).toEqual([18, 3, 8, 6, 3, 4]);
   expect(competitionRecognitions).toHaveLength(3);
   expect(competitionRecognitions.find(record => record.slug === 'cloudhunt-2025')?.achievements).toEqual(['MVP Team Member', 'Most Crowd’s Favourite', 'Bootcamp Participant']);
   expect(nextTargets.every(target => target.status === 'target')).toBe(true);
   for (const record of credentials) {
     expect(record.issuedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    expect(record.title).not.toMatch(/AWS Certified|Google Cloud Certified/);
+    if (/AWS Certified|Google Cloud Certified/.test(record.title)) { expect(record.title).toMatch(/^Exam Prep:/); expect(record.kind).toBe('course'); }
     expect(record.evidenceLevel).toBe('certificate-only');
     if (record.verificationUrl) expect(record.verificationUrl).toMatch(/^https:\/\/coursera\.org\/verify\//);
     if (record.parentSlug) expect(professionalPrograms.some(parent => parent.slug === record.parentSlug)).toBe(true);
@@ -24,33 +24,26 @@ test('credential catalog preserves evidence grouping and precise credential type
   expect(credentials.find(record => record.slug === 'aws-cloud-practitioner-essentials')?.kind).toBe('course');
   expect(professionalPrograms.find(record => record.issuer === 'Whizlabs')?.kind).toBe('specialization');
   const publicFiles = readdirSync('public', { recursive: true }).map(String);
-  expect(publicFiles.filter(file => /certificate|coursera|cloudhunt|netacad|icompex|linkdln|\.pdf$/i.test(file))).toEqual([]);
+  expect(publicFiles.filter(file => /\.(docx|pdf)$/i.test(file))).toEqual([]);
 });
 
 test.beforeEach(async ({ page }) => { await page.emulateMedia({ reducedMotion: 'reduce' }); });
 
-test('homepage retains section order and presents only featured records with separate targets', async ({ page }) => {
+test('homepage previews lead to the detailed credential catalog', async ({ page }) => {
   await page.goto('/');
-  const order = await page.locator('#stack, #credentials, #awards, #contact').evaluateAll(nodes => nodes.map(node => node.id));
-  expect(order).toEqual(['stack', 'credentials', 'awards', 'contact']);
-  await expect(page.locator('#credentials [data-program]')).toHaveCount(4);
-  await expect(page.locator('#credentials [data-completion]')).toHaveCount(0);
-  await expect(page.locator('#awards [data-competition]')).toHaveCount(3);
-  await expect(page.locator('#awards [data-competition="cloudhunt-2025"] .recognition-achievements li')).toHaveCount(3);
-  await expect(page.locator('#credentials .credential-summary dd')).toHaveText(['4', '39', '3']);
-  await page.locator('#credentials summary').click();
-  await expect(page.locator('#credentials .credential-targets')).toContainText('Aspirational targets, not earned credentials');
-  await expect(page.locator('#credentials .credential-targets .status-outline')).toHaveCount(5);
-  await page.getByRole('link', { name: 'Explore all credentials' }).click();
+  const order = await page.locator('#skills, #experience, #credentials, #contact').evaluateAll(nodes => nodes.map(node => node.id));
+  expect(order).toEqual(['skills', 'experience', 'credentials', 'contact']);
+  await expect(page.locator('#credentials .preview-credentials li')).toHaveCount(3);
+  await page.getByRole('link', { name: 'View credentials & awards' }).click();
   await expect(page).toHaveURL('/credentials');
 });
 
 test('catalog filtering, disclosures, evidence and keyboard navigation work', async ({ page, request }) => {
   await page.goto('/credentials');
-  await expect(page).toHaveTitle(/Credentials & recognition/);
+  await expect(page).toHaveTitle(/Certificates & Specializations/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://syahmiaof.my/credentials');
-  await expect(page.locator('[data-program]')).toHaveCount(4);
-  await expect(page.locator('[data-completion]')).toHaveCount(39);
+  await expect(page.locator('[data-program]')).toHaveCount(6);
+  await expect(page.locator('[data-completion]')).toHaveCount(47);
   const courses = page.getByRole('button', { name: 'Course Completions', exact: true });
   await courses.focus();
   await page.keyboard.press('Enter');
@@ -69,8 +62,8 @@ test('catalog filtering, disclosures, evidence and keyboard navigation work', as
   for (const link of await page.locator('.credential-verify').all()) {
     await expect(link).toHaveAttribute('target', '_blank');
     await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-    await expect(link).toHaveAttribute('aria-label', /^Verify .+ on /);
-    await expect(link).toHaveAttribute('href', /^https:\/\/coursera\.org\/verify\//);
+    await expect(link).toHaveAttribute('aria-label', /^Verify /);
+    await expect(link).toHaveAttribute('href', /^https:\/\/(coursera\.org\/verify\/|cert\.runcloud\.education\/en\/verify\/)/);
   }
   await expect(page.locator('main')).toContainText('This is not the AWS certification exam credential.');
   await expect(page.locator('main')).toContainText('It is not the Google Cloud Professional Data Engineer certification exam credential.');

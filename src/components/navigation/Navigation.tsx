@@ -26,11 +26,31 @@ export function Navigation() {
     return () => document.removeEventListener('keydown', handler);
   }, []);
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
-    }, { rootMargin: '-15% 0px -55% 0px' });
-    navigation.forEach(item => { const el = document.getElementById(item.id); if (el) observer.observe(el); });
-    return () => observer.disconnect();
+    let frame = 0;
+    const route = pathname.startsWith('/projects') || pathname === '/lab' ? 'work'
+      : pathname === '/experience' ? 'experience' : pathname === '/skills' ? 'skills'
+      : pathname === '/credentials' ? 'credentials' : '';
+    const update = () => {
+      frame = 0;
+      const header = document.querySelector('header.site-header')?.getBoundingClientRect().bottom ?? 82;
+      const readingLine = header + (innerHeight - header) * .22;
+      const contact = document.getElementById('contact');
+      if (contact && contact.getBoundingClientRect().top <= readingLine) { setActive('contact'); return; }
+      if (pathname !== '/') { setActive(route); return; }
+      let current = '';
+      document.querySelectorAll<HTMLElement>('[data-nav-section]').forEach(section => {
+        if (section.getBoundingClientRect().top <= readingLine) current = section.dataset.navSection ?? '';
+      });
+      setActive(current);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const observer = new ResizeObserver(schedule);
+    observer.observe(document.body);
+    schedule();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    window.addEventListener('hashchange', schedule);
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); window.removeEventListener('hashchange', schedule); };
   }, [pathname]);
   useEffect(() => {
     if (!menu) return;
@@ -40,11 +60,13 @@ export function Navigation() {
   }, [menu]);
   const commands = [
     { label: 'Open Greetly case study', detail: 'Project', href: '/projects/greetly' },
-    ...[...projects.filter(project => !project.featured), ...ongoingProjects].map(project => ({ label: `Open ${project.title}`, detail: 'Project', href: project.liveUrl || `/#${project.slug}` })),
+    ...[...projects.filter(project => !project.featured), ...ongoingProjects].map(project => ({ label: `Open ${project.title}`, detail: 'Project', href: project.liveUrl || `/projects#${project.slug}` })),
+    { label: 'All projects', detail: 'Active and ongoing builds', href: '/projects' },
     { label: 'Quick view', detail: 'Recruiter overview', href: '/quick' },
+    { label: 'Explore experience', detail: 'The road here · People, leadership & operations', href: '/experience' },
     { label: 'View GitHub', detail: 'Source code', href: profile.github },
-    { label: 'Open Lab', detail: 'Experiments', href: '/#lab' },
-    { label: 'Open tech stack', detail: 'Tools and platforms', href: '/#stack' },
+    { label: 'Open Technical Lab', detail: 'Experiments & AI concepts', href: '/lab' },
+    { label: 'Open skills & tech stack', detail: 'Tools, platforms & evidence', href: '/skills' },
     { label: 'View credentials', detail: 'Programs, courses & recognition', href: '/credentials' },
     { label: 'View CV (PDF)', detail: 'Resume', href: profile.resumeUrl },
     { label: 'Contact Syahmi', detail: 'Email', href: `mailto:${profile.email}` },
@@ -61,9 +83,9 @@ export function Navigation() {
     <a href="#main" className="skip-link">Skip to content</a>
     <header className="site-header">
       <Link href="/" className="wordmark" aria-label="Syahmi Aof home">THE BUILDER<span>.</span></Link>
-      <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(item => <Link key={item.id} href={item.href} aria-current={pathname === '/' && active === item.id ? 'location' : undefined}>{item.name}</Link>)}</nav>
-      <div className="nav-actions"><Link className="quick-nav" href="/quick">Quick view <ArrowUpRight size={13} aria-hidden="true" /></Link><button className="command-trigger" onClick={openPalette} aria-label="Open command palette"><Command size={14} aria-hidden="true" /><span>K</span></button>
-        <div ref={menuRef} className="mobile-menu-wrap"><button className="menu-trigger" aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu ? 'Close navigation' : 'Open navigation'} onClick={() => setMenu(!menu)}>{menu ? <X size={20} /> : <Menu size={20} />}</button>{menu && <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation">{navigation.map(item => <Link key={item.id} href={item.href} onClick={() => setMenu(false)}>{item.name}<ArrowUpRight size={16} /></Link>)}<Link href="/quick" onClick={() => setMenu(false)}>Quick view<ArrowUpRight size={16} /></Link></nav>}</div>
+      <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(item => <Link key={item.id} href={item.href} aria-current={active === item.id ? (pathname === '/' || active === 'contact' ? 'location' : 'page') : undefined}>{item.name}</Link>)}</nav>
+      <div className="nav-actions"><a className="quick-nav nav-cv" href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">View CV <ArrowUpRight size={13} aria-hidden="true" /></a><button className="command-trigger" onClick={openPalette} aria-label="Open command palette"><Command size={14} aria-hidden="true" /><span>K</span></button>
+        <div ref={menuRef} className="mobile-menu-wrap"><button className="menu-trigger" aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu ? 'Close navigation' : 'Open navigation'} onClick={() => setMenu(!menu)}>{menu ? <X size={20} /> : <Menu size={20} />}</button>{menu && <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation">{navigation.map(item => <Link key={item.id} href={item.href} aria-current={active === item.id ? (pathname === '/' || active === 'contact' ? 'location' : 'page') : undefined} onClick={() => setMenu(false)}>{item.name}<ArrowUpRight size={16} /></Link>)}<Link href="/quick" onClick={() => setMenu(false)}>Quick view · Recruiter overview<ArrowUpRight size={16} /></Link></nav>}</div>
       </div>
     </header>
     <dialog ref={dialog} className="command-dialog" aria-labelledby="command-title" onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>

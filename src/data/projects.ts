@@ -2,7 +2,7 @@ import type { JourneyStep, Project } from '@/types/portfolio';
 
 export const projects: Project[] = [
   { slug: 'greetly', title: 'Greetly', subtitle: 'An edge-to-cloud attendance ecosystem.', status: 'active',
-    description: 'A camera, a Raspberry Pi and a cloud dashboard. One connected system that turns a local recognition event into a visible attendance record.',
+    description: 'An attendance system for students and administrators. A Raspberry Pi recognises faces locally and sends attendance records to a cloud dashboard.',
     stack: ['Raspberry Pi', 'OpenCV', 'Python', 'Next.js', 'Supabase', 'PostgreSQL'],
     github: 'https://github.com/syahmiaof/greetly', liveUrl: 'https://greetly.syahmiaof.my', featured: true, image: '/images/greetly-device.webp' },
   { slug: 'daeng-kuning', title: 'Daeng Kuning', subtitle: 'Heritage, with a digital home.', status: 'active',

@@ -68,10 +68,11 @@ test('GayongX keeps only the main website image at readable mobile width', async
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#gayongx');
-  const image = page.locator('#gayongx .ongoing-gallery img');
+  const image = page.locator('#gayongx .ongoing-preview img');
   await expect(image).toHaveCount(1);
   await image.scrollIntoViewIfNeeded();
-  await expect(image).toHaveAttribute('alt', 'Gayong Malaysia main website landing page');
+  await expect(image).toHaveAttribute('alt', /GayongX.*preview/);
+  await expect(image).toHaveAttribute('src', /gayongx-website/);
   expect((await image.boundingBox())!.width).toBeGreaterThan(300);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

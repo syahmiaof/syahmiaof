@@ -6,7 +6,7 @@ import { CredentialSummary, NextTargets, ProgramList } from '@/components/creden
 export function Credentials() {
   return <section id="credentials" className="section credentials-section" aria-labelledby="credentials-title">
     <div className="credentials-intro">
-      <AnimatedTitle animation="continuation" id="credentials-title">Always a<br /><span className="muted">work in progress.</span></AnimatedTitle>
+      <AnimatedTitle animation="continuation" id="credentials-title">Certificates &<br /><span className="muted">specializations.</span></AnimatedTitle>
       <div><p>Learning across cloud security, AI, IT support and data engineering. Completed programs, backed by certificate evidence.</p><TextLink href="/credentials">Explore all credentials</TextLink></div>
     </div>
     <CredentialSummary />

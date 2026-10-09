@@ -1,4 +1,5 @@
 import { GoogleGenAI, ThinkingLevel, type GenerateContentParameters, type GenerateContentResponse } from '@google/genai';
+import { workExperiences } from '@/data/experience';
 import { profile } from '@/data/profile';
 import { projects, ongoingProjects } from '@/data/projects';
 import { capabilities } from '@/data/capabilities';
@@ -11,7 +12,7 @@ export class SymiServiceError extends Error {
 }
 type Generate = (params: GenerateContentParameters) => Promise<GenerateContentResponse>;
 const context = JSON.stringify({
-  profile, projects, ongoingProjects, capabilities, collaboration: ghazwahCollaboration,
+  profile, workExperiences, projects, ongoingProjects, capabilities, collaboration: ghazwahCollaboration,
   credentials: credentials.filter(item => item.featured).map(({ title, issuer, disclaimer }) => ({ title, issuer, disclaimer })),
 });
 const systemInstruction = `You are Symi, Muhammad Syahmi's portfolio guide. Reply in the visitor's language, using friendly Malay when asked in Malay. Keep answers to 2-4 short sentences, plain text. Use conversation history for follow-up questions.

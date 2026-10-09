@@ -5,6 +5,7 @@ import './responsive.css';
 import './enhancements.css';
 import './credentials.css';
 import './projects.css';
+import './architecture.css';
 import { Symi } from '@/components/chat/Symi';
 import { Navigation } from '@/components/navigation/Navigation';
 import { ExperienceControls } from '@/components/layout/ExperienceControls';
@@ -16,7 +17,7 @@ const mono = localFont({ src: '../../node_modules/@fontsource/ibm-plex-mono/file
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin() ?? 'http://localhost:3000'),
-  title: { default: 'Syahmi Aof — Cloud, DevOps & Intelligent Systems', template: '%s | Syahmi Aof' },
+  title: { default: 'Syahmi Aof — Cloud & DevOps Portfolio', template: '%s | Syahmi Aof' },
   description: 'Muhammad Syahmi’s portfolio: cloud computing, DevOps, intelligent systems and edge-to-cloud engineering. Explore Greetly and selected builds.',
   openGraph: { title: 'SYAHMI AOF — Digital Infrastructure', description: 'I build systems that connect. Cloud / DevOps / AI / Edge.', type: 'website', locale: 'en_MY' },
   twitter: { card: 'summary_large_image', title: 'SYAHMI AOF — Digital Infrastructure', description: 'Cloud / DevOps / AI / Edge. I build systems that connect.' },

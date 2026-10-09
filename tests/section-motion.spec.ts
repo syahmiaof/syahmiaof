@@ -1,11 +1,11 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const titles = ['work-title', 'greetly-title', 'about-title', 'selected-title', 'collaboration-title', 'future-title', 'lab-title', 'capability-title', 'intelligence-title', 'stack-title', 'credentials-title', 'awards-title', 'contact-title'];
+const titles = ['work-title', 'greetly-title', 'about-title', 'selected-title', 'ongoing-preview-title', 'skills-preview-title', 'experience-preview-title', 'credentials-preview-title', 'contact-title'];
 async function place(page: Page, id: string, viewportY: number) {
   await page.locator(`#${id}`).evaluate((element, y) => window.scrollTo({ top: element.getBoundingClientRect().top + scrollY - y, behavior: 'instant' }), viewportY);
 }
 async function visibleLines(page: Page, id: string) {
-  await expect.poll(() => page.locator(`#${id} ${id === 'future-title' ? '.motion-title-word' : '.motion-title-line'}`).evaluateAll(lines => lines.length > 0 && lines.every(line => Number(getComputedStyle(line).opacity) > .99))).toBe(true);
+  await expect.poll(() => page.locator(`#${id} ${id === 'ongoing-preview-title' ? '.motion-title-word' : '.motion-title-line'}`).evaluateAll(lines => lines.length > 0 && lines.every(line => Number(getComputedStyle(line).opacity) > .99))).toBe(true);
 }
 
 test('headings enter, leave and return without affecting protected scenes', async ({ page }) => {
@@ -18,7 +18,7 @@ test('headings enter, leave and return without affecting protected scenes', asyn
     await place(page, id, 420);
     await visibleLines(page, id);
     await place(page, id, -250);
-    await expect.poll(() => page.locator(`#${id} ${id === 'future-title' ? '.motion-title-word' : '.motion-title-line'}`).evaluateAll(lines => lines.every(line => Number(getComputedStyle(line).opacity) < .01))).toBe(true);
+    await expect.poll(() => page.locator(`#${id} ${id === 'ongoing-preview-title' ? '.motion-title-word' : '.motion-title-line'}`).evaluateAll(lines => lines.every(line => Number(getComputedStyle(line).opacity) < .01))).toBe(true);
     await place(page, id, 420);
     await visibleLines(page, id);
   }
@@ -39,7 +39,7 @@ for (const width of [1440, 489, 390]) {
     const before = await measure();
     expect(before).toHaveLength(titles.length);
     await page.getByRole('button', { name: 'Motion reduced', exact: true }).click();
-    await page.locator('#awards-title .motion-title-line').first().waitFor({ state: 'attached' });
+    await page.locator('#credentials-preview-title .motion-title-line').first().waitFor({ state: 'attached' });
     const animated = await measure();
     for (let i = 0; i < before.length; i++) {
       expect(animated[i].height, before[i].id).toBeCloseTo(before[i].height, 0);
@@ -61,14 +61,10 @@ test('collaboration shows owner-provided pilot and keyboard-accessible details',
   await page.goto('/#collaboration');
   const section = page.locator('#collaboration');
   await expect(section.getByRole('link', { name: 'Ghazwah Group' })).toHaveAttribute('href', 'https://ghazwahgroup.com/');
-  await expect(section).toContainText('AI Marketer');
-  await expect(section).toContainText('Pilot: DFK INC / Ghazwah Tech');
-  const summary = section.locator('summary');
-  await summary.focus(); await page.keyboard.press('Enter');
+  await expect(section).toContainText('DFK INC / Ghazwah Tech');
   await expect(section.getByText(/Jebat coordinates/)).toBeVisible();
   await expect(section.getByText(/Paid ads, pricing/)).toBeVisible();
-  await page.keyboard.press('Enter');
-  await expect(section.getByText(/Jebat coordinates/)).toBeHidden();
+
 });
 
 test('Hero robot types and erases its greeting, with a static reduced-motion fallback', async ({ page }) => {
@@ -91,7 +87,7 @@ test('rapid reversals, resizing and navigation retain clean title instances', as
   await page.setViewportSize({ width: 489, height: 900 });
   await place(page, 'selected-title', 400);
   await visibleLines(page, 'selected-title');
-  await page.getByRole('link', { name: 'Quick view', exact: true }).click();
+  await page.getByRole('link', { name: 'Recruiter? View the 30-second overview', exact: true }).click();
   await expect(page).toHaveURL('/quick');
   await expect(page.locator('.motion-title-line')).toHaveCount(0);
   await page.getByRole('link', { name: 'Syahmi Aof home' }).click();

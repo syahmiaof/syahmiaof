@@ -2,7 +2,7 @@ import { credentials } from '@/data/credentials';
 
 // Curated CV content. Leave unconfirmed institution names, dates and grades out.
 export const resume = {
-  headline: 'Cloud Computing Student | Software Developer | AI Automation',
+  headline: 'Cloud Computing Student | Cloud / DevOps Direction | AI Automation',
   summary: 'Cloud computing student and independent builder connecting web applications, cloud infrastructure and edge devices. Builds portfolio projects across attendance systems, computer vision interfaces and workflow automation, with an interest in cloud and DevOps engineering.',
   education: 'Cloud Computing - currently studying',
   skills: [

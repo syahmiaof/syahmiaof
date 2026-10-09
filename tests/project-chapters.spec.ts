@@ -6,8 +6,9 @@ test('project categories contain real work and precede collaboration', async ({ 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/#work');
   await expect(page.getByRole('heading', { name: 'My active project', exact: true })).toBeVisible();
-  expect(await page.locator('#work, #ongoing, #collaboration, #lab').evaluateAll(nodes => nodes.map(node => node.id))).toEqual(['work', 'ongoing', 'collaboration', 'lab']);
+  await expect(page.locator('#collaboration, #lab')).toHaveCount(0);
   await expect(page.locator('#work #greetly, #work #selected')).toHaveCount(2);
+  await page.goto('/projects');
   await expect(page.locator('#ongoing article')).toHaveCount(ongoingProjects.length);
   await expect(page.locator('#ongoing')).toContainText('CerviScan-AI');
   await expect(page.locator('#ongoing')).toContainText('GayongX');
@@ -71,12 +72,12 @@ for (const width of [320, 390, 1280, 1440]) test(`project chapter layout and key
   const chapterSize = await page.locator('#work-title').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
   const projectSize = await page.locator('#greetly-title').evaluate(el => parseFloat(getComputedStyle(el).fontSize));
   expect(chapterSize).toBeGreaterThanOrEqual(projectSize);
-  await page.goto('/#ongoing');
+  await page.goto('/projects#ongoing');
   await expect(page).toHaveURL(/#ongoing$/);
   await page.locator('#gayongx summary').focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('#gayongx details')).toHaveAttribute('open', '');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  const audit = await new AxeBuilder({ page }).include('#work').include('#ongoing').include('#collaboration').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+  const audit = await new AxeBuilder({ page }).include('#selected').include('#ongoing').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
   expect(audit.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
 });
