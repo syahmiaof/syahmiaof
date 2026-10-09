@@ -1,49 +1,99 @@
 <div align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com/?lines=Hi+there,+I+am+Syahmi;Aspiring+Cloud+and+DevOps+Engineer;Exploring+Full-Stack+and+Networking&font=Fira+Code&size=30&duration=3000&pause=1000&color=00FF00&center=true&vCenter=true&width=800&height=50" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=60E1B5&center=true&vCenter=true&width=860&height=55&lines=Hi%2C+I%27m+Muhammad+Syahmi;Cloud+%2F+DevOps+%2F+Full-Stack;I+build+systems+that+connect" alt="Animated introduction: Muhammad Syahmi, Cloud, DevOps and Full-Stack builder" />
   </a>
+
+  <p><strong>Cloud Computing student building connected systems across software, cloud infrastructure, automation and intelligent edge devices.</strong></p>
+
+  <p>
+    <a href="https://syahmiaof.my"><img src="https://img.shields.io/badge/PORTFOLIO-101713?style=for-the-badge&logo=vercel&logoColor=60E1B5" alt="Portfolio" /></a>
+    <a href="https://syahmiaof.my/api/resume"><img src="https://img.shields.io/badge/VIEW_CV-101713?style=for-the-badge&logo=readme&logoColor=60E1B5" alt="View CV" /></a>
+    <a href="https://syahmiaof.my/credentials"><img src="https://img.shields.io/badge/CREDENTIALS-101713?style=for-the-badge&logo=credly&logoColor=60E1B5" alt="Credentials" /></a>
+    <a href="mailto:syahmiaof123@gmail.com"><img src="https://img.shields.io/badge/EMAIL-101713?style=for-the-badge&logo=gmail&logoColor=60E1B5" alt="Email Muhammad Syahmi" /></a>
+  </p>
 </div>
 
-<h3 align="center">Aspiring Cloud & DevOps Engineer</h3>
+## What I build
 
-<p align="center">
-I am building a strong foundation in infrastructure management, automation, full-stack development, and networking. I am also deeply exploring <b>Agentic AI</b>, <b>AI Automation</b>, <b>Model Context Protocol (MCP)</b>, and secure <b>API</b> integrations to drive next-generation DevOps workflows.
-</p>
+I work across the path from interface to infrastructure: responsive applications, cloud-connected workflows, deployment, automation and edge devices. My current direction is Cloud and DevOps engineering, supported by hands-on full-stack and AI prototype work.
 
-<h3 align="center">🤐 Tech Stack</h3>
+## Featured work
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://greetly.syahmiaof.my"><img src="public/images/greetly-device.webp" alt="Greetly edge attendance device concept" /></a>
+      <h3>Greetly</h3>
+      <p>Edge-to-cloud attendance system connecting Raspberry Pi, OpenCV, Supabase and a realtime Next.js dashboard.</p>
+      <p><a href="https://syahmiaof.my/projects/greetly">Case study</a> · <a href="https://github.com/syahmiaof/greetly">Source</a> · <a href="https://greetly.syahmiaof.my">Live</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://cerviscan-ai.syahmiaof.my"><img src="public/images/cerviscan-dashboard.webp" alt="CerviScan-AI research dashboard" /></a>
+      <h3>CerviScan-AI</h3>
+      <p>Team research prototype. I build the CMS dashboard, video stream and YOLOv8 integration for assisted image review.</p>
+      <p><a href="https://github.com/syahmiaof/CerviScan-AI">Source</a> · <a href="https://cerviscan-ai.syahmiaof.my">Prototype</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://symi.syahmiaof.my"><img src="public/images/symi.png" alt="SYMI Crafted Frozen Yogurt interactive website" /></a>
+      <h3>SYMI</h3>
+      <p>Screenshot-driven frontend brand experience with editorial art direction, GSAP motion and responsive interaction design.</p>
+      <p><a href="https://github.com/syahmiaof/symi">Source</a> · <a href="https://symi.syahmiaof.my">Live</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://gxaa.syahmiaof.my"><img src="public/images/gayongx-athlete-analytics.png" alt="GayongX athlete analytics dashboard prototype" /></a>
+      <h3>GayongX Athlete Analytics</h3>
+      <p>Responsive performance dashboard prototype using typed synthetic data, interactive charts and browser QA.</p>
+      <p><a href="https://github.com/syahmiaof/gayongx-athlete-analytics">Source</a> · <a href="https://gxaa.syahmiaof.my">Prototype</a></p>
+    </td>
+  </tr>
+</table>
+
+More builds: [Sistem Aduan Asrama](https://github.com/syahmiaof/sistem-aduan-asrama-ikm) · [Daeng Kuning](https://github.com/syahmiaof/daengkuning) · [GayongX](https://github.com/syahmiaof/gayongx)
+
+## Skills with context
+
+| Area | Used in projects | Building next |
+|---|---|---|
+| Cloud & delivery | Vercel, Cloudflare, Supabase, Firebase, DigitalOcean | deeper AWS operations and observability |
+| Systems & DevOps | Linux, Git, GitHub Actions, systemd, Docker | Kubernetes, Terraform and Ansible workflows |
+| Application | Next.js, React, TypeScript, Python, PostgreSQL | stronger testing and service architecture |
+| AI & automation | Gemini API, YOLOv8 prototypes, agent workflows, n8n | evaluation, guardrails and production telemetry |
+| Edge & IoT | Raspberry Pi, OpenCV, ESP32 concepts | resilient device operations and secure fleet management |
+
+The full evidence map is available on my [Skills & Tech Stack](https://syahmiaof.my/skills) page.
+
+## Verified learning and recognition
+
+Professional programs completed through Coursera include:
+
+- AWS Security Engineer Advanced — Amazon Web Services
+- AWS Cloud Solutions Architect Professional Certificate — Amazon Web Services
+- Google AI Professional Certificate — Google
+- Google IT Support Professional Certificate — Google
+
+Competition recognition:
+
+- Silver Medal — NetAcad Riders International 2026
+- Silver Medal — iCompEx International 2026, SMART V-LIGHT
+- 4th Place and MVP Team Member — CloudHunt National Competition 2025
+
+These are documented as professional learning programs and competition results. They are not presented as vendor certification exams. View verification details at [syahmiaof.my/credentials](https://syahmiaof.my/credentials).
+
+## Current focus
+
+- Cloud and DevOps engineering foundations
+- Reliable deployment, observability and automation
+- AI workflows with clear human approval boundaries
+- Building products that connect useful interfaces to dependable systems
 
 <div align="center">
-  <img src="badges.svg" alt="Tech Stack" style="max-width: 100%;" />
+  <img src="dist/github-snake-dark.svg" alt="Muhammad Syahmi GitHub contribution activity" width="860" />
 </div>
 
----
-
-<h3 align="center">🔐 GitHub Contributions & Analytics</h3>
-
 <div align="center">
-  <!-- Snake Animation -->
-  <img src="dist/github-snake-dark.svg" alt="Snake animation" width="800">
-</div>
-
----
-
-<h3 align="center">🏇 Professional Certifications</h3>
-
-<div align="center">
-  🥇 <b>AWS Certified Solutions Architect – Associate</b><br><br>
-  🥇 <b>AWS Certified Developer – Associate</b><br><br>
-  🥇 <b>AWS Certified Cloud Practitioner</b><br><br>
-  🥇 <b>Microsoft Certified: Azure Fundamentals (AZ-900)</b><br><br>
-  🥇 <b>HashiCorp Certified: Terraform Associate</b><br><br>
-  🥇 <b>Certified Kubernetes Administrator (CKA)</b><br><br>
-  🥇 <b>Linux Professional Institute Certification (LPIC-1)</b><br><br>
-  🥇 <b>Cisco Certified Network Associate (CCNA)</b><br><br>
-  🥇 <b>CompTIA Security+</b>
-</div>
-
-<h3 align="center">📫 Connect</h3>
-
-<div align="center">
-  <a
-href="mailto:syahmiaof123@gmail.com"><img src="https://img.shields.io/badge/Email-000?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+  <a href="https://syahmiaof.my">syahmiaof.my</a> ·
+  <a href="https://github.com/syahmiaof">GitHub</a> ·
+  <a href="mailto:syahmiaof123@gmail.com">Email</a>
 </div>
