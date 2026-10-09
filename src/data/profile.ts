@@ -20,8 +20,8 @@ export const socials: { platform: SocialPlatform; label: string; href: string | 
 export const navigation = [
   { name: 'About', href: '/#about', id: 'about' },
   { name: 'Projects', href: '/#work', id: 'work' },
-  { name: 'Experience', href: '/experience', id: 'experience' },
   { name: 'Skills', href: '/skills', id: 'skills' },
+  { name: 'Experience', href: '/experience', id: 'experience' },
   { name: 'Credentials', href: '/credentials', id: 'credentials' },
   { name: 'Contact', href: '/#contact', id: 'contact' },
 ];
