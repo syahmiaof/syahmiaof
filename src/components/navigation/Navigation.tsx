@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowUpRight, Menu, Search, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { projects, ongoingProjects } from '@/data/projects';
 import { navigation, profile } from '@/data/profile';
 import { toggleMotion, useReducedMotion } from '@/hooks/useExperience';
@@ -86,7 +87,7 @@ export function Navigation() {
       <Link href="/" className="wordmark" aria-label="Syahmi Aof home">THE BUILDER<span>.</span></Link>
       <nav className="desktop-nav" aria-label="Main navigation">{navigation.map(item => <Link key={item.id} href={item.href} aria-current={active === item.id ? (pathname === '/' || active === 'contact' ? 'location' : 'page') : undefined}>{item.name}</Link>)}</nav>
       <div className="nav-actions"><a className="quick-nav nav-cv" href={profile.resumeUrl} target="_blank" rel="noopener noreferrer">View CV <ArrowUpRight size={13} aria-hidden="true" /></a><button className="command-trigger" onClick={openPalette} aria-label="Search this portfolio"><Search size={14} aria-hidden="true" /><span className="command-trigger-label">Search</span><kbd className="command-trigger-shortcut">⌘K</kbd></button>
-        <div ref={menuRef} className="mobile-menu-wrap"><button className="menu-trigger" aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu ? 'Close navigation' : 'Open navigation'} onClick={() => setMenu(!menu)}>{menu ? <X size={20} /> : <Menu size={20} />}</button>{menu && <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation">{navigation.map(item => <Link key={item.id} href={item.href} aria-current={active === item.id ? (pathname === '/' || active === 'contact' ? 'location' : 'page') : undefined} onClick={() => setMenu(false)}>{item.name}<ArrowUpRight size={16} /></Link>)}<Link href="/quick" onClick={() => setMenu(false)}>Quick view · Recruiter overview<ArrowUpRight size={16} /></Link></nav>}</div>
+        <div ref={menuRef} className="mobile-menu-wrap"><button className="menu-trigger" aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu ? 'Close navigation' : 'Open navigation'} onClick={() => setMenu(!menu)}>{menu ? <X size={20} /> : <Menu size={20} />}</button><AnimatePresence initial={false}>{menu && <motion.nav id="mobile-nav" className="mobile-nav" aria-label="Mobile navigation" initial={reduced ? false : { opacity: 0, y: -12, scaleY: .985 }} animate={{ opacity: 1, y: 0, scaleY: 1 }} exit={reduced ? { opacity: 0 } : { opacity: 0, y: -8, scaleY: .99 }} transition={{ duration: reduced ? 0 : .22, ease: [.22, 1, .36, 1] }} style={{ transformOrigin: 'top center' }}>{navigation.map(item => <Link key={item.id} href={item.href} aria-current={active === item.id ? (pathname === '/' || active === 'contact' ? 'location' : 'page') : undefined} onClick={() => setMenu(false)}>{item.name}<ArrowUpRight size={16} /></Link>)}<Link href="/quick" onClick={() => setMenu(false)}>Quick view · Recruiter overview<ArrowUpRight size={16} /></Link></motion.nav>}</AnimatePresence></div>
       </div>
     </header>
     <dialog ref={dialog} className="command-dialog" aria-labelledby="command-title" onClick={event => { if (event.target === event.currentTarget) dialog.current?.close(); }}>

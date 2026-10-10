@@ -17,3 +17,5 @@ playwright-report/
 
 # Generated local exports
 /output/
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
