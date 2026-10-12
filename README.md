@@ -48,9 +48,23 @@ I work across the path from interface to infrastructure: responsive applications
       <p><a href="https://github.com/syahmiaof/gayongx-athlete-analytics">Source</a> · <a href="https://gxaa.syahmiaof.my">Prototype</a></p>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://daengkuning.my"><img src="public/images/daeng-kuning.webp" alt="Akademi Persilatan Daeng Kuning official website" /></a>
+      <h3>Daeng Kuning</h3>
+      <p>Digital home and web presence for Akademi Persilatan Daeng Kuning, bringing academy heritage, membership context and martial arts identity online.</p>
+      <p><a href="https://github.com/syahmiaof/daengkuning">Source</a> · <a href="https://daengkuning.my">Live</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://lamborghini.syahmiaof.my"><img src="public/images/lamborghini.webp" alt="Lamborghini The Art of Motion cinematic experience" /></a>
+      <h3>Lamborghini</h3>
+      <p>Cinematic automotive scrollytelling web experience featuring Canvas 2D image sequence playback, GSAP ScrollTrigger, and Chiaroscuro visual art direction.</p>
+      <p><a href="https://github.com/syahmiaof/lamborghini-art-of-motion">Source</a> · <a href="https://lamborghini.syahmiaof.my">Live</a></p>
+    </td>
+  </tr>
 </table>
 
-More builds: [Sistem Aduan Asrama](https://github.com/syahmiaof/sistem-aduan-asrama-ikm) · [Daeng Kuning](https://github.com/syahmiaof/daengkuning) · [GayongX](https://github.com/syahmiaof/gayongx)
+More builds: [Sistem Aduan Asrama](https://github.com/syahmiaof/sistem-aduan-asrama-ikm) · [GayongX](https://github.com/syahmiaof/gayongx)
 
 ## Skills with context
 
