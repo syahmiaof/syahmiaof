@@ -8,9 +8,6 @@ export const projects: Project[] = [
   { slug: 'daeng-kuning', title: 'Daeng Kuning', subtitle: 'Heritage, with a digital home.', status: 'active',
     description: 'A web portal for Akademi Persilatan Daeng Kuning, bringing the academy, membership information and its silat heritage online.',
     stack: ['HTML', 'CSS', 'JavaScript'], github: 'https://github.com/syahmiaof/daengkuning', liveUrl: 'https://daengkuning.my', featured: true, image: '/images/daeng-kuning.webp' },
-  { slug: 'lamborghini', title: 'LAMBORGHINI — The Art of Motion', subtitle: 'Cinematic automotive scrollytelling experience.', status: 'active',
-    description: 'A high-performance automotive web experience featuring Canvas 2D image sequence scrubbing, GSAP ScrollTrigger, Lenis smooth scrolling, and Chiaroscuro visual art direction.',
-    stack: ['React', 'TypeScript', 'Vite', 'GSAP', 'Lenis', 'Canvas 2D'], github: 'https://github.com/syahmiaof/lamborghini-art-of-motion', liveUrl: 'https://lamborghini.syahmiaof.my', featured: true, image: '/images/lamborghini.webp' },
   // { slug: 'nurizma-bridal', title: 'Nurizma Bridal', subtitle: 'A considered home for a personal craft.', status: 'active',
   //   description: 'A visual henna portfolio and service website in Taiping, Perak. The public repository is Nurizma Bridal; the current live site uses the Hanim Henna identity.',
   //   stack: ['HTML', 'CSS', 'JavaScript'], github: 'https://github.com/syahmiaof/nurizmabridal', liveUrl: 'https://henna.nurizmabridal.my', featured: false, image: '/images/nurizma-bridal.webp' },
@@ -23,6 +20,14 @@ export const projects: Project[] = [
 ];
 
 export const ongoingProjects: (Project & { stage: string; scope: readonly string[]; developmentNote: string })[] = [
+  {
+    slug: 'lamborghini', title: 'LAMBORGHINI — The Art of Motion', subtitle: 'Cinematic automotive scrollytelling experience.', status: 'in-development',
+    description: 'A high-performance automotive web experience featuring Canvas 2D image sequence scrubbing, GSAP ScrollTrigger, Lenis smooth scrolling, and Chiaroscuro visual art direction.',
+    stack: ['React', 'TypeScript', 'Vite', 'GSAP', 'Lenis', 'Canvas 2D'], github: 'https://github.com/syahmiaof/lamborghini-art-of-motion', liveUrl: 'https://lamborghini.syahmiaof.my', image: '/images/lamborghini.webp', featured: false,
+    stage: 'Deployed showcase · Scrollytelling & Canvas 2D',
+    scope: ['Canvas 2D image sequence', 'GSAP ScrollTrigger', 'Chiaroscuro visual aesthetic'],
+    developmentNote: 'A high-performance cinematic automotive scrollytelling showcase experimenting with interactive canvas rendering, smooth viewport scrubbing and dark automotive aesthetic.',
+  },
   {
     slug: 'cerviscan-ai', title: 'CerviScan-AI', subtitle: 'Computer vision for cervical screening research.', status: 'in-development',
     description: 'A team project for AI-assisted cervical screening research. I build the CMS dashboard and video-streaming application, integrating YOLOv8 to analyse cervical samples and support image review.',

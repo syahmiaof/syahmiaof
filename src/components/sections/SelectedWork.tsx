@@ -11,7 +11,9 @@ import { useReducedMotion } from '@/hooks/useExperience';
 gsap.registerPlugin(ScrollTrigger);
 
 export function SelectedWork() {
-  const [daeng, aduan, aiGrowth] = projects.slice(1);
+  const daeng = projects.find(p => p.slug === 'daeng-kuning')!;
+  const aduan = projects.find(p => p.slug === 'sistem-aduan')!;
+  const aiGrowth = projects.find(p => p.slug === 'ai-growth-automation')!;
   const containerRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
 

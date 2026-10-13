@@ -12,7 +12,10 @@ import { canonical } from '@/lib/seo';
 
 export const metadata: Metadata = { title: 'Quick View — Muhammad Syahmi', description: 'A recruiter overview: Cloud / DevOps direction, selected projects, experience, credentials and CV.', alternates: { canonical: canonical('/quick') } };
 export default function QuickPage() {
-  const selected = [projects[2], ongoingProjects[0], projects[3]];
+  const aduan = projects.find(p => p.slug === 'sistem-aduan')!;
+  const cerviscan = ongoingProjects.find(p => p.slug === 'cerviscan-ai')!;
+  const aiGrowth = projects.find(p => p.slug === 'ai-growth-automation')!;
+  const selected = [aduan, cerviscan, aiGrowth];
   return <><main id="main" tabIndex={-1} className="section quick-page">
     <div className="quick-page-top mono"><span>THE 30-SECOND VERSION</span><TextLink href="/">Full experience</TextLink></div>
     <header className="quick-hero"><div><h1>Muhammad<br />Syahmi<span>.</span></h1><p className="quick-role">{positioning.status} · Malaysia</p><p className="quick-target">{positioning.direction}</p><p className="quick-summary">{positioning.summary}</p><div className="quick-actions"><TextLink href={profile.resumeUrl} external>View CV (PDF)</TextLink><TextLink href={'mailto:' + profile.email}>Email me</TextLink><TextLink href={profile.github} external>GitHub</TextLink></div></div><SafeImage src="/images/syahmic3.png" alt="Muhammad Syahmi" width={960} height={1280} sizes="(max-width: 760px) 30vw, 220px" priority /></header>
