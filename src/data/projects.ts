@@ -14,9 +14,9 @@ export const projects: Project[] = [
   { slug: 'sistem-aduan', title: 'Sistem Aduan Asrama', subtitle: 'From a reported problem to a visible status.', status: 'active',
     description: 'A hostel complaint system for IKM Besut. Students submit and track reports; the documented workflow connects Firebase data with Telegram notifications.',
     stack: ['JavaScript', 'Firebase', 'Telegram API', 'Chart.js'], github: 'https://github.com/syahmiaof/sistem-aduan-asrama-ikm', liveUrl: 'https://sistemaduanasrama.syahmiaof.my', image: '/images/sistem-aduan.webp', featured: false },
-  { slug: 'ai-growth-automation', title: 'AI Growth Marketer & Automation Specialist', subtitle: 'Agentic growth and revenue system.', status: 'active',
-    description: 'An agentic growth and revenue system that turns social engagement into qualified, traceable sales opportunities through intent detection, lead scoring, structured qualification, model routing and failure-safe handoffs.',
-    stack: ['AI', 'Automation', 'Agents'], liveUrl: '/projects/ai-growth-automation', featured: false },
+  { slug: 'modul-meta-ads', title: 'Modul Ebook Lengkap: Meta Ads & AI Agent Automation', subtitle: 'Dari butang klik hingga token kekal & integrasi AI agent melalui MCP.', status: 'active',
+    description: 'Panduan praktikal dan portal modul interaktif menghubungkan pemasaran Meta Ads dengan automasi AI agent. Merangkumi setup Facebook Page, API token kekal, Instant Form ID, hingga integrasi alat AI agent melalui Model Context Protocol (MCP).',
+    stack: ['Meta Ads API', 'AI Agents', 'MCP', 'JavaScript', 'Automation'], github: 'https://github.com/syahmiaof/modul-meta-ads', liveUrl: 'https://modul-meta-ads.syahmiaof.my/', image: '/images/modul-meta-ads.png', featured: false },
 ];
 
 export const ongoingProjects: (Project & { stage: string; scope: readonly string[]; developmentNote: string })[] = [

@@ -10,6 +10,8 @@
 .selected-section #selected-title { font-size: clamp(38px, 4vw, 60px); }
 .project-aduan-preview { align-items: center; }
 .project-aduan-preview .project-image img { aspect-ratio: 1.44; object-fit: contain; }
+#project-meta-ads .project-image { border: 1px solid var(--border-subtle); border-radius: 8px; }
+#project-meta-ads .project-image img { aspect-ratio: 1024 / 472; object-fit: cover; }
 .project-links { display: flex; gap: 12px 24px; flex-wrap: wrap; }
 .ongoing-section { padding-block: 110px; }
 .ongoing-projects { border-top: 1px solid var(--border-strong); }
