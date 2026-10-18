@@ -62,6 +62,16 @@ I work across the path from interface to infrastructure: responsive applications
       <p><a href="https://github.com/syahmiaof/lamborghini-art-of-motion">Source</a> · <a href="https://lamborghini.syahmiaof.my">Live</a></p>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://siapsatu.syahmiaof.my"><img src="public/images/siapsatu.png" alt="SiapSatu LMS interactive micro-learning platform" /></a>
+      <h3>SiapSatu</h3>
+      <p>Practical Malay-first micro-learning LMS platform built around outcome-based modules, Next.js 14, TypeScript, and GSAP motion.</p>
+      <p><a href="https://github.com/syahmiaof/siapsatu">Source</a> · <a href="https://siapsatu.syahmiaof.my">Live</a></p>
+    </td>
+    <td width="50%" valign="top">
+    </td>
+  </tr>
 </table>
 
 More builds: [Sistem Aduan Asrama](https://github.com/syahmiaof/sistem-aduan-asrama-ikm) · [GayongX](https://github.com/syahmiaof/gayongx)
