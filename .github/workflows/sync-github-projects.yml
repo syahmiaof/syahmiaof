@@ -1,0 +1,56 @@
+name: Sync opt-in GitHub projects
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: portfolio-project-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out portfolio
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Regenerate opted-in project data and previews
+        run: node scripts/sync-github-projects.mjs
+
+      - name: Validate portfolio changes
+        run: |
+          npm ci
+          npm run test:project-sync
+          npm run lint:project-sync
+          npm run typecheck
+          npm run build
+
+      - name: Open or update a draft pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/sync-github-projects
+          delete-branch: true
+          draft: true
+          title: 'chore(portfolio): sync opted-in GitHub projects'
+          commit-message: 'chore(portfolio): sync opted-in GitHub projects'
+          body: |
+            Updates the portfolio project list from public repositories that opted in with the `portfolio-showcase` topic and a valid `portfolio.json`.
+
+            The sync validates repository visibility, manifest fields, HTTPS links, and preview images before changing the generated data.
+
+            Review the project descriptions and screenshots, then merge to publish through the normal Vercel Git integration.
+          add-paths: |
+            src/data/github-projects.generated.json
+            public/images/github-projects/**

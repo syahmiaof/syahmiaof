@@ -187,6 +187,7 @@ summary { cursor: pointer; }
 .project-aduan h3 { font-size: 32px; margin-top: 15px; }
 .project-aduan p { font-size: 14px; color: var(--fg-muted); margin-top: 18px; }
 .project-aduan .text-link { margin-top: 15px; }
+.synced-project-stack { display: flex; flex-wrap: wrap; gap: 8px 18px; list-style: none; margin-top: 18px; padding: 0; color: var(--fg-dim); font: 10px var(--font-mono); }
 .aduan-workflow { display: flex; gap: 10px; flex-wrap: wrap; align-content: center; align-items: center; }
 .aduan-workflow > div { display: flex; flex-direction: column; gap: 17px; font-size: 14px; }
 .aduan-workflow > div span { font: 9px var(--font-mono); color: var(--signal-primary); }
