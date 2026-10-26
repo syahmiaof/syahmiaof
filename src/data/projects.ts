@@ -1,4 +1,21 @@
 import type { JourneyStep, Project } from '@/types/portfolio';
+import syncedProjectRecords from '@/data/github-projects.generated.json';
+
+type SyncedProject = Project & {
+  sourceRepo: string;
+  stage?: string;
+  scope?: string[];
+  developmentNote?: string;
+};
+
+const syncedProjects = syncedProjectRecords as SyncedProject[];
+export const syncedActiveProjects = syncedProjects.filter((project) => project.status === 'active');
+const syncedOngoingProjects = syncedProjects.filter((project) => project.status === 'in-development') as (Project & {
+  sourceRepo: string;
+  stage: string;
+  scope: string[];
+  developmentNote: string;
+})[];
 
 export const projects: Project[] = [
   { slug: 'greetly', title: 'Greetly', subtitle: 'An edge-to-cloud attendance ecosystem.', status: 'active',
@@ -22,7 +39,7 @@ export const projects: Project[] = [
     stack: ['Meta Ads API', 'AI Agents', 'MCP', 'JavaScript', 'Automation'], github: 'https://github.com/syahmiaof/modul-meta-ads', liveUrl: 'https://modul-meta-ads.syahmiaof.my/', image: '/images/modul-meta-ads.png', featured: false },
 ];
 
-export const ongoingProjects: (Project & { stage: string; scope: readonly string[]; developmentNote: string })[] = [
+const curatedOngoingProjects: (Project & { stage: string; scope: readonly string[]; developmentNote: string })[] = [
   {
     slug: 'lamborghini', title: 'LAMBORGHINI — The Art of Motion', subtitle: 'Cinematic automotive scrollytelling experience.', status: 'in-development',
     description: 'A high-performance automotive web experience featuring Canvas 2D image sequence scrubbing, GSAP ScrollTrigger, Lenis smooth scrolling, and Chiaroscuro visual art direction.',
@@ -72,6 +89,8 @@ export const ongoingProjects: (Project & { stage: string; scope: readonly string
         developmentNote: 'Currently in the design and prototyping phase. The interface focuses on high-quality visuals and smooth interactions to represent the crafted frozen yogurt brand.'
       }
     ];
+
+export const ongoingProjects = [...curatedOngoingProjects, ...syncedOngoingProjects];
 
 export const journey: JourneyStep[] = [
   { id: 'capture', name: 'Capture', component: 'Camera input', description: 'The Pi reads camera frames locally. The frame stays at the edge for the recognition step.' },

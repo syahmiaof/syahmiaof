@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "github-pokmi",
+    "title": "Ayam Gepuk Pokmi",
+    "subtitle": "Sambal Noir meets Gepuk Pop.",
+    "status": "active",
+    "description": "A concept storefront for Ayam Gepuk Pokmi with interactive menu details, sample location content, and a responsive brand experience. Ordering and payment are not connected.",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS"
+    ],
+    "github": "https://github.com/syahmiaof/pokmi-ayam-gepuk",
+    "featured": false,
+    "sourceRepo": "syahmiaof/pokmi-ayam-gepuk",
+    "liveUrl": "https://ayamgepukpokmi.syahmiaof.my/",
+    "image": "/images/github-projects/github-pokmi.jpg"
+  },
+  {
+    "slug": "github-statushd",
+    "title": "StatusHD",
+    "subtitle": "WhatsApp Status video, ready in your browser.",
+    "status": "active",
+    "description": "A browser-based PWA that transcodes video to MP4 and splits it into WhatsApp Status-ready clips on the device.",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "FFmpeg WebAssembly"
+    ],
+    "github": "https://github.com/syahmiaof/whatsapp-hd-status-pwa",
+    "featured": false,
+    "sourceRepo": "syahmiaof/whatsapp-hd-status-pwa",
+    "liveUrl": "https://statushd.syahmiaof.my/",
+    "image": "/images/github-projects/github-statushd.jpg"
+  }
+]

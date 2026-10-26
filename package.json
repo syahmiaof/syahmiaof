@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
     "lint": "eslint .",
+    "lint:project-sync": "eslint scripts/sync-github-projects.mjs scripts/sync-github-projects.test.mjs src/data/projects.ts src/components/sections/SelectedWork.tsx",
     "typecheck": "tsc --noEmit",
+    "test:project-sync": "node --test scripts/sync-github-projects.test.mjs",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "check:deploy": "node scripts/deployment-preflight.mjs"

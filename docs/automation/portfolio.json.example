@@ -1,0 +1,10 @@
+{
+  "slug": "sample-project",
+  "title": "Sample Project",
+  "subtitle": "A short line describing the project.",
+  "status": "active",
+  "description": "What it does, who it helps, and the parts you built. Keep claims factual.",
+  "stack": ["React", "TypeScript"],
+  "liveUrl": "https://example.com/",
+  "image": "public/og-image.jpg"
+}
