@@ -30,7 +30,7 @@ jobs:
 
       - name: Validate portfolio changes
         run: |
-          npm ci
+          npm install
           npm run test:project-sync
           npm run lint:project-sync
           npm run typecheck
