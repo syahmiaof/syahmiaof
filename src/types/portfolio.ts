@@ -3,6 +3,7 @@ export type Project = {
   slug: string; title: string; subtitle: string; status: ProjectStatus;
   description: string; stack: string[]; github?: string; liveUrl?: string;
   featured: boolean; image?: string; images?: { src: string; alt: string; caption: string }[];
+  category?: string;
 };
 export type SkillLevel = 'used-in-projects' | 'working-knowledge' | 'exploring';
 export type Capability = {
