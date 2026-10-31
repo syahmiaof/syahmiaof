@@ -2,27 +2,11 @@
 
 A Next.js portfolio with an editorial homepage, demand-rendered infrastructure scenes, an interactive Greetly architecture walkthrough, a recruiter overview and a sourced project case study.
 
-## Run
+## Architecture & Quality Standards
 
-Node.js 22.9+ (tested on Node.js 24).
+- Modern Next.js App Router application optimized for responsive viewports and high-performance WebGL / Canvas rendering.
+- Continuous integration pipeline verifying type safety with TypeScript, strict ESLint enforcement, Next.js static asset optimization, and Playwright end-to-end browser verification.
 
-```sh
-npm ci
-npm run dev
-```
-
-Open http://127.0.0.1:3000.
-
-## Validate
-
-```sh
-npm run typecheck
-npm run lint
-npm run build
-npm test
-```
-
-Playwright uses installed Microsoft Edge. On machines without Edge, change `channel: 'msedge'` in the Playwright config to an installed browser, or install Chromium with `npx playwright install chromium` and remove the channel setting. E2E tests run against the production build on port 3100.
 
 ## Routes
 
@@ -56,17 +40,8 @@ Content lives in `src/data/`. Original portrait: `syahmi.jpg`. Production assets
 
 ## Deployment
 
-Set `NEXT_PUBLIC_SITE_URL` to the real public HTTPS origin before building. Vercel's `VERCEL_PROJECT_PRODUCTION_URL` is also accepted automatically. Local builds omit canonical/sitemap URLs until a public origin is configured; social metadata uses a local origin for preview only.
+Set `NEXT_PUBLIC_SITE_URL` to the real public HTTPS origin before building. Vercel's `VERCEL_PROJECT_PRODUCTION_URL` is also accepted automatically. Local builds omit canonical/sitemap URLs until a public origin is configured; social metadata uses a local origin for preview only. Production deployment is managed via Vercel Edge Network automation.
 
-```sh
-npm run check:deploy
-npm run build
-npm run start
-```
-
-Vercel can deploy this as a standard Next.js project. For another Node host, use the production commands above and expose the port through your host's reverse proxy. No API keys, authentication service or database is needed for this portfolio.
-
-No deployment or repository push is performed by the local build task.
 
 ## Engineering
 

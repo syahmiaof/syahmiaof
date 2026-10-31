@@ -10,6 +10,7 @@
     <a href="https://syahmiaof.my/api/resume"><img src="https://img.shields.io/badge/VIEW_CV-101713?style=for-the-badge&logo=readme&logoColor=60E1B5" alt="View CV" /></a>
     <a href="https://syahmiaof.my/credentials"><img src="https://img.shields.io/badge/CREDENTIALS-101713?style=for-the-badge&logo=credly&logoColor=60E1B5" alt="Credentials" /></a>
     <a href="mailto:hello@syahmiaof.my"><img src="https://img.shields.io/badge/EMAIL-101713?style=for-the-badge&logo=gmail&logoColor=60E1B5" alt="Email Muhammad Syahmi" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-All_Rights_Reserved-60E1B5?style=for-the-badge&logoColor=60E1B5&labelColor=101713" alt="License" /></a>
   </p>
 </div>
 

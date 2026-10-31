@@ -2,7 +2,7 @@
   "name": "syahmi-digital-infrastructure",
   "version": "1.0.0",
   "private": true,
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
