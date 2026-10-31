@@ -1,5 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
-import type { Credential, CompetitionRecognition } from '@/types/portfolio';
+import type { Credential } from '@/types/portfolio';
 import { competitionRecognitions, componentsFor, credentialCounts, credentialKindLabels, formatCredentialDate, nextTargets } from '@/data/credentials';
 import { SafeImage } from '@/components/ui/SafeImage';
 
