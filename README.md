@@ -10,7 +10,7 @@
     <a href="https://syahmiaof.my/api/resume"><img src="https://img.shields.io/badge/VIEW_CV-101713?style=for-the-badge&logo=readme&logoColor=60E1B5" alt="View CV" /></a>
     <a href="https://syahmiaof.my/credentials"><img src="https://img.shields.io/badge/CREDENTIALS-101713?style=for-the-badge&logo=credly&logoColor=60E1B5" alt="Credentials" /></a>
     <a href="mailto:hello@syahmiaof.my"><img src="https://img.shields.io/badge/EMAIL-101713?style=for-the-badge&logo=gmail&logoColor=60E1B5" alt="Email Muhammad Syahmi" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/License-All_Rights_Reserved-60E1B5?style=for-the-badge&logoColor=60E1B5&labelColor=101713" alt="License" /></a>
+    <a href="https://github.com/syahmiaof/syahmiaof/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-All_Rights_Reserved-60E1B5?style=for-the-badge&logoColor=60E1B5&labelColor=101713" alt="License" /></a>
   </p>
 </div>
 
@@ -24,10 +24,10 @@ My engineering direction is **Cloud & DevOps Engineering**, backed by national c
 
 | Credential / Recognition | Scope & Organization | Specialization / Distinction | Verification |
 |---|---|---|---|
-| 🥈 **Silver Medal** | **NetAcad Riders International 2026**<br><sub>Cisco Networking Academy</sub> | APJC International Cisco Networking, Routing & Infrastructure | [View Credential](https://syahmiaof.my/credentials) |
+| 🥈 **Silver Medal** | **NetAcad Riders International 2026**<br><sub>Cisco Networking Academy</sub> | APJC International Cisco Networking, Routing & Infrastructure | [View Credential](https://syahmiaof.my/credentials#awards) |
 | 🏆 **4th Place & MVP Team Member** | **CloudHunt National Competition 2025**<br><sub>RunCloud Education · IKM Besut</sub> | Cloud Architecture, Production Debugging & Infrastructure Defense | [Verify Credential](https://cert.runcloud.education/en/verify/78091311723534?ref=email) |
-| 🛡️ **AWS Security Engineer Advanced** | **Amazon Web Services**<br><sub>Coursera Professional Program</sub> | Cloud IAM Governance, AWS WAF, Incident Response & Threat Hunting | [Verify Credential](https://coursera.org/verify/professional-cert/N8L3ZOS4U1VN) |
-| ☁️ **AWS Cloud Solutions Architect** | **Amazon Web Services**<br><sub>Coursera Professional Certificate</sub> | Highly-Available Distributed Architecture, VPC Peering & Storage Security | [Verify Credential](https://coursera.org/verify/professional-cert/N82YX2O4AE7L) |
+| 🛡️ **AWS Security Engineer Advanced** | **Amazon Web Services**<br><sub>Coursera Professional Program</sub> | Cloud IAM Governance, AWS WAF, Incident Response & Threat Hunting | [Verify Credential](https://www.coursera.org/verify/professional-cert/N8L3ZOS4U1VN) |
+| ☁️ **AWS Cloud Solutions Architect** | **Amazon Web Services**<br><sub>Coursera Professional Certificate</sub> | Highly-Available Distributed Architecture, VPC Peering & Storage Security | [Verify Credential](https://www.coursera.org/verify/professional-cert/N82YX2O4AE7L) |
 
 Also awarded:
 - **Silver Medal** — iCompEx International 2026, SMART V-LIGHT (Class D — ICT & Multimedia)
@@ -87,10 +87,10 @@ Also awarded:
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <a href="https://daengkuning.my"><img src="public/images/daeng-kuning.webp" alt="Akademi Persilatan Daeng Kuning official website" /></a>
+      <a href="https://www.daengkuning.my"><img src="public/images/daeng-kuning.webp" alt="Akademi Persilatan Daeng Kuning official website" /></a>
       <h3>Daeng Kuning</h3>
       <p>Production digital portal and web presence for Akademi Persilatan Daeng Kuning, bringing academy heritage, membership registration, and martial arts lineage online.</p>
-      <p><a href="https://github.com/syahmiaof/daengkuning">Source</a> · <a href="https://daengkuning.my">Live</a></p>
+      <p><a href="https://github.com/syahmiaof/daengkuning">Source</a> · <a href="https://www.daengkuning.my">Live</a></p>
     </td>
     <td width="50%" valign="top">
       <a href="https://symi.syahmiaof.my"><img src="public/images/symi.png" alt="SYMI Crafted Frozen Yogurt interactive website" /></a>
@@ -110,7 +110,7 @@ More production &amp; system builds: [Sistem Aduan Asrama (Cloud Native / Fireba
 | **Cloud Platforms** | AWS (EC2, S3, IAM, CloudWatch, VPC, WAF), Cloudflare (DNS, Edge, SSL, Zero Trust), DigitalOcean, Supabase, Vercel | Multi-tier cloud architecture, static/dynamic edge caching, managed database provisioning, secure blob storage, and high-availability global hosting. |
 | **DevOps & Tooling** | Linux (Ubuntu, Debian, systemd), Docker & Docker Compose, GitHub Actions, CI/CD Automation, Git, Bash | Automated test/build/deploy pipelines, multi-stage container optimization, background daemon management (`systemd`), and self-healing service workflows. |
 | **Networking & Security** | Cisco IOS, DNS Architecture, SSL/TLS Encryption, AWS IAM Least Privilege, AWS Network Firewall, Wireshark | Secure hybrid connectivity, perimeter threat mitigation, zero-trust access policies, packet inspection, domain routing, and automated certificate lifecycle. |
-| **Full-Stack & Edge** | TypeScript, Next.js (App Router), React, Node.js, Python, PostgreSQL, OpenCV, Raspberry Pi | Full-cycle client web delivery, micro-learning LMS platforms, interactive WebGL/Canvas interfaces, WebSocket telemetry, and on-device computer vision. |
+| **Full-Stack Freelance** | TypeScript, Next.js (App Router), React, Node.js, Python, PostgreSQL, OpenCV, Raspberry Pi | Full-cycle client web delivery, micro-learning LMS platforms, interactive WebGL/Canvas interfaces, WebSocket telemetry, and on-device computer vision. |
 
 The complete verified evidence map is available on my [Skills & Tech Stack](https://syahmiaof.my/skills) directory.
 
