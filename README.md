@@ -1,9 +1,9 @@
 <div align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=60E1B5&center=true&vCenter=true&width=860&height=55&lines=Hi%2C+I%27m+Muhammad+Syahmi;Cloud+%2F+DevOps+%2F+Full-Stack;I+build+systems+that+connect" alt="Animated introduction: Muhammad Syahmi, Cloud, DevOps and Full-Stack builder" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=60E1B5&center=true&vCenter=true&width=860&height=55&lines=Hi%2C+I%27m+Muhammad+Syahmi;Cloud+%26+DevOps+Engineer;Building+Resilient+Infrastructure+%26+CI%2FCD" alt="Animated introduction: Muhammad Syahmi, Cloud & DevOps Engineer" />
   </a>
 
-  <p><strong>Cloud Computing student building connected systems across software, cloud infrastructure, automation and intelligent edge devices.</strong></p>
+  <p><strong>Cloud & DevOps Engineer specializing in resilient cloud architecture, CI/CD automation, secure infrastructure, and intelligent edge systems.</strong></p>
 
   <p>
     <a href="https://syahmiaof.my"><img src="https://img.shields.io/badge/PORTFOLIO-101713?style=for-the-badge&logo=vercel&logoColor=60E1B5" alt="Portfolio" /></a>
@@ -14,104 +14,112 @@
   </p>
 </div>
 
-## What I build
+## About & Engineering Direction
 
-I work across the path from interface to infrastructure: responsive applications, cloud-connected workflows, deployment, automation and edge devices. My current direction is Cloud and DevOps engineering, supported by hands-on full-stack and AI prototype work.
+I engineer high-availability cloud infrastructure, automated CI/CD pipelines, and secure edge-to-cloud systems. With hands-on experience spanning AWS distributed architecture, Linux service orchestration via `systemd`, and Docker containerization, I bridge the entire path from interface design to cloud delivery.
 
-## Featured work
+My engineering direction is **Cloud & DevOps Engineering**, backed by national competition recognition in live cloud debugging, international networking credentials, and a strong track record of delivering production-grade web systems for client businesses.
+
+## Key Credentials & Honors
+
+| Credential / Recognition | Scope & Organization | Specialization / Distinction | Verification |
+|---|---|---|---|
+| 🥈 **Silver Medal** | **NetAcad Riders International 2026**<br><sub>Cisco Networking Academy</sub> | APJC International Cisco Networking, Routing & Infrastructure | [View Credential](https://syahmiaof.my/credentials) |
+| 🏆 **4th Place & MVP Team Member** | **CloudHunt National Competition 2025**<br><sub>RunCloud Education · IKM Besut</sub> | Cloud Architecture, Production Debugging & Infrastructure Defense | [Verify Credential](https://cert.runcloud.education/en/verify/78091311723534?ref=email) |
+| 🛡️ **AWS Security Engineer Advanced** | **Amazon Web Services**<br><sub>Coursera Professional Program</sub> | Cloud IAM Governance, AWS WAF, Incident Response & Threat Hunting | [Verify Credential](https://coursera.org/verify/professional-cert/N8L3ZOS4U1VN) |
+| ☁️ **AWS Cloud Solutions Architect** | **Amazon Web Services**<br><sub>Coursera Professional Certificate</sub> | Highly-Available Distributed Architecture, VPC Peering & Storage Security | [Verify Credential](https://coursera.org/verify/professional-cert/N82YX2O4AE7L) |
+
+Also awarded:
+- **Silver Medal** — iCompEx International 2026, SMART V-LIGHT (Class D — ICT & Multimedia)
+- **Google AI & IT Support Professional Certificates** — Google / Coursera
+
+*These are documented as professional learning programs and competition results, verified with official credentials at [syahmiaof.my/credentials](https://syahmiaof.my/credentials).*
+
+## Cloud, Systems & Edge Engineering
 
 <table>
   <tr>
     <td width="50%" valign="top">
       <a href="https://greetly.syahmiaof.my"><img src="public/images/greetly-device.webp" alt="Greetly edge attendance device concept" /></a>
       <h3>Greetly</h3>
-      <p>Edge-to-cloud attendance system connecting Raspberry Pi, OpenCV, Supabase and a realtime Next.js dashboard.</p>
+      <p>Edge-to-cloud biometric attendance system connecting Raspberry Pi, local OpenCV facial recognition, Supabase realtime backend, and a Next.js admin telemetry dashboard.</p>
       <p><a href="https://syahmiaof.my/projects/greetly">Case study</a> · <a href="https://github.com/syahmiaof/greetly">Source</a> · <a href="https://greetly.syahmiaof.my">Live</a></p>
     </td>
     <td width="50%" valign="top">
       <a href="https://cerviscan-ai.syahmiaof.my"><img src="public/images/cerviscan-dashboard.webp" alt="CerviScan-AI research dashboard" /></a>
       <h3>CerviScan-AI</h3>
-      <p>Team research prototype. I build the CMS dashboard, video stream and YOLOv8 integration for assisted image review.</p>
+      <p>Medical computer vision research platform. Built the real-time video streaming pipeline, CMS telemetry dashboard, and integrated YOLOv8 model inference for assisted sample analysis.</p>
       <p><a href="https://github.com/syahmiaof/CerviScan-AI">Source</a> · <a href="https://cerviscan-ai.syahmiaof.my">Prototype</a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <a href="https://symi.syahmiaof.my"><img src="public/images/symi.png" alt="SYMI Crafted Frozen Yogurt interactive website" /></a>
-      <h3>SYMI</h3>
-      <p>Screenshot-driven frontend brand experience with editorial art direction, GSAP motion and responsive interaction design.</p>
-      <p><a href="https://github.com/syahmiaof/symi">Source</a> · <a href="https://symi.syahmiaof.my">Live</a></p>
+      <a href="https://nemo.syahmiaof.my"><img src="public/images/nemo.webp" alt="NEMO workspace personal productivity command hub" /></a>
+      <h3>NEMO Workspace</h3>
+      <p>Modular personal productivity command hub and developer operating workspace featuring local-first persistence, cloud state synchronization, and quick-access utility tools.</p>
+      <p><a href="https://github.com/syahmiaof/nemo">Source</a> · <a href="https://nemo.syahmiaof.my">Live</a></p>
     </td>
     <td width="50%" valign="top">
-      <a href="https://gxaa.syahmiaof.my"><img src="public/images/gayongx-athlete-analytics.png" alt="GayongX athlete analytics dashboard prototype" /></a>
-      <h3>GayongX Athlete Analytics</h3>
-      <p>Responsive performance dashboard prototype using typed synthetic data, interactive charts and browser QA.</p>
-      <p><a href="https://github.com/syahmiaof/gayongx-athlete-analytics">Source</a> · <a href="https://gxaa.syahmiaof.my">Prototype</a></p>
+      <a href="https://github.com/syahmiaof/devops-bootcamp"><img src="public/images/devops-lab.svg" alt="DevOps and Cloud Infrastructure Lab" /></a>
+      <h3>DevOps &amp; Cloud Infrastructure Lab</h3>
+      <p>Hands-on cloud infrastructure automation and deployment lab covering multi-stage Docker containerization, automated GitHub Actions CI/CD workflows, and Linux systemd service isolation.</p>
+      <p><a href="https://github.com/syahmiaof/devops-bootcamp">Source</a> · <a href="https://syahmiaof.my/skills">Architecture Spec</a></p>
+    </td>
+  </tr>
+</table>
+
+## Selected Web & Interactive Engineering (Freelance Client Work)
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://lamborghini.syahmiaof.my"><img src="public/images/lamborghini.webp" alt="Lamborghini The Art of Motion cinematic experience" /></a>
+      <h3>Lamborghini — The Art of Motion</h3>
+      <p>Cinematic automotive scrollytelling web experience featuring Canvas 2D image sequence playback, GSAP ScrollTrigger orchestration, and dramatic Chiaroscuro visual art direction.</p>
+      <p><a href="https://github.com/syahmiaof/lamborghini-art-of-motion">Source</a> · <a href="https://lamborghini.syahmiaof.my">Live</a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://siapsatu.syahmiaof.my"><img src="public/images/siapsatu.png" alt="SiapSatu LMS interactive micro-learning platform" /></a>
+      <h3>SiapSatu</h3>
+      <p>Interactive Malay-first micro-learning LMS platform built around outcome-based modules, Next.js 14, TypeScript, and high-performance GSAP UI animations.</p>
+      <p><a href="https://github.com/syahmiaof/siapsatu">Source</a> · <a href="https://siapsatu.syahmiaof.my">Live</a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <a href="https://daengkuning.my"><img src="public/images/daeng-kuning.webp" alt="Akademi Persilatan Daeng Kuning official website" /></a>
       <h3>Daeng Kuning</h3>
-      <p>Digital home and web presence for Akademi Persilatan Daeng Kuning, bringing academy heritage, membership context and martial arts identity online.</p>
+      <p>Production digital portal and web presence for Akademi Persilatan Daeng Kuning, bringing academy heritage, membership registration, and martial arts lineage online.</p>
       <p><a href="https://github.com/syahmiaof/daengkuning">Source</a> · <a href="https://daengkuning.my">Live</a></p>
     </td>
     <td width="50%" valign="top">
-      <a href="https://lamborghini.syahmiaof.my"><img src="public/images/lamborghini.webp" alt="Lamborghini The Art of Motion cinematic experience" /></a>
-      <h3>Lamborghini</h3>
-      <p>Cinematic automotive scrollytelling web experience featuring Canvas 2D image sequence playback, GSAP ScrollTrigger, and Chiaroscuro visual art direction.</p>
-      <p><a href="https://github.com/syahmiaof/lamborghini-art-of-motion">Source</a> · <a href="https://lamborghini.syahmiaof.my">Live</a></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <a href="https://siapsatu.syahmiaof.my"><img src="public/images/siapsatu.png" alt="SiapSatu LMS interactive micro-learning platform" /></a>
-      <h3>SiapSatu</h3>
-      <p>Practical Malay-first micro-learning LMS platform built around outcome-based modules, Next.js 14, TypeScript, and GSAP motion.</p>
-      <p><a href="https://github.com/syahmiaof/siapsatu">Source</a> · <a href="https://siapsatu.syahmiaof.my">Live</a></p>
-    </td>
-    <td width="50%" valign="top">
+      <a href="https://symi.syahmiaof.my"><img src="public/images/symi.png" alt="SYMI Crafted Frozen Yogurt interactive website" /></a>
+      <h3>SYMI</h3>
+      <p>High-conversion frontend brand experience with custom editorial art direction, fluid GSAP motion design, and responsive interaction architecture.</p>
+      <p><a href="https://github.com/syahmiaof/symi">Source</a> · <a href="https://symi.syahmiaof.my">Live</a></p>
     </td>
   </tr>
 </table>
 
-More builds: [Sistem Aduan Asrama](https://github.com/syahmiaof/sistem-aduan-asrama-ikm) · [GayongX](https://github.com/syahmiaof/gayongx)
+More production &amp; system builds: [Sistem Aduan Asrama (Cloud Native / Firebase)](https://github.com/syahmiaof/sistem-aduan-asrama-ikm) · [GayongX Athlete Analytics](https://github.com/syahmiaof/gayongx-athlete-analytics) · [Jiwa Fighter Combatwear](https://github.com/syahmiaof/jiwa-fighter) · [StatusHD Video PWA](https://github.com/syahmiaof/whatsapp-hd-status-pwa)
 
-## Skills with context
+## Technical Skills Matrix
 
-| Area | Used in projects | Building next |
+| Domain Hierarchy | Core Stack & Technologies | Production Context & Implementation Scope |
 |---|---|---|
-| Cloud & delivery | Vercel, Cloudflare, Supabase, Firebase, DigitalOcean | deeper AWS operations and observability |
-| Systems & DevOps | Linux, Git, GitHub Actions, systemd, Docker | Kubernetes, Terraform and Ansible workflows |
-| Application | Next.js, React, TypeScript, Python, PostgreSQL | stronger testing and service architecture |
-| AI & automation | Gemini API, YOLOv8 prototypes, agent workflows, n8n | evaluation, guardrails and production telemetry |
-| Edge & IoT | Raspberry Pi, OpenCV, ESP32 concepts | resilient device operations and secure fleet management |
+| **Cloud Platforms** | AWS (EC2, S3, IAM, CloudWatch, VPC, WAF), Cloudflare (DNS, Edge, SSL, Zero Trust), DigitalOcean, Supabase, Vercel | Multi-tier cloud architecture, static/dynamic edge caching, managed database provisioning, secure blob storage, and high-availability global hosting. |
+| **DevOps & Tooling** | Linux (Ubuntu, Debian, systemd), Docker & Docker Compose, GitHub Actions, CI/CD Automation, Git, Bash | Automated test/build/deploy pipelines, multi-stage container optimization, background daemon management (`systemd`), and self-healing service workflows. |
+| **Networking & Security** | Cisco IOS, DNS Architecture, SSL/TLS Encryption, AWS IAM Least Privilege, AWS Network Firewall, Wireshark | Secure hybrid connectivity, perimeter threat mitigation, zero-trust access policies, packet inspection, domain routing, and automated certificate lifecycle. |
+| **Full-Stack & Edge** | TypeScript, Next.js (App Router), React, Node.js, Python, PostgreSQL, OpenCV, Raspberry Pi | Full-cycle client web delivery, micro-learning LMS platforms, interactive WebGL/Canvas interfaces, WebSocket telemetry, and on-device computer vision. |
 
-The full evidence map is available on my [Skills & Tech Stack](https://syahmiaof.my/skills) page.
+The complete verified evidence map is available on my [Skills & Tech Stack](https://syahmiaof.my/skills) directory.
 
-## Verified learning and recognition
+## Current Focus & Architecture Principles
 
-Professional programs completed through Coursera include:
-
-- AWS Security Engineer Advanced — Amazon Web Services
-- AWS Cloud Solutions Architect Professional Certificate — Amazon Web Services
-- Google AI Professional Certificate — Google
-- Google IT Support Professional Certificate — Google
-
-Competition recognition:
-
-- Silver Medal — NetAcad Riders International 2026
-- Silver Medal — iCompEx International 2026, SMART V-LIGHT
-- 4th Place and MVP Team Member — CloudHunt National Competition 2025
-
-These are documented as professional learning programs and competition results. They are not presented as vendor certification exams. View verification details at [syahmiaof.my/credentials](https://syahmiaof.my/credentials).
-
-## Current focus
-
-- Cloud and DevOps engineering foundations
-- Reliable deployment, observability and automation
-- AI workflows with clear human approval boundaries
-- Building products that connect useful interfaces to dependable systems
+- **Resilient Cloud & Systems Foundations:** Prioritizing high availability, minimal attack surfaces, fault tolerance, and predictable disaster recovery.
+- **Automated Delivery Pipelines:** Eliminating manual deployment toil with strictly-tested GitHub Actions CI/CD and containerized environments.
+- **Edge-to-Cloud Integration:** Bridging low-power edge hardware (Raspberry Pi, OpenCV) with scalable cloud services and realtime monitoring.
+- **Client & Business Value:** Delivering tested, production-grade applications with zero broken flows, solid SEO, and measurable user conversion.
 
 <div align="center">
   <img src="dist/github-snake-dark.svg" alt="Muhammad Syahmi GitHub contribution activity" width="860" />
